@@ -29,7 +29,9 @@ data class SketchwareProject(
 
     override suspend fun clone(id: Int, dest: ProjectDestination) {
         dest.projectFile.parentFile.mkdirs()
-        dest.projectFile.writeFile(information.copy(scId = "$id").toJson().toByteArray())
+        dest.projectFile.writeFile(
+            FileEncryptor.encrypt(information.copy(scId = "$id").toJson().toByteArray())
+        )
         dest.projectResources.apply {
             sounds?.let { soundsDest -> resources.sounds?.copyFolder(soundsDest) }
             icons?.let { iconsDest -> resources.icons?.copyFolder(iconsDest) }
