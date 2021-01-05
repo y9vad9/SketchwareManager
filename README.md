@@ -20,7 +20,15 @@ project.setProguardRules("..") // sets proguard rules
 // and another funcs..
 ```
 ## Implementation
-Add this to your build.gradle.kts:
+### ⚠ It's a only dev version
+Try not to use this version for production. The public API can change at any time and also may not be stable. Only at your own peril and risk.
+#### build.gradle:
+```groovy
+dependencies {
+    implementation 'com.github.justneon33:Sketchware-Project-Manager:dev-2.0'
+}
+```
+#### build.gradle.kts:
 ```kotlin
 dependencies {
     implementation("com.github.justneon33:Sketchware-Project-Manager:dev-2.0")
