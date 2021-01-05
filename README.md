@@ -32,7 +32,7 @@ project.setProguardRules("..") // sets proguard rules
 
 ```groovy
 dependencies {
-    implementation 'com.github.y9neon:Sketchware-Project-Manager:stable-2.1'
+    implementation 'com.github.y9neon:SketchwareManager:stable-2.1'
 }
 ```
 
@@ -40,6 +40,6 @@ dependencies {
 
 ```kotlin
 dependencies {
-    implementation("com.github.y9neon:Sketchware-Project-Manager:stable-2.1")
+    implementation("com.github.y9neon:SketchwareManager:stable-2.1")
 }
 ```
