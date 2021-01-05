@@ -19,3 +19,10 @@ println(project.getProguardRules()) // prints proguard rules in project
 project.setProguardRules("..") // sets proguard rules
 // and another funcs..
 ```
+## Implementation
+Add this to your build.gradle.kts:
+```kotlin
+dependencies {
+    implementation("com.github.justneon33:Sketchware-Project-Manager:dev-2.0")
+}
+```
