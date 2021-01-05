@@ -13,13 +13,13 @@ data class ProjectDestination(
         fun fromFolder(folder: File, projectId: Int): ProjectDestination {
             val resourcesFolder = File(folder, "resources")
             return ProjectDestination(
-                File(folder, "mysc/list/$projectId"),
+                File(folder, "mysc/list/$projectId/project"),
                 File(folder, "data/$projectId"),
                 SketchwareProjectResources(
-                    File(folder, "images/$projectId"),
-                    File(folder, "icons/$projectId"),
-                    File(folder, "fonts/$projectId"),
-                    File(folder, "sounds/$projectId")
+                    File(resourcesFolder, "images/$projectId"),
+                    File(resourcesFolder, "icons/$projectId"),
+                    File(resourcesFolder, "fonts/$projectId"),
+                    File(resourcesFolder, "sounds/$projectId")
                 )
             )
         }
