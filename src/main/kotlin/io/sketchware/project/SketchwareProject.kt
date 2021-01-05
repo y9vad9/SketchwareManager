@@ -1,13 +1,14 @@
 package io.sketchware.project
 
 import io.sketchware.encryptor.FileEncryptor
-import io.sketchware.project.models.*
+import io.sketchware.project.models.ProjectConfig
+import io.sketchware.project.models.ProjectDestination
+import io.sketchware.project.models.SketchwareProjectData
+import io.sketchware.project.models.SketchwareProjectResources
 import io.sketchware.toJson
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import java.io.File
-import kotlin.coroutines.resume
-import kotlin.coroutines.suspendCoroutine
 
 data class SketchwareProject(
     override var infoFile: File,

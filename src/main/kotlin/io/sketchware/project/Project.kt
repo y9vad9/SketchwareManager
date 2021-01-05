@@ -1,9 +1,7 @@
 package io.sketchware.project
 
 import io.sketchware.project.models.ProjectConfig
-import io.sketchware.project.models.ProjectData
 import io.sketchware.project.models.ProjectDestination
-import io.sketchware.project.models.ProjectResources
 import kotlinx.serialization.Serializable
 import java.io.File
 

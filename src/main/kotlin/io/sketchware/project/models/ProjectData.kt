@@ -16,7 +16,7 @@ data class SketchwareProjectData(
     var resource: File?,
     /* File with data about views */
     var view: File?
-): ProjectData()
+) : ProjectData()
 
 data class SketchwareProProjectData(
     var folder: File,
@@ -38,4 +38,4 @@ data class SketchwareProProjectData(
     var stringFog: File,
     /* it empty in my test project.. for what is it? */
     var projectConfig: File
-): ProjectData()
+) : ProjectData()

@@ -8,8 +8,6 @@ import io.sketchware.toJson
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import java.io.File
-import kotlin.coroutines.resume
-import kotlin.coroutines.suspendCoroutine
 
 data class SketchwareProProject(
     override var infoFile: File,

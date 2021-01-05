@@ -2,23 +2,21 @@ package io.sketchware
 
 import io.sketchware.encryptor.FileEncryptor
 import io.sketchware.exceptions.projects.SketchwareFolderError
-import io.sketchware.project.Project
 import io.sketchware.project.SketchwareProProject
 import io.sketchware.project.SketchwareProject
 import io.sketchware.project.models.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import java.io.File
-import kotlin.coroutines.suspendCoroutine
 
 class SketchwareProjects(private val sketchwareFolder: File) {
 
     init {
-        if(sketchwareFolder.isFile)
+        if (sketchwareFolder.isFile)
             throw SketchwareFolderError(sketchwareFolder.path)
     }
 
-    constructor(sketchwareFolder: String): this(File(sketchwareFolder))
+    constructor(sketchwareFolder: String) : this(File(sketchwareFolder))
 
     suspend fun getProjects() = withContext(Dispatchers.IO) {
         return@withContext File(File(sketchwareFolder, "mysc"), "list").listFiles()?.toList()?.map { projectFolder ->
@@ -63,7 +61,7 @@ class SketchwareProjects(private val sketchwareFolder: File) {
         val projectResource = File(projectDataFolder, "resource")
         val projectView = File(projectDataFolder, "view")
         val projectConfig = File(projectDataFolder, "project_config")
-        return if(projectConfig.exists()) {
+        return if (projectConfig.exists()) {
             val projectProguard = File(projectDataFolder, "proguard")
             val projectProguardRules = File(projectDataFolder, "proguard-rules.pro")
             val projectStringFog = File(projectDataFolder, "stringfog")
@@ -76,9 +74,10 @@ class SketchwareProjects(private val sketchwareFolder: File) {
             projectLogic, projectResource, projectView
         )
     }
+
     fun getBak(id: Int): SketchwareProjectData? {
         val projectBakFolder = File(File(sketchwareFolder, "bak"), id.toString())
-        if(!projectBakFolder.exists()) return null
+        if (!projectBakFolder.exists()) return null
 
         val projectFile = File(projectBakFolder, "file")
         val projectLibrary = File(projectBakFolder, "library")
@@ -87,7 +86,8 @@ class SketchwareProjects(private val sketchwareFolder: File) {
         val projectView = File(projectBakFolder, "view")
         return SketchwareProjectData(
             projectBakFolder, projectFile, projectLibrary,
-            projectLogic, projectResource, projectView)
+            projectLogic, projectResource, projectView
+        )
     }
 
     val nextFreeId: Int get() = getFreeId(601)

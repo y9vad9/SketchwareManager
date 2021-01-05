@@ -9,4 +9,4 @@ open class SketchwareProjectResources(
     var icons: File?,
     var fonts: File?,
     var sounds: File?
-): ProjectResources()
+) : ProjectResources()
