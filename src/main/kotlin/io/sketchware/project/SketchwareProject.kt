@@ -1,5 +1,7 @@
 package io.sketchware.project
 
+import io.sketchware.copy
+import io.sketchware.copyFolder
 import io.sketchware.encryptor.FileEncryptor
 import io.sketchware.project.models.ProjectConfig
 import io.sketchware.project.models.ProjectDestination
@@ -24,16 +26,16 @@ data class SketchwareProject(
         infoFile.writeBytes(FileEncryptor.encrypt(information.toJson().toByteArray()))
     }
 
-    override suspend fun clone(id: Int, dest: ProjectDestination): Unit = withContext(Dispatchers.IO) {
+    override suspend fun clone(id: Int, dest: ProjectDestination) {
         dest.projectFile.parentFile.mkdirs()
-        infoFile.copyTo(dest.projectFile, overwrite = true)
+        infoFile.copy(dest.projectFile)
         dest.projectResources.apply {
-            sounds?.let { soundsDest -> resources.sounds?.copyRecursively(soundsDest) }
-            icons?.let { iconsDest -> resources.icons?.copyRecursively(iconsDest) }
-            images?.let { imagesDest -> resources.images?.copyRecursively(imagesDest) }
-            fonts?.let { fontsDest -> resources.fonts?.copyRecursively(fontsDest) }
+            sounds?.let { soundsDest -> resources.sounds?.copyFolder(soundsDest) }
+            icons?.let { iconsDest -> resources.icons?.copyFolder(iconsDest) }
+            images?.let { imagesDest -> resources.images?.copyFolder(imagesDest) }
+            fonts?.let { fontsDest -> resources.fonts?.copyFolder(fontsDest) }
         }
-        data?.folder?.copyRecursively(dest.projectDataFolder)
+        data?.folder?.copyFolder(dest.projectDataFolder)
     }
 
     override suspend fun delete(): Unit = withContext(Dispatchers.IO) {

@@ -2,11 +2,10 @@ package io.sketchware
 
 import io.sketchware.encryptor.FileEncryptor
 import io.sketchware.exceptions.projects.SketchwareFolderError
+import io.sketchware.project.Project
 import io.sketchware.project.SketchwareProProject
 import io.sketchware.project.SketchwareProject
 import io.sketchware.project.models.*
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.withContext
 import java.io.File
 
 class SketchwareProjects(private val sketchwareFolder: File) {
@@ -18,12 +17,12 @@ class SketchwareProjects(private val sketchwareFolder: File) {
 
     constructor(sketchwareFolder: String) : this(File(sketchwareFolder))
 
-    suspend fun getProjects() = withContext(Dispatchers.IO) {
-        return@withContext File(File(sketchwareFolder, "mysc"), "list").listFiles()?.toList()?.map { projectFolder ->
+    suspend fun getProjects(): List<Project>? {
+        return File(File(sketchwareFolder, "mysc"), "list").getListFiles()?.map { projectFolder ->
 
             val projectConfig = FileEncryptor.decrypt(
                 File(projectFolder, "project")
-                    .readBytes()
+                    .readFile()
             ).serialize<ProjectConfig>()
 
             val projectResources = getResources(projectConfig.scId.toInt())
