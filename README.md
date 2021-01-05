@@ -28,12 +28,6 @@ project.setProguardRules("..") // sets proguard rules
 ```
 
 ## Implementation
-
-### ⚠ It's only dev version
-
-Try not to use this version for production. The public API can change at any time and also may not be stable. Only at
-your own peril and risk.
-
 #### build.gradle:
 
 ```groovy
