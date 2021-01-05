@@ -43,6 +43,30 @@ class SketchwareProjects(private val sketchwareFolder: File) {
         }
     }
 
+    suspend fun getProject(id: Int): Project? {
+        val projectFile = File(sketchwareFolder, "mysc/list/$id/project")
+        if(!projectFile.exists()) return null
+        val projectConfig = FileEncryptor.decrypt(
+                projectFile.readFile()
+        ).serialize<ProjectConfig>()
+
+        val projectResources = getResources(projectConfig.scId.toInt())
+
+        return when (val projectData = getData(projectConfig.scId.toInt())) {
+            is SketchwareProjectData -> SketchwareProject(
+                projectFile, projectConfig, projectResources, projectData,
+                File(File(sketchwareFolder, "mysc"), projectConfig.scId),
+                getBak(projectConfig.scId.toInt())
+            )
+            is SketchwareProProjectData -> SketchwareProProject(
+                projectFile, projectConfig, projectResources, projectData,
+                File(File(sketchwareFolder, "mysc"), projectConfig.scId),
+                getBak(projectConfig.scId.toInt())
+            )
+            else -> TODO("Not implemented type of project")
+        }
+    }
+
     fun getResources(id: Int): SketchwareProjectResources {
         val resourcesFolder = File(sketchwareFolder, "resources")
         val iconsFolder = File(File(resourcesFolder, "icons"), "$id")
