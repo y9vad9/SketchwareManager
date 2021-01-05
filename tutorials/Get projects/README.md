@@ -23,7 +23,7 @@ suspend fun main() {
 #### In Android application it will look like:
 
 ```kotlin
-override fun onCreate(b: Bundle) = scope.lauch {
+override fun onCreate(b: Bundle) = scope.launch {
     val projects = SketchwareProjects(sketchware_folder).getProjects()
     // something after it..
 }
