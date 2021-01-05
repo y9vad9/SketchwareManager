@@ -42,4 +42,4 @@ projects.forEach { project ->
 ```
 
 It also has a lot of other information about project that you can
-check [here](https://github.com/y9neon/Sketchware-Project-Manager/blob/master/src/main/kotlin/io/sketchware/project/models/ProjectConfig.kt).
+check [here](https://github.com/y9neon/SketchwareManager/blob/master/src/main/kotlin/io/sketchware/project/models/ProjectConfig.kt).
