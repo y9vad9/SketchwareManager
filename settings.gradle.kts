@@ -1,0 +1,2 @@
+rootProject.name = "Sketchware-Manager"
+
