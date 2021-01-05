@@ -1,6 +1,6 @@
 package io.sketchware.project
 
-import io.sketchware.copy
+import io.sketchware.*
 import io.sketchware.copyFolder
 import io.sketchware.encryptor.FileEncryptor
 import io.sketchware.project.models.*
@@ -43,7 +43,7 @@ data class SketchwareProProject(
 
     override suspend fun clone(id: Int, dest: ProjectDestination) {
         dest.projectFile.parentFile.mkdirs()
-        infoFile.copy(dest.projectFile)
+        dest.projectFile.writeFile(information.copy(scId = "$id").toJson().toByteArray())
         dest.projectResources.apply {
             sounds?.let { soundsDest -> resources.sounds?.copyFolder(soundsDest) }
             icons?.let { iconsDest -> resources.icons?.copyFolder(iconsDest) }

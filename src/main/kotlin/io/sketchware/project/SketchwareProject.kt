@@ -8,6 +8,7 @@ import io.sketchware.project.models.ProjectDestination
 import io.sketchware.project.models.SketchwareProjectData
 import io.sketchware.project.models.SketchwareProjectResources
 import io.sketchware.toJson
+import io.sketchware.writeFile
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import java.io.File
@@ -28,7 +29,7 @@ data class SketchwareProject(
 
     override suspend fun clone(id: Int, dest: ProjectDestination) {
         dest.projectFile.parentFile.mkdirs()
-        infoFile.copy(dest.projectFile)
+        dest.projectFile.writeFile(information.copy(scId = "$id").toJson().toByteArray())
         dest.projectResources.apply {
             sounds?.let { soundsDest -> resources.sounds?.copyFolder(soundsDest) }
             icons?.let { iconsDest -> resources.icons?.copyFolder(iconsDest) }
