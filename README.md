@@ -1,7 +1,7 @@
 # Sketchware Manager
 Coroutine-based library for managing sketchware projects, collections and etc.
 ## Projects 📂
-The library supports Sketchware, Sketchware Pro projects ✔.
+The library supports Sketchware, Sketchware Pro projects ✔
 ### Example:
 ```kotlin
 val manager = SketchwareProjects("../.sketchware")
@@ -20,17 +20,17 @@ project.setProguardRules("..") // sets proguard rules
 // and another funcs..
 ```
 ## Implementation
-### ⚠ It's a only dev version
+### ⚠ It's only dev version
 Try not to use this version for production. The public API can change at any time and also may not be stable. Only at your own peril and risk.
 #### build.gradle:
 ```groovy
 dependencies {
-    implementation 'com.github.justneon33:Sketchware-Project-Manager:dev-2.0'
+    implementation 'com.github.y9neon:Sketchware-Project-Manager:dev-2.0'
 }
 ```
 #### build.gradle.kts:
 ```kotlin
 dependencies {
-    implementation("com.github.justneon33:Sketchware-Project-Manager:dev-2.0")
+    implementation("com.github.y9neon:Sketchware-Project-Manager:dev-2.0")
 }
 ```
