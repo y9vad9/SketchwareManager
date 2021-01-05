@@ -21,5 +21,8 @@ internal suspend fun File.copy(destFile: File) = withContext(Dispatchers.IO) {
 }
 
 internal suspend fun File.copyFolder(destFile: File) = withContext(Dispatchers.IO) {
-    copyRecursively(destFile, overwrite = true)
+    if(exists()) {
+        if(!destFile.exists()) destFile.mkdirs()
+        copyRecursively(destFile, overwrite = true)
+    }
 }
