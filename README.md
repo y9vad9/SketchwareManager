@@ -31,6 +31,9 @@ project.setProguardRules("..") // sets proguard rules
 #### build.gradle:
 
 ```groovy
+repositories {
+    maven { url 'https://jitpack.io' }
+}
 dependencies {
     implementation 'com.github.y9neon:SketchwareManager:stable-2.1'
 }
@@ -39,6 +42,9 @@ dependencies {
 #### build.gradle.kts:
 
 ```kotlin
+repositories {
+    maven("https://jitpack.io")
+}
 dependencies {
     implementation("com.github.y9neon:SketchwareManager:stable-2.1")
 }
