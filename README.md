@@ -28,24 +28,24 @@ project.setProguardRules("..") // sets proguard rules
 ```
 
 ## Implementation
-
-### ⚠ It's only dev version
-
-Try not to use this version for production. The public API can change at any time and also may not be stable. Only at
-your own peril and risk.
-
 #### build.gradle:
 
 ```groovy
+repositories {
+    maven { url 'https://jitpack.io' }
+}
 dependencies {
-    implementation 'com.github.y9neon:Sketchware-Project-Manager:dev-2.0'
+    implementation 'com.github.y9neon:SketchwareManager:stable-2.1'
 }
 ```
 
 #### build.gradle.kts:
 
 ```kotlin
+repositories {
+    maven("https://jitpack.io")
+}
 dependencies {
-    implementation("com.github.y9neon:Sketchware-Project-Manager:dev-2.0")
+    implementation("com.github.y9neon:SketchwareManager:stable-2.1")
 }
 ```
