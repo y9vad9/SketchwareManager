@@ -45,7 +45,7 @@ repositories {
     maven { url 'https://jitpack.io' }
 }
 dependencies {
-    implementation 'com.github.y9neon:SketchwareManager:stable-2.1'
+    implementation 'com.github.y9neon:SketchwareManager:stable-2.2'
 }
 ```
 
@@ -56,6 +56,6 @@ repositories {
     maven("https://jitpack.io")
 }
 dependencies {
-    implementation("com.github.y9neon:SketchwareManager:stable-2.1")
+    implementation("com.github.y9neon:SketchwareManager:stable-2.2")
 }
 ```
