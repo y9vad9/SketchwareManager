@@ -6,7 +6,7 @@ import java.util.regex.Matcher
 import java.util.regex.Pattern
 
 object BlockBeanParser {
-    private const val regex = "\\{.*?\\}$(\\{|\\s|\\Z)"
+    private const val regex = "\\{.*?\\}$(?:\\{|\\s|\\Z)"
     private val pattern: Pattern = Pattern.compile(regex, Pattern.MULTILINE)
 
     /**
