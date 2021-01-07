@@ -8,7 +8,7 @@ All of these collection types are supported by the `SketchwareCollections` class
 ```kotlin
 val collections = SketchwareCollections(File(__path_to_collections_folder__))
 ```
-In this class we have `moreblocks`, `blocks`, `images`, `widgets`, `fonts` variables which have auto-generated instance 
+In this class we have `moreblocks`, `blocks`, `images`, `widgets`, `fonts` variables which auto-generated instances
 for `SketchwareCollection` class.
 ### Sketchware Collection
 Since we already have instances for all possible collections, let's try to do something with them.
