@@ -8,7 +8,7 @@ internal suspend fun File.writeFile(bytes: ByteArray) = withContext(Dispatchers.
     writeBytes(bytes)
 }
 
-internal suspend fun File.readFile(): ByteArray = withContext(Dispatchers.IO) {
+suspend fun File.readFile(): ByteArray = withContext(Dispatchers.IO) {
     return@withContext readBytes()
 }
 

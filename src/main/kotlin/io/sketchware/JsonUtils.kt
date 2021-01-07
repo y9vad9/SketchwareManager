@@ -4,9 +4,10 @@ import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 
-internal inline fun <reified T> String.serialize(): T {
-    return Json.decodeFromString<T>(this)
+inline fun <reified T> String.serialize(): T {
+    return Json.decodeFromString(this)
 }
+
 
 internal inline fun <reified T> ByteArray.serialize() = String(this).serialize<T>()
 
