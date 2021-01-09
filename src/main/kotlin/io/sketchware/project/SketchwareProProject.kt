@@ -1,12 +1,12 @@
 package io.sketchware.project
 
-import io.sketchware.*
-import io.sketchware.copyFolder
+import io.sketchware.utils.copyFolder
 import io.sketchware.encryptor.FileEncryptor
 import io.sketchware.project.models.*
 import io.sketchware.project.models.sketchwarepro.ProguardData
-import io.sketchware.serialize
-import io.sketchware.toJson
+import io.sketchware.utils.serialize
+import io.sketchware.utils.toJson
+import io.sketchware.utils.writeFile
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import java.io.File
@@ -53,6 +53,10 @@ data class SketchwareProProject(
             fonts?.let { fontsDest -> resources.fonts?.copyFolder(fontsDest) }
         }
         data?.folder?.copyFolder(dest.projectDataFolder)
+    }
+
+    override suspend fun getData() {
+        TODO("Not yet implemented")
     }
 
     override suspend fun delete(): Unit = withContext(Dispatchers.IO) {

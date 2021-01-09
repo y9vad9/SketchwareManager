@@ -15,5 +15,6 @@ abstract class Project {
      */
     abstract suspend fun edit(builder: ProjectConfig.() -> Unit)
     abstract suspend fun clone(id: Int, dest: ProjectDestination)
+    abstract suspend fun getData()
     abstract suspend fun delete()
 }
