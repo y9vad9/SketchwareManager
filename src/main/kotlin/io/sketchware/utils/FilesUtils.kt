@@ -1,4 +1,4 @@
-package io.sketchware
+package io.sketchware.utils
 
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
