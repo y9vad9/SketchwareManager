@@ -6,15 +6,15 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class ProjectConfig(
     @SerialName("sketchware_ver")
-    var sketchwareVer: Double,
+    var sketchwareVersion: Double,
     @SerialName("sc_id")
-    var scId: String,
+    var projectId: String,
     @SerialName("my_sc_pkg_name")
-    var myScPkgName: String,
+    var packageName: String,
     @SerialName("my_app_name")
-    var myAppName: String,
+    var appName: String,
     @SerialName("sc_ver_code")
-    var scVerCode: String,
+    var appVersionCode: String,
     @SerialName("color_control_highlight")
     var colorControlHighLight: Double,
     @SerialName("color_primary")
@@ -22,15 +22,15 @@ data class ProjectConfig(
     @SerialName("color_accent")
     var colorAccent: Double,
     @SerialName("my_sc_reg_dt")
-    var myScRegDt: String,
+    var projectCreationDate: String,
     @SerialName("color_primary_dark")
     var colorPrimaryDark: Double,
     @SerialName("color_control_normal")
     var colorControlNormal: Double,
     @SerialName("sc_ver_name")
-    var scVerName: String,
+    var appVersionName: String,
     @SerialName("my_ws_name")
-    var myWsName: String,
+    var projectName: String,
     @SerialName("custom_icon")
     var customIcon: Boolean
 )
