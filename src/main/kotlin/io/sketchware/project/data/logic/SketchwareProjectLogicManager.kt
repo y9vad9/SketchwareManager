@@ -5,13 +5,13 @@ import io.sketchware.project.data.BlockParser
 import io.sketchware.project.data.SketchwareDataParser
 import io.sketchware.project.data.models.*
 import io.sketchware.project.models.SketchwareProjectBlock
-import io.sketchware.utils.*
-import io.sketchware.utils.indexOfOrNull
-import kotlinx.coroutines.runBlocking
-import kotlinx.serialization.json.JsonObject
+import io.sketchware.utils.readFile
+import io.sketchware.utils.replaceOrInsertAtTop
+import io.sketchware.utils.toModel
+import io.sketchware.utils.writeFile
 import java.io.File
 
-open class SketchwareProjectLogicManager (private val file: File) {
+open class SketchwareProjectLogicManager(private val file: File) {
     private var list: List<BlockDataModel>? = null
     private var decryptedString: String? = null
 
@@ -334,8 +334,7 @@ open class SketchwareProjectLogicManager (private val file: File) {
 
     private suspend fun removeLogic(activity: String, name: String) {
         decryptedString = Regex(
-            "(?<=@)${activity}\\.java_$name.*?(?=\\n@|\$)"
-            , RegexOption.DOT_MATCHES_ALL
+            "(?<=@)${activity}\\.java_$name.*?(?=\\n@|\$)", RegexOption.DOT_MATCHES_ALL
         ).replace(getDecryptedString(), "\n")
     }
 

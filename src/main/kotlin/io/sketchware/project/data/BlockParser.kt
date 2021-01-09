@@ -1,6 +1,5 @@
 package io.sketchware.project.data
 
-import io.sketchware.collections.common.BlockBeanParser
 import io.sketchware.utils.serialize
 import io.sketchware.utils.toJson
 import java.util.regex.Matcher

@@ -48,9 +48,9 @@ class SketchwareProjects(private val sketchwareFolder: File) {
 
     suspend fun getProject(id: Int): Project? {
         val projectFile = File(sketchwareFolder, "mysc/list/$id/project")
-        if(!projectFile.exists()) return null
+        if (!projectFile.exists()) return null
         val projectConfig = FileEncryptor.decrypt(
-                projectFile.readFile()
+            projectFile.readFile()
         ).serialize<ProjectConfig>()
 
         val projectResources = getResources(projectConfig.scId.toInt())

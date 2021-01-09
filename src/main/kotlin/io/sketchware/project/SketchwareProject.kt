@@ -1,11 +1,11 @@
 package io.sketchware.project
 
-import io.sketchware.utils.copyFolder
 import io.sketchware.encryptor.FileEncryptor
 import io.sketchware.project.models.ProjectConfig
 import io.sketchware.project.models.ProjectDestination
 import io.sketchware.project.models.SketchwareProjectData
 import io.sketchware.project.models.SketchwareProjectResources
+import io.sketchware.utils.copyFolder
 import io.sketchware.utils.toJson
 import io.sketchware.utils.writeFile
 import kotlinx.coroutines.Dispatchers

@@ -28,16 +28,19 @@ project.setProguardRules("..") // sets proguard rules
 ```
 
 ## Collections 📦
-Our library provides the ability to get/modify a list of Collections, which is not available with conventional methods due to 
-the nature of their storage.
-Example:
+
+Our library provides the ability to get/modify a list of Collections, which is not available with conventional methods
+due to the nature of their storage. Example:
+
 ```kotlin
 val collectionManager = SketchwareCollections(File(__path__))
 println(collectionManager.moreblocks.getArray()) // prints all moreblocks
 ```
+
 More: [Collections tutorial](https://github.com/y9neon/SketchwareManager/tree/master/tutorials/Collections).
 
 ## Implementation
+
 #### build.gradle:
 
 ```groovy

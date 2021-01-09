@@ -1,9 +1,9 @@
 package io.sketchware.project
 
-import io.sketchware.utils.copyFolder
 import io.sketchware.encryptor.FileEncryptor
 import io.sketchware.project.models.*
 import io.sketchware.project.models.sketchwarepro.ProguardData
+import io.sketchware.utils.copyFolder
 import io.sketchware.utils.serialize
 import io.sketchware.utils.toJson
 import io.sketchware.utils.writeFile

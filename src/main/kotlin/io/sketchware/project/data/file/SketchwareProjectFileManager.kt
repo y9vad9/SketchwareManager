@@ -14,18 +14,18 @@ class SketchwareProjectFileManager(private val file: File) {
     private var decryptedString: String? = null
 
     init {
-        if(!file.isFile)
+        if (!file.isFile)
             throw SketchwareFileError(file.path)
     }
 
     private suspend fun getDecryptedString(): String {
-        if(decryptedString == null)
+        if (decryptedString == null)
             decryptedString = String(FileEncryptor.decrypt(file.readFile()))
         return decryptedString ?: error("Decrypted string should be initialized")
     }
 
     private suspend fun getList(): List<BlockDataModel> {
-        if(list == null)
+        if (list == null)
             list = getDecryptedString().serialize()
         return list ?: error("List shouldn't be null")
     }
