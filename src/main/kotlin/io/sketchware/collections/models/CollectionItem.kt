@@ -3,7 +3,7 @@ package io.sketchware.collections.models
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class BlockBean(
+data class CollectionItem(
     /**
      * Contains name of the item
      */
