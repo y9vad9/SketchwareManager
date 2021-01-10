@@ -1,4 +1,4 @@
-package io.sketchware.project.models
+package io.sketchware.models.sketchware
 
 import kotlinx.serialization.Serializable
 

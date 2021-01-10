@@ -1,6 +1,6 @@
-package io.sketchware.project.data
+package io.sketchware.utils
 
-import io.sketchware.project.data.models.BlockDataModel
+import io.sketchware.models.sketchware.data.BlockDataModel
 
 
 object SketchwareDataParser {

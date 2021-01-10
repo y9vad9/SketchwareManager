@@ -1,4 +1,4 @@
-package io.sketchware.project.data.models
+package io.sketchware.models.sketchware.data
 
 import kotlinx.serialization.SerialName
 
