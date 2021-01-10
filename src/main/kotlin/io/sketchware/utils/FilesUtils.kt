@@ -16,6 +16,14 @@ internal suspend fun File.getListFiles(): List<File>? = withContext(Dispatchers.
     return@withContext listFiles()?.toList()
 }
 
+internal suspend fun deleteFiles(vararg files: File) = withContext(Dispatchers.IO) {
+    files.forEach {
+        if(it.isFile)
+            it.delete()
+        else it.deleteRecursively()
+    }
+}
+
 internal suspend fun File.copy(destFile: File) = withContext(Dispatchers.IO) {
     copyTo(destFile, overwrite = true)
 }
