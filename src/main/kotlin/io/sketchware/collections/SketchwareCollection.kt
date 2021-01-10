@@ -1,7 +1,7 @@
 package io.sketchware.collections
 
 import io.sketchware.collections.models.CollectionItem
-import io.sketchware.project.data.BlockParser
+import io.sketchware.utils.BlockParser
 import io.sketchware.utils.readFile
 import io.sketchware.utils.toJson
 import io.sketchware.utils.writeFile
@@ -16,9 +16,9 @@ class SketchwareCollection(
 ) {
 
     /**
-     * Get array of BlockBean with information about items
+     * Get array of Collection Item with information about items
      */
-    suspend inline fun getArray(): List<CollectionItem> {
+    suspend inline fun getCollection(): List<CollectionItem> {
         val moreblocks = String(collectionFile.readFile())
         return BlockParser.parseAsArray(moreblocks)
     }
@@ -30,11 +30,17 @@ class SketchwareCollection(
         return File(dataFolder, name)
     }
 
+    suspend fun addItem(collectionItem: CollectionItem) {
+        val list = ArrayList(getCollection())
+        list.add(collectionItem)
+        saveCollection(list)
+    }
+
     /**
      * Saves the list you modified to the Sketchware Collections format.
      * @param list your modified list to save
      */
-    suspend fun save(list: List<CollectionItem>) {
+    suspend fun saveCollection(list: List<CollectionItem>) {
         var output = ""
         list.forEach {
             output += "\n${it.toJson()}"

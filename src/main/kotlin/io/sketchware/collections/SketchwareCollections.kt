@@ -1,6 +1,6 @@
 package io.sketchware.collections
 
-import io.sketchware.exceptions.projects.SketchwareFolderError
+import io.sketchware.models.exceptions.SketchwareFolderError
 import java.io.File
 
 class SketchwareCollections(private val collectionsFolder: File) {
@@ -11,10 +11,10 @@ class SketchwareCollections(private val collectionsFolder: File) {
             throw SketchwareFolderError(collectionsFolder.path)
     }
 
-    val moreblocks by lazy { SketchwareCollection(File(collectionsFolder, "more_block/list")) }
-    val images by lazy { SketchwareCollection(File(collectionsFolder, "image/list")) }
-    val widgets by lazy { SketchwareCollection(File(collectionsFolder, "widget/list")) }
-    val fonts by lazy { SketchwareCollection(File(collectionsFolder, "font/list")) }
-    val sounds by lazy { SketchwareCollection(File(collectionsFolder, "sound/list")) }
-    val blocks by lazy { SketchwareCollection(File(collectionsFolder, "block/list")) }
+    val moreblocksManager by lazy { SketchwareCollection(File(collectionsFolder, "more_block/list")) }
+    val imagesManager by lazy { SketchwareCollection(File(collectionsFolder, "image/list")) }
+    val widgetsManager by lazy { SketchwareCollection(File(collectionsFolder, "widget/list")) }
+    val fontsManager by lazy { SketchwareCollection(File(collectionsFolder, "font/list")) }
+    val soundsManager by lazy { SketchwareCollection(File(collectionsFolder, "sound/list")) }
+    val blocksManager by lazy { SketchwareCollection(File(collectionsFolder, "block/list")) }
 }
