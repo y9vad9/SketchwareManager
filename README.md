@@ -47,7 +47,7 @@ due to the nature of their storage. Example:
 
 ```kotlin
 val collectionManager = SketchwareCollections(File(__path__))
-println(collectionManager.moreblocks.getArray()) // prints all moreblocks
+println(collectionManager.moreblocks.getCollection()) // prints all moreblocks
 ```
 
 More: [Collections tutorial](https://github.com/y9neon/SketchwareManager/tree/master/tutorials/Collections).
