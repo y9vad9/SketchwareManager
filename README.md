@@ -39,6 +39,7 @@ mainActivityEvents.forEach { event -> event.apply {
     }
 }
 ```
+More: [Data tutorials](https://github.com/y9neon/SketchwareManager/tree/master/tutorials/Receiving%20and%20managing%20project%20data%20(logic%2C%20view%2C%20resources%2C%20libraries)).
 
 ## Collections 📦
 
@@ -72,6 +73,6 @@ repositories {
     maven("https://jitpack.io")
 }
 dependencies {
-    implementation("com.github.y9neon:SketchwareManager:-alpha-2.2.1")
+    implementation("com.github.y9neon:SketchwareManager:alpha-2.2.1")
 }
 ```
