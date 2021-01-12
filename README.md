@@ -12,8 +12,8 @@ The library supports Sketchware, Sketchware Pro projects ✔
 val manager = SketchwareProjects("../.sketchware")
 manager.getProjects().forEach { project ->
     when(project) {
-        is SketchwareProject -> println("I am a sketchware project")
         is SketchwareProProject -> println("I am a sketchware pro project")
+        is SketchwareProject -> println("I am a sketchware project")
     }
 }
 ```
