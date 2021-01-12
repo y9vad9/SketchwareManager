@@ -11,14 +11,14 @@ import java.io.File
  * Util for all collections
  */
 class SketchwareCollection(
-    val collectionFile: File,
+    private val collectionFile: File,
     private val dataFolder: File = File(collectionFile.parentFile, "data")
 ) {
 
     /**
      * Get array of Collection Item with information about items
      */
-    suspend inline fun getCollection(): List<CollectionItem> {
+    suspend fun getCollection(): List<CollectionItem> {
         val moreblocks = String(collectionFile.readFile())
         return BlockParser.parseAsArray(moreblocks)
     }
@@ -33,6 +33,12 @@ class SketchwareCollection(
     suspend fun addItem(collectionItem: CollectionItem) {
         val list = ArrayList(getCollection())
         list.add(collectionItem)
+        saveCollection(list)
+    }
+
+    suspend fun removeItem(collectionItem: CollectionItem) {
+        val list = ArrayList(getCollection())
+        list.remove(collectionItem)
         saveCollection(list)
     }
 

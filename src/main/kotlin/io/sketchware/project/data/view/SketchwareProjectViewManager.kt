@@ -1,15 +1,15 @@
-package io.sketchware.project.data.library
+package io.sketchware.project.data.view
 
 import io.sketchware.encryptor.FileEncryptor
 import io.sketchware.models.exceptions.SketchwareFileError
 import io.sketchware.utils.SketchwareDataParser
 import io.sketchware.models.sketchware.data.BlockDataModel
-import io.sketchware.models.sketchware.data.SketchwareLibrary
+import io.sketchware.models.sketchware.data.SketchwareWidget
 import io.sketchware.utils.readFile
 import io.sketchware.utils.toModel
 import java.io.File
 
-class SketchwareProjectLibraryManager(private val file: File) {
+class SketchwareProjectViewManager(private val file: File) {
     private var list: List<BlockDataModel>? = null
     private var decryptedString: String? = null
 
@@ -30,11 +30,20 @@ class SketchwareProjectLibraryManager(private val file: File) {
         return list ?: error("List shouldn't be null")
     }
 
-    suspend fun getLibraries(): List<SketchwareLibrary> {
-        return getList().map {
-            SketchwareLibrary(
-                it.name, it.values.singleOrNull()?.toModel()
-                    ?: error("library don't have any information.")
+    /**
+     * Get widgets by activity name.
+     * @param viewName Activity Name (example: MainActivity, main)
+     */
+    suspend fun getWidgets(viewName: String, widget: String? = null): List<SketchwareWidget> {
+        return getList().filter {
+            it.name == "$viewName.xml".plus(
+                if(widget == null)
+                    "" else "_$widget"
+            )
+        }.map { (name, values) ->
+            SketchwareWidget(
+                name.substring(name.indexOf("_") + 1, name.length),
+                values.map { it.toModel() }
             )
         }
     }

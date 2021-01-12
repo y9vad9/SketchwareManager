@@ -1,11 +1,11 @@
 package io.sketchware.project.data.resource
 
 import io.sketchware.encryptor.FileEncryptor
-import io.sketchware.exceptions.projects.SketchwareFileError
-import io.sketchware.project.data.models.BlockDataModel
-import io.sketchware.project.data.models.SketchwareProjectResource
+import io.sketchware.models.exceptions.SketchwareFileError
+import io.sketchware.utils.SketchwareDataParser
+import io.sketchware.models.sketchware.data.BlockDataModel
+import io.sketchware.models.sketchware.data.SketchwareProjectResource
 import io.sketchware.utils.readFile
-import io.sketchware.utils.serialize
 import io.sketchware.utils.toModel
 import java.io.File
 
@@ -26,7 +26,7 @@ class SketchwareProjectResourcesManager(private val file: File) {
 
     private suspend fun getList(): List<BlockDataModel> {
         if (list == null)
-            list = getDecryptedString().serialize()
+            list = SketchwareDataParser.parseJsonBlocks(getDecryptedString())
         return list ?: error("List shouldn't be null")
     }
 

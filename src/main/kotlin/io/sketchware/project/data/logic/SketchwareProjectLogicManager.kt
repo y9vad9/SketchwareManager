@@ -1,10 +1,10 @@
 package io.sketchware.project.data.logic
 
 import io.sketchware.encryptor.FileEncryptor
-import io.sketchware.project.data.BlockParser
-import io.sketchware.project.data.SketchwareDataParser
-import io.sketchware.project.data.models.*
-import io.sketchware.project.models.SketchwareProjectBlock
+import io.sketchware.utils.BlockParser
+import io.sketchware.utils.SketchwareDataParser
+import io.sketchware.models.sketchware.SketchwareProjectBlock
+import io.sketchware.models.sketchware.data.*
 import io.sketchware.utils.readFile
 import io.sketchware.utils.replaceOrInsertAtTop
 import io.sketchware.utils.toModel
@@ -140,7 +140,7 @@ open class SketchwareProjectLogicManager(private val file: File) {
     private suspend fun saveEvents(activity: String, list: List<SketchwareEvent>) {
         decryptedString = getDecryptedString().replaceOrInsertAtTop(
             "(@$activity\\.java_events.*?)(?=@|\$)".toRegex(),
-            "@$activity.java_components${BlockParser.toSaveableValue(list)}\n"
+            "@$activity.java_events${BlockParser.toSaveableValue(list)}\n\n"
         )
         file.writeFile(FileEncryptor.encrypt(getDecryptedString().toByteArray()))
         this.list = null
@@ -301,7 +301,7 @@ open class SketchwareProjectLogicManager(private val file: File) {
             "(@$activity\\.java_$name.*?)(?=@|\$)".toRegex(),
             if (list.isEmpty())
                 ""
-            else "@$activity.java_$name${BlockParser.toSaveableValue(list)}\n"
+            else "@$activity.java_$name${BlockParser.toSaveableValue(list)}\n\n"
         )
         file.writeFile(FileEncryptor.encrypt(getDecryptedString().toByteArray()))
         this.list = null

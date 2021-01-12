@@ -1,7 +1,9 @@
 package io.sketchware.models.sketchware.data
 
 import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 
+@Serializable
 data class SketchwareProjectResource(
     /**
      * Full name of resource (example: logo.png)

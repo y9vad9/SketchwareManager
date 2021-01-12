@@ -9,9 +9,12 @@ object SketchwareDataParser {
 
     fun parseJsonBlocks(input: String): List<BlockDataModel> {
         val output = ArrayList<BlockDataModel>()
-        regex.findAll(input).forEach {
-            val name = it.value.substring(0, it.value.indexOf("\n"))
-            output.add(BlockDataModel(name, BlockParser.parseAsArray(it.value)))
+        regex.findAll(input).forEach { matchResult ->
+            val name = matchResult.value.substring(
+                0, matchResult.value.indexOf("\n")
+                    .takeUnless { it == -1 } ?: matchResult.value.length
+            )
+            output.add(BlockDataModel(name, BlockParser.parseAsArray(matchResult.value)))
         }
         return output
     }
