@@ -61,7 +61,7 @@ repositories {
     maven { url 'https://jitpack.io' }
 }
 dependencies {
-    implementation 'com.github.y9neon:SketchwareManager:-SNAPSHOT'
+    implementation 'com.github.y9neon:SketchwareManager:alpha-2.2.1'
 }
 ```
 
@@ -72,6 +72,6 @@ repositories {
     maven("https://jitpack.io")
 }
 dependencies {
-    implementation("com.github.y9neon:SketchwareManager:-SNAPSHOT")
+    implementation("com.github.y9neon:SketchwareManager:-alpha-2.2.1")
 }
 ```
