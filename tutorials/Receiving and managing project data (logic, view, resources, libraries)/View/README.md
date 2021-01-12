@@ -11,10 +11,17 @@ or you can define the logic file manager:
 ```kotlin
 val viewManager = SketchwareProjectViewManager(_view_file_)
 ```
-Now it has only one method:
+Let's get view:
 ```kotlin
-viewManager.getWidgets("main") // gets widgets in the MainActivity
-// or if you want to get fab in MainActivity, do next:
-val fab = view.getWidgets("main", "fab").single()
+viewManager.getView("main") // gets widgets in the MainActivity
+// or if you want, for example, get fab in MainActivity, do next:
+val fab = view.getView("main", "fab").single()
 println(fab.name) // prints fab haha very useful example :)
+```
+Or if you want to edit some view:
+```kotlin
+viewManager.editView("main") {
+    // there ArrayList in lambda's context, do everything you want with this.
+    ...
+}
 ```
