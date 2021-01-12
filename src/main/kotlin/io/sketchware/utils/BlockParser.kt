@@ -16,11 +16,12 @@ object BlockParser {
         return array
     }
 
-    inline fun <reified T> toSaveableValue(list: List<T>) {
+    inline fun <reified T> toSaveableValue(list: List<T>): String {
         var output = ""
         list.forEach {
             output += "\n${it.toJson()}"
         }
+        return output
     }
 
 }

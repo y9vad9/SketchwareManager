@@ -10,7 +10,6 @@ inline fun <reified T> String.serialize(): T {
     return Json.decodeFromString(this)
 }
 
-
 internal inline fun <reified T> ByteArray.serialize() = String(this).serialize<T>()
 
 inline fun <reified T> JsonObject.toModel() = Json.decodeFromJsonElement<T>(this)
