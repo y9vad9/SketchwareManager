@@ -26,6 +26,19 @@ println(project.getProguardRules()) // prints proguard rules in project
 project.setProguardRules("..") // sets proguard rules
 // and another funcs..
 ```
+### Managing project logic, view, etc.
+The library provides the ability to manage logic, layout, resources and other project information,
+but this isn't stable implementation, and the public API can change at any time.
+#### Example:
+```kotlin
+val logicManager = project.logicManager
+val mainActivityEvents = logicManager.getEvents("MainActivity")
+mainActivityEvents.forEach { event -> event.apply {
+        println("event name: $name")
+        println("event type: $type")
+    }
+}
+```
 
 ## Collections 📦
 
@@ -48,7 +61,7 @@ repositories {
     maven { url 'https://jitpack.io' }
 }
 dependencies {
-    implementation 'com.github.y9neon:SketchwareManager:stable-2.2'
+    implementation 'com.github.y9neon:SketchwareManager:-SNAPSHOT'
 }
 ```
 
@@ -59,6 +72,6 @@ repositories {
     maven("https://jitpack.io")
 }
 dependencies {
-    implementation("com.github.y9neon:SketchwareManager:stable-2.2")
+    implementation("com.github.y9neon:SketchwareManager:-SNAPSHOT")
 }
 ```
