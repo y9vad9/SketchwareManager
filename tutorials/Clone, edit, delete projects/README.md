@@ -12,14 +12,13 @@ change, delete, clone projects without any problems.
 It's easy to change some data in the project config:
 
 ```kotlin
-val projects = SketchwareProjects("..").getProjects()[0] // get projects list
+val projects = SketchwareProjects(_path_).getProjects()[0] // get projects list
 val project = projects[0] // let's change first project in the list
 // let's call lambda with ProjectConfig context
-project.edit {
+project.editConfig {
     // there you can change all what you want
-    scId = "[new_project_id]"
-    myAppName = "New app name"
-    scVerName = "1.0 Test version name"
+    projectId = "[new_project_id]"
+    appName = "New app name"
     // and etc
 }
 ```
@@ -32,7 +31,7 @@ val project = projects[0]
 project.clone(manager.nextFreeId, ProjectDestination.from(___path___)) // nextFreeId default variable which gives free id for new project
 ```
 
-Or if you need change default folders to clone, for example, to make backup feature you can do next:
+Or if you need change default folders to clone, for example, to make a backup feature you can do next:
 
 ```kotlin
 val manager = SketchwareProjects("..")

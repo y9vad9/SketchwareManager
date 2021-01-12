@@ -22,17 +22,12 @@ Since we already have instances for all possible collections, let's try to do so
 Let's get array of moreblocks for example:
 
 ```kotlin
-val moreblocks = collections.moreblocks.getArray() // return List<BlockBean>
+val moreblocks = collections.moreblocks.getCollection() // return List<BlockBean>
+// also we can add moreblock:
+collections.moreblocks.addItem(_moreblock_)
+// or remove some:
+collections.moreblocks.removeItem(_moreblock_)
 ```
-
-Let's delete some moreblock and save it to sketchware collection back:
-
-```kotlin
-moreblocks.remove(0) // remove the moreblock from the array
-collections.moreblocks.save(moreblocks) // save it back
-```
-
-#### ⚠ Save collections only like this to avoid errors.
 
 ### Get file connected with collection
 
@@ -40,7 +35,7 @@ If your collection type has additional files in the data folder (everything exce
 use the following method to get the collection file:
 
 ```kotlin
-val image = collections.images.getArray()[0]
+val image = collections.images.getCollection()[0]
 collections.images.getFileByName(image.data) // data variable in our case is responsible for the file name
 ```
 
@@ -50,5 +45,5 @@ If you have a different architecture, or you just need to get a list from a stri
 any particular file, just do the following:
 
 ```kotlin
-val arrayOfMoreblocks = BlockBeanParser.parseAsArray(__your_string_of_collection__)
+val arrayOfMoreblocks = BlockParser.parseAsArray(__your_string_of_collection__)
 ```
