@@ -4,18 +4,18 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class SketchwareLibrary(
-    val name: String,
-    val information: SketchwareLibraryData
+    var name: String,
+    var information: SketchwareLibraryData
 )
 
 @Serializable
 data class SketchwareLibraryData(
-    val adUnits: List<String>,
-    val data: String,
-    val libType: Int,
-    val reserved1: String,
-    val reserved2: String,
-    val reserved3: String,
-    val testDevices: List<String>,
-    val useYn: String
+    var adUnits: List<String>,
+    var data: String,
+    var libType: Int,
+    var reserved1: String,
+    var reserved2: String,
+    var reserved3: String,
+    var testDevices: List<String>,
+    var useYn: String
 )

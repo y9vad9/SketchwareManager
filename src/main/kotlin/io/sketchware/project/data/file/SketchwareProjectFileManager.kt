@@ -53,12 +53,20 @@ class SketchwareProjectFileManager(private val file: File) {
         this.decryptedString = null
     }
 
+    /**
+     * Adds activity.
+     * @param activity data about activity.
+     */
     suspend fun addActivity(activity: SketchwareDataFile) {
         val list = ArrayList(getActivities())
         list.add(activity)
         save("activity", list)
     }
 
+    /**
+     * Adds custom view.
+     * @param customView data about custom view.
+     */
     suspend fun addCustomView(customView: SketchwareDataFile) {
         val list = ArrayList(getCustomViews())
         list.add(customView)

@@ -2,11 +2,10 @@ package io.sketchware.project.data.view
 
 import io.sketchware.encryptor.FileEncryptor
 import io.sketchware.models.exceptions.SketchwareFileError
-import io.sketchware.utils.SketchwareDataParser
 import io.sketchware.models.sketchware.data.BlockDataModel
 import io.sketchware.models.sketchware.data.SketchwareWidget
-import io.sketchware.utils.readFile
-import io.sketchware.utils.toModel
+import io.sketchware.utils.*
+import io.sketchware.utils.replaceOrInsertAtTop
 import java.io.File
 
 class SketchwareProjectViewManager(private val file: File) {
@@ -33,8 +32,9 @@ class SketchwareProjectViewManager(private val file: File) {
     /**
      * Get widgets by activity name.
      * @param viewName Activity Name (example: MainActivity, main)
+     * @param widget specific widget to get (for example: fab).
      */
-    suspend fun getWidgets(viewName: String, widget: String? = null): List<SketchwareWidget> {
+    suspend fun getView(viewName: String, widget: String? = null): List<SketchwareWidget> {
         return getList().filter {
             it.name == "$viewName.xml".plus(
                 if(widget == null)
@@ -46,6 +46,32 @@ class SketchwareProjectViewManager(private val file: File) {
                 values.map { it.toModel() }
             )
         }
+    }
+
+    suspend fun editView(
+        viewName: String,
+        widget: String? = null,
+        builder: ArrayList<SketchwareWidget>.() -> Unit
+    ) = saveView(viewName, widget, ArrayList(getView(viewName, widget)).apply(builder))
+
+    private suspend fun saveView(
+        viewName: String,
+        widget: String? = null,
+        list: List<SketchwareWidget>
+    ) {
+        val name = "$viewName.xml".plus(
+            if(widget == null)
+                "" else "_$widget"
+        )
+        decryptedString = getDecryptedString().replaceOrInsertAtTop(
+            "(@$name.*?)(?=@|\$)".toRegex(),
+            if (list.isEmpty())
+                throw IllegalArgumentException("list cannot be empty")
+            else "@$name${BlockParser.toSaveableValue(list)}\n\n"
+        )
+        file.writeFile(FileEncryptor.encrypt(getDecryptedString().toByteArray()))
+        this.list = null
+        decryptedString = null
     }
 
 }
