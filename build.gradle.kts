@@ -10,16 +10,25 @@ plugins {
 group = "io.sketchware"
 version = "alpha-2.2.2"
 
-repositories {
-    mavenCentral()
-    jcenter()
+allprojects {
+    repositories {
+        mavenCentral()
+        jcenter()
+    }
 }
 
 dependencies {
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.4.1")
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.0.0")
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.4.2") }
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.4.2")
+}
 
+publishing {
+    publications {
+        create<MavenPublication>(name = project.name) {
+            from(components["kotlin"])
+        }
+    }
+}
 
 val vcs = "https://github.com/y9neon/SketchwareManager"
 val projectName = project.name
@@ -33,29 +42,26 @@ allprojects {
     apply(plugin = "maven-publish")
 
     publishing {
-        publications {
-            create<MavenPublication>(name = project.name) {
-                pom {
-                    name.set(project.name)
-                    description.set(project.description)
-                    url.set(vcs)
+        publications.filterIsInstance<MavenPublication>().forEach { publication ->
+            publication.pom {
+                name.set(project.name)
+                description.set(project.description)
+                url.set(vcs)
 
-                    developers {
-                        developer {
-                            id.set("y9neon")
-                            name.set("Vadim Kotlinov")
-                        }
-                    }
-
-                    scm {
-                        url.set(vcs)
-                        tag.set("${project.version}")
+                developers {
+                    developer {
+                        id.set("y9neon")
+                        name.set("Vadim Kotlinov")
                     }
                 }
 
-                from(components["kotlin"])
+                scm {
+                    url.set(vcs)
+                    tag.set("${project.version}")
+                }
             }
         }
+
         repositories {
             maven {
                 name = "bintray"
