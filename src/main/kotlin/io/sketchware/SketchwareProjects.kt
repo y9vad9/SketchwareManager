@@ -89,7 +89,7 @@ class SketchwareProjects(private val sketchwareFolder: File) {
             }
 
             // Increment the indexProject variable
-            indexProject.inc()
+            indexProject++
         }
     }
 
