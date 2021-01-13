@@ -59,13 +59,37 @@ class SketchwareProjects(private val sketchwareFolder: File) {
      *
      *  - Iyxan23
      */
-    fun optimizeIds() {
+    suspend fun optimizeIds() {
         var indexProject = 601  // This variable is going to be the anchor
-        var currentID = 601     // This variable is going to be the pointer that points to the current project id in this loop
-        File(File(sketchwareFolder, "mysc"), "list").listFiles().forEach {
-            currentID = it.name
+        var currentID: Int      // This variable is going to be the pointer that points to the current project id in this loop
 
-            // TODO: IMPLEMENT THIS
+        val sketchwareFolderPath = sketchwareFolder.absolutePath
+
+        File("$sketchwareFolderPath/mysc/list").listFiles()?.forEach {
+            currentID = it.name.toInt()
+
+            // Check if project at indexProject exists
+            if (!File("$sketchwareFolderPath/mysc/list/$indexProject").exists()) {
+                // Change the project ID (sc_id) on mysc/list/{ID}/project
+                val project = SketchwareProject(ProjectFilesLocations.defaultSketchwareProject(sketchwareFolder, currentID))
+
+                // Change the project id
+                project.editConfig {
+                    this.projectId = indexProject.toString()
+                }
+
+                // Move from it's ID into the empty wasted ID
+                File("$sketchwareFolderPath/mysc/list/$currentID").renameTo(File("$sketchwareFolder/mysc/list/$indexProject"))
+                File("$sketchwareFolderPath/data/$currentID").renameTo(File("$sketchwareFolder/data/$indexProject"))
+                File("$sketchwareFolderPath/bak/$currentID").renameTo(File("$sketchwareFolder/bak/$indexProject"))
+                File("$sketchwareFolderPath/resources/fonts/$currentID").renameTo(File("$sketchwareFolder/resources/fonts/$indexProject"))
+                File("$sketchwareFolderPath/resources/images/$currentID").renameTo(File("$sketchwareFolder/resources/images/$indexProject"))
+                File("$sketchwareFolderPath/resources/sounds/$currentID").renameTo(File("$sketchwareFolder/resources/sounds/$indexProject"))
+                File("$sketchwareFolderPath/resources/icons/$currentID").renameTo(File("$sketchwareFolder/resources/icons/$indexProject"))
+            }
+
+            // Increment the indexProject variable
+            indexProject.inc()
         }
     }
 
