@@ -39,4 +39,34 @@ class SketchwareProjects(private val sketchwareFolder: File) {
         return startId
     }
 
+    /* Sketchware (and this library, ironically) gets a free ID by adding one to the highest
+     * folder, making some ID's empty / wasted IDs if a project is deleted under the highest ID.
+     *
+     * Example scenario:
+     * 601, 602, (603 deleted), (604 deleted), 605
+     * Sketchware will create a project on 606, wasting 603, and 604
+     *
+     * This function will move some projects with higher IDs to the empty wasted IDs
+     *
+     * Example scenario:
+     * 601, 602, (603 deleted), (604 deleted), 605
+     *
+     * After calling this function:
+     * 601, 602, 603 (previously 605)
+     *
+     * This function might break some implementations that depends on the project ID, will add a
+     * safer alternative soon
+     *
+     *  - Iyxan23
+     */
+    fun optimizeIds() {
+        var indexProject = 601  // This variable is going to be the anchor
+        var currentID = 601     // This variable is going to be the pointer that points to the current project id in this loop
+        File(File(sketchwareFolder, "mysc"), "list").listFiles().forEach {
+            currentID = it.name
+
+            // TODO: IMPLEMENT THIS
+        }
+    }
+
 }
