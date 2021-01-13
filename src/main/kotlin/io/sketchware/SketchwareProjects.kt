@@ -43,19 +43,21 @@ class SketchwareProjects(private val sketchwareFolder: File) {
      * folder, making some ID's empty / wasted IDs if a project is deleted under the highest ID.
      *
      * Example scenario:
-     * 601, 602, (603 deleted), (604 deleted), 605
+     * 601, 602, (603 is deleted), (604 is deleted), 605
      * Sketchware will create a project on 606, wasting 603, and 604
      *
-     * This function will move some projects with higher IDs to the empty wasted IDs
+     * This function will move some projects with higher IDs to the lower empty IDs
      *
      * Example scenario:
-     * 601, 602, (603 deleted), (604 deleted), 605
+     * 601, 602, (603 is deleted), (604 is deleted), 605
      *
      * After calling this function:
-     * 601, 602, 603 (previously 605)
+     * 601, 602, 603 (was previously 605)
      *
      * This function might break some implementations that depends on the project ID, will add a
      * safer alternative soon
+     *
+     * Oh yeah, I'm new to kotlin, so feel free to modify the code if you don't like it
      *
      *  - Iyxan23
      */
@@ -66,10 +68,13 @@ class SketchwareProjects(private val sketchwareFolder: File) {
         val sketchwareFolderPath = sketchwareFolder.absolutePath
 
         File("$sketchwareFolderPath/mysc/list").listFiles()?.forEach {
+
+            // Set the current ID
             currentID = it.name.toInt()
 
             // Check if project at indexProject exists
             if (!File("$sketchwareFolderPath/mysc/list/$indexProject").exists()) {
+
                 // Change the project ID (sc_id) on mysc/list/{ID}/project
                 val project = SketchwareProject(ProjectFilesLocations.defaultSketchwareProject(sketchwareFolder, currentID))
 
@@ -92,5 +97,4 @@ class SketchwareProjects(private val sketchwareFolder: File) {
             indexProject++
         }
     }
-
 }
