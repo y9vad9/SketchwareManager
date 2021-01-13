@@ -84,13 +84,13 @@ class SketchwareProjects(private val sketchwareFolder: File) {
                 }
 
                 // Move from it's ID into the empty wasted ID
-                File("$sketchwareFolderPath/mysc/list/$currentID").renameTo(File("$sketchwareFolder/mysc/list/$indexProject"))
-                File("$sketchwareFolderPath/data/$currentID").renameTo(File("$sketchwareFolder/data/$indexProject"))
-                File("$sketchwareFolderPath/bak/$currentID").renameTo(File("$sketchwareFolder/bak/$indexProject"))
-                File("$sketchwareFolderPath/resources/fonts/$currentID").renameTo(File("$sketchwareFolder/resources/fonts/$indexProject"))
-                File("$sketchwareFolderPath/resources/images/$currentID").renameTo(File("$sketchwareFolder/resources/images/$indexProject"))
-                File("$sketchwareFolderPath/resources/sounds/$currentID").renameTo(File("$sketchwareFolder/resources/sounds/$indexProject"))
-                File("$sketchwareFolderPath/resources/icons/$currentID").renameTo(File("$sketchwareFolder/resources/icons/$indexProject"))
+                File("$sketchwareFolderPath/mysc/list/$currentID").renameTo(File("$sketchwareFolderPath/mysc/list/$indexProject"))
+                File("$sketchwareFolderPath/data/$currentID").renameTo(File("$sketchwareFolderPath/data/$indexProject"))
+                File("$sketchwareFolderPath/bak/$currentID").renameTo(File("$sketchwareFolderPath/bak/$indexProject"))
+                File("$sketchwareFolderPath/resources/fonts/$currentID").renameTo(File("$sketchwareFolderPath/resources/fonts/$indexProject"))
+                File("$sketchwareFolderPath/resources/images/$currentID").renameTo(File("$sketchwareFolderPath/resources/images/$indexProject"))
+                File("$sketchwareFolderPath/resources/sounds/$currentID").renameTo(File("$sketchwareFolderPath/resources/sounds/$indexProject"))
+                File("$sketchwareFolderPath/resources/icons/$currentID").renameTo(File("$sketchwareFolderPath/resources/icons/$indexProject"))
             }
 
             // Increment the indexProject variable
