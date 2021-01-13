@@ -59,10 +59,10 @@ More: [Collections tutorial](https://github.com/y9neon/SketchwareManager/tree/ma
 
 ```groovy
 repositories {
-    maven { url 'https://jitpack.io' }
+    maven { url 'https://dl.bintray.com/kotlingang/maven' }
 }
 dependencies {
-    implementation 'com.github.y9neon:SketchwareManager:alpha-2.2.1'
+    implementation 'io.sketchware:Sketchware-Manager:alpha-2.2.2'
 }
 ```
 
@@ -70,9 +70,9 @@ dependencies {
 
 ```kotlin
 repositories {
-    maven("https://jitpack.io")
+    maven("https://dl.bintray.com/kotlingang/maven")
 }
 dependencies {
-    implementation("com.github.y9neon:SketchwareManager:alpha-2.2.1")
+    implementation("io.sketchware:Sketchware-Manager:alpha-2.2.2")
 }
 ```
