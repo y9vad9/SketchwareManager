@@ -43,3 +43,6 @@ moreblocks.forEach(::println)
 Full documentation you can get [here](https://swmanager.kotlingang.fun).
 ## R8 / Proguard
 If you use Proguard, you may need to add rules for [Coroutines](https://github.com/Kotlin/kotlinx.coroutines/blob/master/kotlinx-coroutines-core/jvm/resources/META-INF/proguard/coroutines.pro).
+# 🤙 Contacts
+Sketchware community chat - https://t.me/sketchware_community
+Me in Telegram - https://t.me/y9neon
