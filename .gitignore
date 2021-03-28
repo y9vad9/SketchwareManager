@@ -1,0 +1,10 @@
+/shelf/
+/.idea/
+/.gradle/
+/gradle/
+/gradlew
+/gradlew.bat
+/build/
+/buildSrc/build/
+/src/test/
+/local.properties
