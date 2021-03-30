@@ -1,5 +1,5 @@
 ![image](https://user-images.githubusercontent.com/32961194/112753044-b9f0a680-8fde-11eb-9af2-a57b10369477.png)
-A coroutine-based library for Sketchware Management. Provides the ability to work with projects(its logic, views, and so on.), collections and custom elements of Sketchware mods as custom components. Mods such as Pro and Studio are now supported.
+A coroutine-based library for Sketchware Management. Provides the ability to work with projects(its logic, views, and so on.), collections and custom elements of Sketchware mods as custom components. Mods such as Pro and Studio (CodeGo) are now supported.
 
 Why this particular library?
 - **Fast**: Due to the most optimized work with Sketchware (and mods) and Kotlin's coroutines, the library works as quickly as possible.
