@@ -1,7 +1,9 @@
 package io.sketchware.models.projects
 
 import io.sketchware.interfaces.IdInterface
+import io.sketchware.utils.SWConst
 
 enum class FileType(override val id: Int) : IdInterface {
-    Activity(0), CustomView(1)
+    Activity(SWConst.PROJECT_FILE_TYPE_ACTIVITY),
+    CustomView(SWConst.PROJECT_FILE_TYPE_CUSTOM_VIEW)
 }

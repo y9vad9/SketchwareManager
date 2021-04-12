@@ -1,7 +1,10 @@
 package io.sketchware.models.projects
 
 import io.sketchware.interfaces.IdInterface
+import io.sketchware.utils.SWConst
 
 enum class KeyboardSetting(override val id: Int) : IdInterface {
-    Unspecified(0), Visible(1), Hidden(2)
+    Unspecified(SWConst.KEYBOARD_STATE_UNSPECIFIED),
+    Visible(SWConst.KEYBOARD_STATE_VISIBLE),
+    Hidden(SWConst.KEYBOARD_STATE_HIDDEN)
 }

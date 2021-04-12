@@ -1,5 +1,6 @@
 package io.sketchware.models.projects
 
+import io.sketchware.utils.internal.snakeToUpperCamelCase
 import kotlinx.serialization.Contextual
 import kotlinx.serialization.Serializable
 
@@ -19,14 +20,19 @@ class SketchwareDataFileModel(
     val fileType: FileType,
     @Contextual
     val keyboardSetting: KeyboardSetting,
-    //TODO description and serializer
-    val options: Int,
+    /**
+     * Contains data about enabled components in activity:
+     * For example: is drawer enabled, is FAB enabled, etc.
+     */
+    @Contextual
+    val options: List<ActivityOption>,
     /**
      * Allowed activity orientation setting.
      */
     @Contextual
     val orientation: Orientation,
-    val theme: Int
+    @Contextual
+    val theme: ActivityTheme
 ) {
     val activityName get() = "${fileName.capitalize()}Activity"
 }

@@ -1,9 +1,11 @@
 package io.sketchware.utils.internal
 
+import io.sketchware.models.projects.ActivityTheme
 import io.sketchware.models.projects.FileType
 import io.sketchware.models.projects.KeyboardSetting
 import io.sketchware.models.projects.Orientation
 import io.sketchware.models.view.LayoutOrientation
+import io.sketchware.utils.serializers.ActivityOptionSerializer
 import io.sketchware.utils.serializers.SpecSerializer
 import io.sketchware.utils.serializers.idSerializer
 import kotlinx.serialization.KSerializer
@@ -19,6 +21,8 @@ private val serializationModule = SerializersModule {
     contextual(idSerializer<Orientation>())
     contextual(idSerializer(LayoutOrientation.HORIZONTAL))
     contextual(SpecSerializer())
+    contextual(ActivityOptionSerializer())
+    contextual(idSerializer<ActivityTheme>())
 }
 
 internal val json = Json {
