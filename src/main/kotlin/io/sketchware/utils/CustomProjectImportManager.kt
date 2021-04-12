@@ -6,14 +6,16 @@ import io.sketchware.manager.projects.data.LogicManager
 import io.sketchware.models.export.ExportedCustomFiles
 import io.sketchware.models.projects.ProjectFilesLocations
 import io.sketchware.utils.internal.LogicIdChanger
+import io.sketchware.utils.internal.copy
 import java.io.File
 
 open class CustomProjectImportManager(
     override val locations: ProjectFilesLocations,
     override val destination: ProjectFilesLocations,
     override val projectId: Int,
-    open val customsManager: SketchwareProCustomManager,
-    open val exportedCustomFiles: ExportedCustomFiles
+    internal open val customsManager: SketchwareProCustomManager,
+    internal open val exportedCustomFiles: ExportedCustomFiles,
+    internal open val sourceEditedFolder: File
 ) : ProjectImportManager(locations, destination, projectId) {
     private var componentIdProvider: ((Int) -> Int)? = null
     private var listenerNameProvider: ((String) -> String)? = null
@@ -23,7 +25,7 @@ open class CustomProjectImportManager(
     private var listenerNamesChanges = mutableListOf<Pair<String, String>>()
     private var menusNamesChanges = mutableListOf<Pair<String, String>>()
 
-    fun setComponentNameProvider(builder: (Int) -> Int) {
+    fun setComponentConflictProvider(builder: (Int) -> Int) {
         componentIdProvider = provider@{
             val newId = builder(it)
             if (newId != it)
@@ -32,7 +34,7 @@ open class CustomProjectImportManager(
         }
     }
 
-    fun setListenerNameProvider(builder: (String) -> String) {
+    fun setListenerConflictProvider(builder: (String) -> String) {
         listenerNameProvider = provider@{
             val newName = builder(it)
             if (newName != it)
@@ -50,7 +52,7 @@ open class CustomProjectImportManager(
         }
     }
 
-    suspend fun editUniques() {
+    private suspend fun editUniques() {
         val changer = LogicIdChanger(
             LogicManager(File(locations.dataFolder, "logic")),
             FileManager(File(locations.dataFolder, "file")).activities
@@ -81,6 +83,9 @@ open class CustomProjectImportManager(
             import(menusFile, menusConflictProvider)
             save()
         }
+        exportedCustomFiles.sourceEditedFolder?.copy(File(
+            this@CustomProjectImportManager.sourceEditedFolder, "$projectId"
+        ))
         editUniques()
     }
 

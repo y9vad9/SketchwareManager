@@ -5,6 +5,7 @@ import io.sketchware.manager.projects.entities.SketchwareProProject
 import io.sketchware.models.ProjectType
 import io.sketchware.models.projects.ProjectFilesLocations
 import io.sketchware.utils.internal.ProjectCustomExporter
+import io.sketchware.utils.internal.copy
 import io.sketchware.utils.internal.deserialize
 import io.sketchware.utils.internal.write
 import java.io.File
@@ -29,6 +30,12 @@ class SketchwareProExporter(
                 .write(customExporter.getMenusToExport().deserialize().toByteArray())
             File(this, "listeners.json")
                 .write(customExporter.getListenersGroupsToExport().deserialize().toByteArray())
+        }
+        File(rootFolder, "/SourceEdited/").apply {
+            mkdir()
+            project.getSourceEditedFiles().forEach {
+                it?.copy(File(this, it.name))
+            }
         }
     }
 

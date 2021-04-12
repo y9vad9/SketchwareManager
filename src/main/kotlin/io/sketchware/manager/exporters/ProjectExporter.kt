@@ -3,7 +3,6 @@ package io.sketchware.manager.exporters
 import io.sketchware.models.ProjectType
 import io.sketchware.models.export.ExportConfig
 import io.sketchware.models.export.ExportFilesConfig
-import io.sketchware.models.export.ExportedCustomFilesConfig
 import io.sketchware.models.projects.ProjectFilesLocations
 import io.sketchware.models.projects.ProjectResourcesFiles
 import io.sketchware.utils.internal.copy
