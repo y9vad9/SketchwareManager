@@ -7,7 +7,19 @@ data class ExportFilesConfig(
     val projectFileName: String = "project",
     val dataFolderName: String = "data",
     val resources: ExportDataFilesConfig = ExportDataFilesConfig()
-)
+) {
+    companion object {
+        /**
+         * @return Default config which are uses for SH-Recovery projects backups.
+         */
+        fun getSHRecoveryDefaultConfig() = ExportFilesConfig(
+            "project", "data",
+            ExportDataFilesConfig(
+                "icons", "images", "fonts", "sounds"
+            )
+        )
+    }
+}
 
 @Serializable
 data class ExportDataFilesConfig(
