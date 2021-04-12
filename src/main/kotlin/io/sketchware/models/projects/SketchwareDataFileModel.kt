@@ -34,5 +34,5 @@ class SketchwareDataFileModel(
     @Contextual
     val theme: ActivityTheme
 ) {
-    val activityName get() = "${fileName.capitalize()}Activity"
+    val activityName get() = "${fileName.snakeToUpperCamelCase()}Activity"
 }
