@@ -10,8 +10,10 @@ import io.sketchware.models.export.ExportedCustomFilesConfig
 import io.sketchware.models.projects.ProjectFilesLocations
 import io.sketchware.utils.CustomProjectImportManager
 import io.sketchware.utils.ProjectImportManager
-import io.sketchware.utils.internal.*
 import io.sketchware.utils.internal.SketchwareProjectsUtil
+import io.sketchware.utils.internal.byteArrayToString
+import io.sketchware.utils.internal.readOrNull
+import io.sketchware.utils.internal.serialize
 import java.io.File
 
 class SketchwareStudioProjectsManager(
@@ -50,8 +52,9 @@ class SketchwareStudioProjectsManager(
             ProjectFilesLocations.getSWDefault(sketchwareFolder, newId),
             newId, customManager,
             File(exportedFolder, "config").readOrNull()?.byteArrayToString()?.serialize<ExportConfig>()
-                ?.customFilesConfig?.toExportedCustomFiles(exportedFolder) ?:
-            ExportedCustomFilesConfig().toExportedCustomFiles(exportedFolder)
+                ?.customFilesConfig?.toExportedCustomFiles(exportedFolder)
+                ?: ExportedCustomFilesConfig().toExportedCustomFiles(exportedFolder),
+            File(sketchwareFolder, "data/SourceEdited")
         )
 
 }

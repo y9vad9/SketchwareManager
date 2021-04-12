@@ -6,11 +6,7 @@ import io.sketchware.models.projects.ProjectResource
 import io.sketchware.utils.SketchwareEncryptor.decrypt
 import io.sketchware.utils.delegates.lazyInit
 import io.sketchware.utils.internal.*
-import io.sketchware.utils.internal.TagFormatter
 import io.sketchware.utils.internal.TagFormatter.toSaveableValue
-import io.sketchware.utils.internal.byteArrayToString
-import io.sketchware.utils.internal.read
-import io.sketchware.utils.internal.write
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.MainCoroutineDispatcher

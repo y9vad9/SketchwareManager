@@ -1,6 +1,5 @@
 package io.sketchware.models.projects
 
-import io.sketchware.models.export.ExportedCustomFilesConfig
 import java.io.File
 
 /**
@@ -39,9 +38,6 @@ open class ProjectFilesLocations(
             )
         )
     }
-
-    fun toExportedCustomFilesConfig() = ExportedCustomFilesConfig()
-
 }
 
 /**

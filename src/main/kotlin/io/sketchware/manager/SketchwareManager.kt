@@ -15,7 +15,7 @@ import java.io.File
  *
  * @param sketchwareFolder - Sketchware root folder.
  */
-suspend fun sketchwareManager(sketchwareFolder: File): Nothing = TODO()
+//suspend fun sketchwareManager(sketchwareFolder: File): Nothing = TODO()
 
 /**
  * Basic class for access with sketchware.

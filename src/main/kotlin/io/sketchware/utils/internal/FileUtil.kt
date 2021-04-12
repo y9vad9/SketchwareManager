@@ -44,7 +44,7 @@ internal suspend fun File.copy(destFile: File, overwrite: Boolean = true) = with
             if (!destFile.exists()) destFile.createFolder()
             copyRecursively(destFile, overwrite)
         } else {
-            println("Folder onto $path path does not exist. Skipped.")
+            System.err.println("Folder onto $path path does not exist. Skipped.")
         }
     }
     Unit

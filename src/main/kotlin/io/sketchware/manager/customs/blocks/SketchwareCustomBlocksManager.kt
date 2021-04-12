@@ -179,11 +179,13 @@ class SketchwareCustomBlocksManager(
      * @param file - File with data to import.
      */
     override suspend fun import(file: File) =
-        saveBlocks(blocks.toMutableList().plus(file.read().byteArrayToString()
-            .serialize<List<CustomBlockGroup>>().map {
-                it.groupId = freeId
-                return@map it
-            })).also { blocksProperty.reset() }
+        saveBlocks(
+            blocks.toMutableList().plus(file.read().byteArrayToString()
+                .serialize<List<CustomBlockGroup>>().map {
+                    it.groupId = freeId
+                    return@map it
+                })
+        ).also { blocksProperty.reset() }
 
     /**
      * Imports data from [file].
