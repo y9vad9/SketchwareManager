@@ -22,5 +22,5 @@ enum class ActivityTheme(override val id: Int): IdInterface {
     /**
      * Says that activity has fullscreen theme.
      */
-    FULLSCREEN(SWConst.THEME_FULLSCREEN)
+    FULLSCREEN(SWConst.THEME_FULL_SCREEN)
 }

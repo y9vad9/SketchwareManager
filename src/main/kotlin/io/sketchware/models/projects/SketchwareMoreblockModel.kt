@@ -11,17 +11,17 @@ data class SketchwareMoreblockModel(
     /**
      * Moreblock unique name.
      */
-    val name: String,
+    var name: String,
     /**
      * Moreblock spec.
      */
     @Contextual
-    val data: List<SpecField>
+    var data: List<SpecField>
 ) {
     /**
      * Converts to sketchware value format.
      */
     override fun toString(): String {
-        return "$name:$data"
+        return "$name:${data.toStringValue()}"
     }
 }

@@ -5,6 +5,7 @@ import io.sketchware.models.projects.BlockModel
 import io.sketchware.models.projects.SpecField
 import io.sketchware.utils.serializers.ListBlockModelSerializer
 import io.sketchware.utils.serializers.SpecSerializer
+import kotlinx.serialization.Contextual
 import kotlinx.serialization.Serializable
 
 /**

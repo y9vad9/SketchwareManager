@@ -12,7 +12,7 @@ internal object TagFormatter {
         val matcher: Matcher = pattern.matcher(string)
         val array = ArrayList<T>()
         while (matcher.find()) {
-            array.add(matcher.group(0).serialize<T>())
+            array.add(matcher.group(0).serialize())
         }
         return array
     }
@@ -39,7 +39,7 @@ internal object TagFormatter {
 
     fun addTag(name: String, stringToSave: String, value: String): String {
         return value.replaceOrInsertAtTop(
-            "(@${name.replace(".", "\\.")}.*?)(?=@|\$)".toRegex(),
+            "(@${name.normalizeTag()}.*?)(?=@|\$)".toRegex(),
             "@$name$stringToSave\n\n"
         )
     }

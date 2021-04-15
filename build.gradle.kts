@@ -27,12 +27,17 @@ dependencies {
     implementation(kotlin("stdlib"))
     implementation(kotlinSerializationJson)
     implementation(kotlinCoroutines)
+    implementation("org.junit.jupiter:junit-jupiter:5.7.0")
 }
 
 val localProperties = project.rootProject.file("local.properties")
     .takeIf(File::exists)
     ?.let(File::getAbsolutePath)
     ?.let(::loadProperties)
+
+tasks.withType<Test> {
+    useJUnitPlatform()
+}
 
 allprojects {
     group = "io.sketchware"
@@ -66,6 +71,7 @@ allprojects {
 
 tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
     kotlinOptions {
+        useIR = true
         freeCompilerArgs += "-Xopt-in=kotlin.RequiresOptIn"
     }
 }

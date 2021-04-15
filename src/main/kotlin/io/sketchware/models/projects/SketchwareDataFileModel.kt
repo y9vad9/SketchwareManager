@@ -24,8 +24,7 @@ class SketchwareDataFileModel(
      * Contains data about enabled components in activity:
      * For example: is drawer enabled, is FAB enabled, etc.
      */
-    @Contextual
-    val options: List<ActivityOption>,
+    val options: Int,
     /**
      * Allowed activity orientation setting.
      */

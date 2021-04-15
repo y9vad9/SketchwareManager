@@ -18,5 +18,6 @@ class FileCollectionManager(
     /**
      * Gets file by [name].
      */
+    @Suppress("unused")
     fun getFile(name: String) = File(file, "data/$name")
 }

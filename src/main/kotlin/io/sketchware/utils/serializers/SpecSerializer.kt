@@ -7,9 +7,10 @@ import kotlinx.serialization.descriptors.buildClassSerialDescriptor
 import kotlinx.serialization.encoding.Decoder
 import kotlinx.serialization.encoding.Encoder
 
-class SpecSerializer(
+object SpecSerializer : KSerializer<List<SpecField>> {
+
     override val descriptor: SerialDescriptor = buildClassSerialDescriptor("SpecSerializer")
-) : KSerializer<List<SpecField>> {
+
     override fun deserialize(decoder: Decoder): List<SpecField> {
         return decoder.decodeString().toSpecFields()
     }

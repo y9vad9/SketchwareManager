@@ -82,7 +82,7 @@ class SketchwareCustomListenersManager(
      */
     fun editListenerGroup(
         name: String,
-        editor: CustomListenerGroup.() -> Unit
+        editor: (CustomListenerGroup) -> Unit
     ) = saveLocally(listeners.toMutableList().apply {
         val index = indexOfFirst { it.name == name }
         set(index, get(index).apply(editor))

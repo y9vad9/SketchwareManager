@@ -13,7 +13,7 @@ internal object SWConst {
     //Theme Features
     const val OPTION_ACTIVITY_DRAWER = 4
     const val OPTION_ACTIVITY_FAB = 8
-    const val OPTION_ACTIVITY_FULLSCREEN = 2
+    const val OPTION_ACTIVITY_FULL_SCREEN = 2
     const val OPTION_ACTIVITY_MASK = 15
     const val OPTION_ACTIVITY_SHIFT = 0
     const val OPTION_ACTIVITY_TOOLBAR = 1
@@ -30,7 +30,7 @@ internal object SWConst {
 
     //Theme Styles
     const val THEME_DEFAULT = 0
-    const val THEME_FULLSCREEN = 2
+    const val THEME_FULL_SCREEN = 2
     const val THEME_NO_ACTIONBAR = 1
     const val THEME_NONE = -1
 }

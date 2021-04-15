@@ -8,9 +8,8 @@ internal fun String.replaceOrInsertAtTop(regex: Regex, replacement: String): Str
 }
 
 internal fun String.getByTag(tag: String): String? {
-    val tagNormalized = tag.replace(".", "\\.")
     val regex = Regex(
-        "(?<=@)($tagNormalized\\b)(.*?)(?=\\n@|$)",
+        "(?<=@)($tag\\b)(.*?)(?=\\n@|$)",
         RegexOption.DOT_MATCHES_ALL
     )
     val result = regex

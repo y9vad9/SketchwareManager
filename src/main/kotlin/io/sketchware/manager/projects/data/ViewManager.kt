@@ -84,7 +84,7 @@ class ViewManager(
     fun editView(
         viewName: String,
         widgetName: String? = null,
-        editor: MutableList<WidgetRoot>.() -> Unit
+        editor: (MutableList<WidgetRoot>) -> Unit
     ) = editView(
         viewName,
         widgetName,
