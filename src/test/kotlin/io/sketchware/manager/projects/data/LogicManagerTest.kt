@@ -9,7 +9,6 @@ import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import java.io.File
-import kotlin.math.log
 
 private const val logicValue = "@MainActivity.java_var\n" +
         "2:varstr\n" +

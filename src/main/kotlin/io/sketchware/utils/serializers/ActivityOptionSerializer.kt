@@ -18,13 +18,13 @@ class ActivityOptionSerializer public constructor() : KSerializer<List<ActivityO
 
     override fun deserialize(decoder: Decoder) = mutableListOf<ActivityOption>().apply {
         val value = decoder.decodeInt()
-        if((value and OPTION_ACTIVITY_MASK) and OPTION_ACTIVITY_DRAWER == OPTION_ACTIVITY_DRAWER)
+        if ((value and OPTION_ACTIVITY_MASK) and OPTION_ACTIVITY_DRAWER == OPTION_ACTIVITY_DRAWER)
             add(ActivityOption.DRAWER)
-        if((value and OPTION_ACTIVITY_MASK) and OPTION_ACTIVITY_TOOLBAR == OPTION_ACTIVITY_TOOLBAR)
+        if ((value and OPTION_ACTIVITY_MASK) and OPTION_ACTIVITY_TOOLBAR == OPTION_ACTIVITY_TOOLBAR)
             add(ActivityOption.TOOLBAR)
-        if((value and OPTION_ACTIVITY_MASK) and OPTION_ACTIVITY_FAB == OPTION_ACTIVITY_FAB)
+        if ((value and OPTION_ACTIVITY_MASK) and OPTION_ACTIVITY_FAB == OPTION_ACTIVITY_FAB)
             add(ActivityOption.FAB)
-        if((value and OPTION_ACTIVITY_MASK) and OPTION_ACTIVITY_FULL_SCREEN == OPTION_ACTIVITY_FULL_SCREEN)
+        if ((value and OPTION_ACTIVITY_MASK) and OPTION_ACTIVITY_FULL_SCREEN == OPTION_ACTIVITY_FULL_SCREEN)
             add(ActivityOption.FULLSCREEN)
     }.toList()
 

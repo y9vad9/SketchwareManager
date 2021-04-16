@@ -1,9 +1,9 @@
 package io.sketchware.manager.customs.components
 
 import io.sketchware.models.customs.CustomComponent
+import org.junit.jupiter.api.Assertions.assertFalse
+import org.junit.jupiter.api.Assertions.assertNotNull
 import org.junit.jupiter.api.Test
-
-import org.junit.jupiter.api.Assertions.*
 import java.io.File
 
 internal class SketchwareCustomComponentsManagerTest {
@@ -19,9 +19,11 @@ internal class SketchwareCustomComponentsManagerTest {
 
     @Test
     fun addComponent() {
-        manager.addComponent(CustomComponent(
-            0, "class", "desc", "", "", 380, "",
-            "", "", "", "", "")
+        manager.addComponent(
+            CustomComponent(
+                0, "class", "desc", "", "", 380, "",
+                "", "", "", "", ""
+            )
         )
         assertNotNull(manager.components.find { it.id == 380 })
     }

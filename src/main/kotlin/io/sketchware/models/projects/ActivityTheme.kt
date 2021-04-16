@@ -3,7 +3,7 @@ package io.sketchware.models.projects
 import io.sketchware.interfaces.IdInterface
 import io.sketchware.utils.SWConst
 
-enum class ActivityTheme(override val id: Int): IdInterface {
+enum class ActivityTheme(override val id: Int) : IdInterface {
     /**
      * Says that activity don't have any special theme.
      */

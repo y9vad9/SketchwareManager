@@ -1,8 +1,8 @@
 package io.sketchware.manager.projects.data
 
+import org.junit.jupiter.api.Assertions.assertFalse
+import org.junit.jupiter.api.Assertions.assertNotNull
 import org.junit.jupiter.api.Test
-
-import org.junit.jupiter.api.Assertions.*
 import java.io.File
 
 private const val libraryValue = "@firebaseDB\n" +

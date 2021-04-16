@@ -7,8 +7,10 @@ import org.junit.jupiter.api.Test
 import java.io.File
 
 internal class MoreblockCollectionManagerTest {
-    private val manager = MoreblockCollectionManager(String(
-        javaClass.getResourceAsStream("/collections/moreblocks")!!.readBytes()), File("")
+    private val manager = MoreblockCollectionManager(
+        String(
+            javaClass.getResourceAsStream("/collections/moreblocks")!!.readBytes()
+        ), File("")
     )
 
     @Test

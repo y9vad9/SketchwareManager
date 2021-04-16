@@ -1,9 +1,8 @@
 package io.sketchware.manager.customs.blocks
 
 import io.sketchware.models.customs.CustomBlock
-import org.junit.jupiter.api.Test
-
 import org.junit.jupiter.api.Assertions.*
+import org.junit.jupiter.api.Test
 import java.io.File
 
 internal class SketchwareCustomBlocksManagerTest {
@@ -59,7 +58,8 @@ internal class SketchwareCustomBlocksManagerTest {
     @Test
     fun addBlockToGroup() {
         val group = manager.blocks[0]
-        manager.addBlockToGroup(group.groupId,
+        manager.addBlockToGroup(
+            group.groupId,
             CustomBlock("", "hex", "test", 0, listOf(), "", "")
         )
         assertNotNull(manager.blocks.find { it.name == "test" })

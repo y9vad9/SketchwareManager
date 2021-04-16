@@ -3,9 +3,7 @@ package io.sketchware.manager.projects.data
 import io.sketchware.annotations.ExperimentalSWManagerAPI
 import io.sketchware.models.projects.*
 import org.junit.jupiter.api.Assertions.*
-import org.junit.jupiter.api.BeforeAll
 import org.junit.jupiter.api.Test
-import org.junit.platform.commons.annotation.Testable
 import java.io.File
 
 private const val fileValue = "@activity\n" +

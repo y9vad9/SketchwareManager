@@ -1,1 +1,29 @@
-[{"typeName":"typeName","color":"#FF2196F3","name":"testBlockName","palette":"9","spec":"spec","type":"s","code":"code"},{"typeName":"test","color":"#FF2196F3","name":"test","palette":"9","spec":"test","type":"b","code":"nxnxnd"},{"name":"test2","palette":"10","spec":"chcjfjfhf %b %d ","type":"s","typeName":"fhjfjf","code":"jdjdjdjd","color":"#FFF44336"}]
+[
+  {
+    "typeName": "typeName",
+    "color": "#FF2196F3",
+    "name": "testBlockName",
+    "palette": "9",
+    "spec": "spec",
+    "type": "s",
+    "code": "code"
+  },
+  {
+    "typeName": "test",
+    "color": "#FF2196F3",
+    "name": "test",
+    "palette": "9",
+    "spec": "test",
+    "type": "b",
+    "code": "nxnxnd"
+  },
+  {
+    "name": "test2",
+    "palette": "10",
+    "spec": "chcjfjfhf %b %d ",
+    "type": "s",
+    "typeName": "fhjfjf",
+    "code": "jdjdjdjd",
+    "color": "#FFF44336"
+  }
+]

@@ -2,7 +2,6 @@ package io.sketchware.models.projects
 
 import io.sketchware.utils.serializers.SpecSerializer
 import io.sketchware.utils.serializers.StringNumberConvertor
-import kotlinx.serialization.Contextual
 import kotlinx.serialization.Serializable
 
 /**

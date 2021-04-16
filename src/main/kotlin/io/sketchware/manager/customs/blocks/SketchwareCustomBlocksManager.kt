@@ -56,9 +56,10 @@ class SketchwareCustomBlocksManager(
      * and the last, if there are no free identifiers, it will return the most recent + 1.
      * @return free custom group id.
      */
-    val freeId get() = blocks.freeBetweenOrDefault(
-        9, blocks.size + 9, blocks.size + 9 + 1, transformer = CustomBlockGroup::groupId
-    )
+    val freeId
+        get() = blocks.freeBetweenOrDefault(
+            9, blocks.size + 9, blocks.size + 9 + 1, transformer = CustomBlockGroup::groupId
+        )
 
     /**
      * Resets all existing identifiers to their primary view (first group - 9, all others +1).

@@ -1,1 +1,14 @@
-[{"name":"Listener1Name","code":"code","s":"false","imports":"Listener1CustomImport"},{"name":"Listener2","s":"true","code":"//Listener2\ntest2","imports":""}]
+[
+  {
+    "name": "Listener1Name",
+    "code": "code",
+    "s": "false",
+    "imports": "Listener1CustomImport"
+  },
+  {
+    "name": "Listener2",
+    "s": "true",
+    "code": "//Listener2\ntest2",
+    "imports": ""
+  }
+]

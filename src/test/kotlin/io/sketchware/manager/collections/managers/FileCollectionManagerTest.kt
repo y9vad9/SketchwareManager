@@ -1,7 +1,8 @@
 package io.sketchware.manager.collections.managers
 
 import io.sketchware.models.collections.FileCollectionItem
-import org.junit.jupiter.api.Assertions.*
+import org.junit.jupiter.api.Assertions.assertNotNull
+import org.junit.jupiter.api.Assertions.assertNull
 import org.junit.jupiter.api.Test
 import java.io.File
 

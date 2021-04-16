@@ -1,1 +1,30 @@
-[{"icon":"2131165504","class":"component1typeClass","description":"component1Description","defineAdditionalVar":"component1AdditionalVar2","typeName":"component1TypeName","id":"37","url":"component1.docs","name":"component1","varName":"component1VariableName","additionalVar":"component1AdditionalVar1","imports":"component1CustomImport","buildClass":"component1BuildClass"},{"class":"component2TypeClass","icon":"2131165229","description":"component2Desc","defineAdditionalVar":"","typeName":"component2TypeName","id":"38","url":"component2Docs","name":"component2Name","additionalVar":"conponent2AdditionVar","varName":"component2VarName","imports":"","buildClass":"component2BuildClass"}]
+[
+  {
+    "icon": "2131165504",
+    "class": "component1typeClass",
+    "description": "component1Description",
+    "defineAdditionalVar": "component1AdditionalVar2",
+    "typeName": "component1TypeName",
+    "id": "37",
+    "url": "component1.docs",
+    "name": "component1",
+    "varName": "component1VariableName",
+    "additionalVar": "component1AdditionalVar1",
+    "imports": "component1CustomImport",
+    "buildClass": "component1BuildClass"
+  },
+  {
+    "class": "component2TypeClass",
+    "icon": "2131165229",
+    "description": "component2Desc",
+    "defineAdditionalVar": "",
+    "typeName": "component2TypeName",
+    "id": "38",
+    "url": "component2Docs",
+    "name": "component2Name",
+    "additionalVar": "conponent2AdditionVar",
+    "varName": "component2VarName",
+    "imports": "",
+    "buildClass": "component2BuildClass"
+  }
+]

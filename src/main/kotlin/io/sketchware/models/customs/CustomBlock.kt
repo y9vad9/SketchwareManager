@@ -3,7 +3,6 @@ package io.sketchware.models.customs
 import io.sketchware.models.projects.SpecField
 import io.sketchware.utils.serializers.SpecSerializer
 import io.sketchware.utils.serializers.StringNumberConvertor
-import kotlinx.serialization.Contextual
 import kotlinx.serialization.Serializable
 
 @Serializable

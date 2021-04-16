@@ -5,7 +5,7 @@ import io.sketchware.utils.SWConst
 import kotlinx.serialization.Serializable
 
 @Serializable
-enum class ActivityOption(override val id: Int): IdInterface {
+enum class ActivityOption(override val id: Int) : IdInterface {
     /**
      * The option says that Drawer is present in the activity.
      */

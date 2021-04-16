@@ -2,7 +2,8 @@ package io.sketchware.manager.customs.listeners
 
 import io.sketchware.models.customs.CustomEvent
 import io.sketchware.models.customs.CustomListenerGroup
-import org.junit.jupiter.api.Assertions.*
+import org.junit.jupiter.api.Assertions.assertNotNull
+import org.junit.jupiter.api.Assertions.assertNull
 import org.junit.jupiter.api.Test
 import java.io.File
 
