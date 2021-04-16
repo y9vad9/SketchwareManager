@@ -9,8 +9,8 @@ import java.io.File
 internal class SketchwareCustomListenersManagerTest {
 
     private val manager = SketchwareCustomListenersManager(
-        String(javaClass.getResourceAsStream("/customs/listener.json")!!.readBytes()),
-        String(javaClass.getResourceAsStream("/customs/listener.json")!!.readBytes()),
+        String(javaClass.getResourceAsStream("/customs/events.json")!!.readBytes()),
+        String(javaClass.getResourceAsStream("/customs/listeners.json")!!.readBytes()),
         File(""),
         File("")
     )
@@ -39,7 +39,7 @@ internal class SketchwareCustomListenersManagerTest {
     fun removeListenerGroup() {
         val listener = manager.listeners[0]
         manager.removeListenerGroup(listener.name)
-        assertFalse(manager.listeners.contains(listener))
+        assertNull(manager.listeners.find { it.name == listener.name })
     }
 
     @Test

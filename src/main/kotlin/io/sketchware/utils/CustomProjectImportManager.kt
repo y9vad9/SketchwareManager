@@ -83,7 +83,7 @@ open class CustomProjectImportManager(
             import(menusFile, menusConflictProvider)
             save()
         }
-        exportedCustomFiles.sourceEditedFolder?.copy(File(
+        exportedCustomFiles.sourceEditedFolder.copy(File(
             this@CustomProjectImportManager.sourceEditedFolder, "$projectId"
         ))
         editUniques()

@@ -21,8 +21,8 @@ internal class ViewManagerTest {
     @Test
     fun editView() {
         manager.editView("main") {
-            it.forEach { widget -> it.remove(widget) }
+            it.forEach { widget -> widget.id = "test" }
         }
-        assertTrue { manager.getView("main")?.isEmpty() == true }
+        assertTrue { manager.getView("main")?.all { it.id == "test" } == true }
     }
 }

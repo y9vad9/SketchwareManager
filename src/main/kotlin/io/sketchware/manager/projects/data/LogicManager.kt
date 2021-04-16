@@ -40,7 +40,9 @@ class LogicManager(
         value.getByTag(forName.normalizeTag())?.let { TagFormatter.parseTextBlocks(it) }
 
     private fun saveTag(name: String, stringToSave: String) {
+        println("$name:\n$stringToSave")
         value = TagFormatter.addTag(name, stringToSave, value)
+        println(value)
     }
 
     /**

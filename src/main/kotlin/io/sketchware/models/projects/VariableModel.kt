@@ -9,4 +9,9 @@ data class VariableModel(
      * Name of variable.
      */
     val name: String
-)
+) {
+    /**
+     * Converts the object to the original Sketchware look.
+     */
+    override fun toString() = "$type:$name"
+}

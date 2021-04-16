@@ -34,7 +34,7 @@ data class BlockModel(
     /**
      * List of [SpecField] with info about block and it's arguments.
      */
-    @Contextual
+    @Serializable(with = SpecSerializer::class)
     var spec: List<SpecField>,
     var subStack1: Int,
     var subStack2: Int,

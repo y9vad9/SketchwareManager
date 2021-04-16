@@ -27,7 +27,7 @@ internal class MoreblockCollectionManagerTest {
         val moreblock = MoreblockCollectionItem("test1", listOf(), listOf())
         manager.addItem(moreblock)
         assertNotNull(manager.all.find { it.name == "test1" })
-        manager.removeItem(moreblock)
+        manager.all.find { it.name == "test1" }?.let { manager.removeItem(it) }
         assertNull(manager.all.find { it.name == "test1" })
     }
 

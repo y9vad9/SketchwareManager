@@ -40,7 +40,8 @@ internal object TagFormatter {
     fun addTag(name: String, stringToSave: String, value: String): String {
         return value.replaceOrInsertAtTop(
             "(@${name.normalizeTag()}.*?)(?=@|\$)".toRegex(),
-            "@$name$stringToSave\n\n"
+            "@$name\n$stringToSave\n\n",
+            suffix = "\n"
         )
     }
 

@@ -5,7 +5,6 @@ import io.sketchware.models.projects.BlockModel
 import io.sketchware.models.projects.SpecField
 import io.sketchware.utils.serializers.ListBlockModelSerializer
 import io.sketchware.utils.serializers.SpecSerializer
-import kotlinx.serialization.Contextual
 import kotlinx.serialization.Serializable
 
 /**
@@ -21,12 +20,12 @@ data class MoreblockCollectionItem(
      * Contains data about collection item.
      * For moreblocks it is list of blocks in moreblock logic.
      */
-    @Serializable(ListBlockModelSerializer::class)
+    @Serializable(with = ListBlockModelSerializer::class)
     override val data: List<BlockModel>,
     /**
      * Contains data about collection. Consist only for moreblock.
      * There is spec for moreblock.
      */
-    @Serializable(SpecSerializer::class)
+    @Serializable(with = SpecSerializer::class)
     override val reserved1: List<SpecField>
 ) : CollectionItem<List<BlockModel>, List<SpecField>>

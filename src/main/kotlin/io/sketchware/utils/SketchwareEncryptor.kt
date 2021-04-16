@@ -27,7 +27,7 @@ object SketchwareEncryptor {
      * Encryption of the incoming [byteArray] by [encryptKey].
      * @return [ByteArray] of encrypted [byteArray].
      */
-    suspend fun encrypt(byteArray: ByteArray) = withContext(Dispatchers.Main) {
+    suspend fun encrypt(byteArray: ByteArray) = withContext(Dispatchers.Default) {
         val cipher: Cipher = Cipher.getInstance("AES/CBC/PKCS5Padding")
         cipher.init(1, SecretKeySpec(encryptKey, "AES"), IvParameterSpec(encryptKey))
         return@withContext cipher.doFinal(byteArray) ?: error("Error while encrypting string.")

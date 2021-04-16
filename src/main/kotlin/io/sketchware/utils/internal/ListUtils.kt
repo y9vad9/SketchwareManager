@@ -2,7 +2,8 @@ package io.sketchware.utils.internal
 
 internal fun List<Int>.freeBetweenOrNull(first: Int, second: Int): Int? {
     (first..second).toList().forEach { number ->
-        find { it == number }?.let { return number }
+        if(!contains(number))
+            return number
     }
     return null
 }

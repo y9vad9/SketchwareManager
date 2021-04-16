@@ -1,10 +1,10 @@
 package io.sketchware.utils.internal
 
-internal fun String.replaceOrInsertAtTop(regex: Regex, replacement: String): String {
+internal fun String.replaceOrInsertAtTop(regex: Regex, replacement: String, prefix: String = "", suffix: String = ""): String {
     val content = regex.replace(this, replacement)
     return if (this == content)
         "${replacement}$content"
-    else content
+    else "${prefix}content${suffix}"
 }
 
 internal fun String.getByTag(tag: String): String? {

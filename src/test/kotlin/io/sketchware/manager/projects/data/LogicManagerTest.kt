@@ -188,9 +188,8 @@ internal class LogicManagerTest {
                     listOf(), listOf(), -1, -1, "type", "typeName"
                 )
             )
-            list = toList()
         }
-        assertTrue { manager.getMoreblockLogic(testActivity, moreblock.name) == list }
+        assertTrue { manager.getMoreblockLogic(testActivity, moreblock.name)?.find { it.color == -131414 } != null }
     }
 
     @OptIn(ExperimentalSWManagerAPI::class)
@@ -221,7 +220,7 @@ internal class LogicManagerTest {
         val event = manager.getEvents(testActivity)!![0]
         manager.editEventLogic(testActivity, event.targetId, event.name) {
             it.forEach { block ->
-                //block.color = 0
+                block.color = 0
             }
         }
         assertTrue { manager.getEventLogic(testActivity, event.targetId, event.name)!!.all { it.color == 0 } }

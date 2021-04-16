@@ -88,8 +88,9 @@ class SketchwareCustomListenersManager(
         set(index, get(index).apply(editor))
     })
 
-    private fun saveLocally(list: List<CustomListenerGroup>) {
-        listenersValue = list.filter { it.name != "" }
+    private fun saveLocally(list: List<CustomListenerGroup>) = synchronized(this) {
+        listenersValue = list
+            .filter { it.name != "" }
             .map {
                 mapOf(
                     "name" to it.name,
@@ -112,6 +113,7 @@ class SketchwareCustomListenersManager(
                 )
             }
         }.flatten().deserialize()
+        listenerProperty.reset()
     }
 
     /**

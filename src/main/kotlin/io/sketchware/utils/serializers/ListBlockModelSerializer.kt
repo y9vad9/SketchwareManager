@@ -11,7 +11,7 @@ import kotlinx.serialization.encoding.Encoder
 
 object ListBlockModelSerializer : KSerializer<List<BlockModel>> {
 
-    override val descriptor: SerialDescriptor = buildClassSerialDescriptor("listBlockSerializer")
+    override val descriptor: SerialDescriptor = buildClassSerialDescriptor("listBlockModelSerializer")
 
     override fun deserialize(decoder: Decoder): List<BlockModel> {
         return TagFormatter.parseAsArray(decoder.decodeString())

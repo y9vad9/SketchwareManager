@@ -1,18 +1,18 @@
-import org.jetbrains.kotlin.konan.properties.loadProperties
+import org.gradle.util.GUtil.loadProperties
 
 buildscript {
     repositories { mavenCentral() }
 
     dependencies {
-        val kotlinVersion = "1.4.30"
+
         classpath(kotlin("gradle-plugin", version = kotlinVersion))
         classpath(kotlin("serialization", version = kotlinVersion))
     }
 }
 
 plugins {
-    kotlin("jvm") version "1.4.31"
-    kotlin("plugin.serialization") version "1.4.31"
+    kotlin("jvm") version kotlinVersion
+    kotlin("plugin.serialization") version kotlinVersion
     `maven-publish`
 }
 
@@ -32,7 +32,6 @@ dependencies {
 
 val localProperties = project.rootProject.file("local.properties")
     .takeIf(File::exists)
-    ?.let(File::getAbsolutePath)
     ?.let(::loadProperties)
 
 tasks.withType<Test> {
