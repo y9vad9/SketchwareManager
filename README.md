@@ -17,7 +17,7 @@ repositories {
     maven("https://dl.kotlingang.fun")
 }
 dependencies {
-    implementation("io.sketchware:Sketchware-Manager:dev-2.4.3")
+    implementation("io.sketchware:SketchwareManager:dev-2.4.3")
 }
 ```
 
