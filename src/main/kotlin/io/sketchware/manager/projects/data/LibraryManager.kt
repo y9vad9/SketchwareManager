@@ -28,7 +28,7 @@ class LibraryManager(
 
     private val librariesDelegate = lazyInit {
         mutableListOf<SketchwareLibraryModel>().apply {
-            Regex("(?<=@).*?(?=\\\\n@|\\\$)", RegexOption.DOT_MATCHES_ALL)
+            Regex("(?<=@).*?(?=\\n@|$)", RegexOption.DOT_MATCHES_ALL)
                 .findAll(value).forEach { matchResult ->
                     val name = matchResult.value.substring(
                         0, matchResult.value.indexOf("\n")
@@ -40,7 +40,7 @@ class LibraryManager(
                         )
                     )
                 }
-        }
+        }.toList()
     }
 
     /**

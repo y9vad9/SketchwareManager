@@ -55,3 +55,5 @@ data class MenuSpecArgument(override var text: String) : SpecArgument(text) {
         }
 
 }
+
+internal fun List<SpecField>.toStringValue() = this.joinToString(" ")

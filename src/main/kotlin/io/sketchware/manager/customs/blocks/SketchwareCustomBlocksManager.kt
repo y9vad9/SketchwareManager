@@ -12,6 +12,7 @@ import io.sketchware.utils.internal.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import java.io.File
 
 class SketchwareCustomBlocksManager(
@@ -50,7 +51,25 @@ class SketchwareCustomBlocksManager(
      */
     val blocks by blocksProperty
 
-    val freeId get() = blocks.maxOf { it.groupId } + 1
+    /**
+     * Checks the availability of id between 9 (the initial identifier of any group of custom blocks)
+     * and the last, if there are no free identifiers, it will return the most recent + 1.
+     * @return free custom group id.
+     */
+    val freeId
+        get() = blocks.freeBetweenOrDefault(
+            9, blocks.size + 9, blocks.size + 9 + 1, transformer = CustomBlockGroup::groupId
+        )
+
+    /**
+     * Resets all existing identifiers to their primary view (first group - 9, all others +1).
+     * It is used to fix problems when saving (since in reality, Sketchware Pro binds blocks at index + 9,
+     * when you delete a group, the blocks can move to another group). Always called in [save], [export].
+     */
+    fun trimIds() = saveBlocks(blocks.mapIndexed { index, customBlockGroup ->
+        customBlockGroup.groupId = index + 9
+        return@mapIndexed customBlockGroup
+    })
 
     /**
      * Adds block to the resources.
@@ -88,7 +107,7 @@ class SketchwareCustomBlocksManager(
         })
     }
 
-    fun editBlocksGroup(groupId: Int, builder: CustomBlockGroup.() -> Unit) = saveBlocks(
+    fun editBlocksGroup(groupId: Int, builder: (CustomBlockGroup) -> Unit) = saveBlocks(
         blocks.toMutableList().apply {
             val group = first { it.groupId == groupId }
             set(indexOf(group), group.apply(builder))
@@ -152,6 +171,7 @@ class SketchwareCustomBlocksManager(
      * Saves data which was edited.
      */
     override suspend fun save() {
+        withContext(Dispatchers.Default) { trimIds() }
         blockFile.write(blockValue.toByteArray())
         paletteFile.write(paletteValue.toByteArray())
     }
@@ -161,6 +181,7 @@ class SketchwareCustomBlocksManager(
      * @param destination - file to which will be written data.
      */
     override suspend fun export(destination: File) {
+        withContext(Dispatchers.Default) { trimIds() }
         destination.write(blocks.deserialize().toByteArray())
     }
 

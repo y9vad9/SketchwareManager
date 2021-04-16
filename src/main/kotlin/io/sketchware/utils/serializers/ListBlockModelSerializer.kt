@@ -5,10 +5,13 @@ import io.sketchware.utils.internal.TagFormatter
 import io.sketchware.utils.internal.TagFormatter.toSaveableValue
 import kotlinx.serialization.KSerializer
 import kotlinx.serialization.descriptors.SerialDescriptor
+import kotlinx.serialization.descriptors.buildClassSerialDescriptor
 import kotlinx.serialization.encoding.Decoder
 import kotlinx.serialization.encoding.Encoder
 
-class ListBlockModelSerializer(override val descriptor: SerialDescriptor) : KSerializer<List<BlockModel>> {
+object ListBlockModelSerializer : KSerializer<List<BlockModel>> {
+
+    override val descriptor: SerialDescriptor = buildClassSerialDescriptor("listBlockModelSerializer")
 
     override fun deserialize(decoder: Decoder): List<BlockModel> {
         return TagFormatter.parseAsArray(decoder.decodeString())

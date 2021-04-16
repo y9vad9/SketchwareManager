@@ -10,7 +10,7 @@ data class SketchwareLibraryDataModel(
     /**
      * Ad units list (empty if it isn't admob component.
      */
-    var adUnits: List<String>,
+    var adUnits: List<AdUnit>,
     //TODO description
     var data: String,
     /**
@@ -35,4 +35,10 @@ data class SketchwareLibraryDataModel(
     var testDevices: List<String>,
     //TODO description
     var useYn: String
+)
+
+@Serializable
+data class AdUnit(
+    val id: String,
+    val name: String
 )

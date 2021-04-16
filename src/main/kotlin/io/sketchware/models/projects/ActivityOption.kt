@@ -1,8 +1,11 @@
 package io.sketchware.models.projects
 
+import io.sketchware.interfaces.IdInterface
 import io.sketchware.utils.SWConst
+import kotlinx.serialization.Serializable
 
-enum class ActivityOption(val option: Int) {
+@Serializable
+enum class ActivityOption(override val id: Int) : IdInterface {
     /**
      * The option says that Drawer is present in the activity.
      */
@@ -16,7 +19,7 @@ enum class ActivityOption(val option: Int) {
     /**
      * The option says that Status Bar isn't present in the activity.
      */
-    FULLSCREEN(SWConst.OPTION_ACTIVITY_FULLSCREEN),
+    FULLSCREEN(SWConst.OPTION_ACTIVITY_FULL_SCREEN),
 
     /**
      * The option says that Toolbar is present in the activity.

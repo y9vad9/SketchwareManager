@@ -1,16 +1,20 @@
 package io.sketchware.utils.internal
 
-internal fun String.replaceOrInsertAtTop(regex: Regex, replacement: String): String {
+internal fun String.replaceOrInsertAtTop(
+    regex: Regex,
+    replacement: String,
+    prefix: String = "",
+    suffix: String = ""
+): String {
     val content = regex.replace(this, replacement)
     return if (this == content)
         "${replacement}$content"
-    else content
+    else "${prefix}content${suffix}"
 }
 
 internal fun String.getByTag(tag: String): String? {
-    val tagNormalized = tag.replace(".", "\\.")
     val regex = Regex(
-        "(?<=@)($tagNormalized\\b)(.*?)(?=\\n@|$)",
+        "(?<=@)($tag\\b)(.*?)(?=\\n@|$)",
         RegexOption.DOT_MATCHES_ALL
     )
     val result = regex
@@ -31,7 +35,7 @@ internal fun String.camelToSnakeCase(): String {
 
 internal fun String.snakeToLowerCamelCase(): String {
     return snakeRegex.replace(this) {
-        it.value.replace("_","")
+        it.value.replace("_", "")
             .toUpperCase()
     }
 }

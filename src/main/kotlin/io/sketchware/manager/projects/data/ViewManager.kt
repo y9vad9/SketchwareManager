@@ -84,7 +84,7 @@ class ViewManager(
     fun editView(
         viewName: String,
         widgetName: String? = null,
-        editor: MutableList<WidgetRoot>.() -> Unit
+        editor: (MutableList<WidgetRoot>) -> Unit
     ) = editView(
         viewName,
         widgetName,
@@ -96,7 +96,7 @@ class ViewManager(
         viewName: String,
         widget: String? = null,
         list: List<WidgetRoot>
-    ) {
+    ) = synchronized(this) {
         val name = "$viewName.xml".plus(
             if (widget == null)
                 "" else "_$widget"

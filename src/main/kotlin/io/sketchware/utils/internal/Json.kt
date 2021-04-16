@@ -5,8 +5,6 @@ import io.sketchware.models.projects.FileType
 import io.sketchware.models.projects.KeyboardSetting
 import io.sketchware.models.projects.Orientation
 import io.sketchware.models.view.LayoutOrientation
-import io.sketchware.utils.serializers.ActivityOptionSerializer
-import io.sketchware.utils.serializers.SpecSerializer
 import io.sketchware.utils.serializers.idSerializer
 import kotlinx.serialization.KSerializer
 import kotlinx.serialization.decodeFromString
@@ -20,8 +18,6 @@ private val serializationModule = SerializersModule {
     contextual(idSerializer<KeyboardSetting>())
     contextual(idSerializer<Orientation>())
     contextual(idSerializer(LayoutOrientation.HORIZONTAL))
-    contextual(SpecSerializer())
-    contextual(ActivityOptionSerializer())
     contextual(idSerializer<ActivityTheme>())
 }
 

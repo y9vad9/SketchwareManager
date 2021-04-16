@@ -8,6 +8,7 @@ import io.sketchware.models.projects.*
 import io.sketchware.utils.SketchwareEncryptor
 import io.sketchware.utils.SketchwareEncryptor.decrypt
 import io.sketchware.utils.internal.*
+import io.sketchware.utils.serializers.toSpecFields
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -39,7 +40,9 @@ class LogicManager(
         value.getByTag(forName.normalizeTag())?.let { TagFormatter.parseTextBlocks(it) }
 
     private fun saveTag(name: String, stringToSave: String) {
+        println("$name:\n$stringToSave")
         value = TagFormatter.addTag(name, stringToSave, value)
+        println(value)
     }
 
     /**
@@ -82,9 +85,11 @@ class LogicManager(
      * @param targetId - target string id (example: button1).
      * @param eventName - event name (example: onClick).
      * @see getEvents
+     * @return [SketchwareEventModel] or null if event with
+     * specific [targetId] and [eventName] in [activity] not found.
      */
     fun getEvent(activity: String, targetId: String, eventName: String) =
-        getEvents(activity)?.first { it.targetId == targetId && it.name == eventName }
+        getEvents(activity)?.firstOrNull { it.targetId == targetId && it.name == eventName }
 
     /**
      * Edits info about specific event.
@@ -180,9 +185,10 @@ class LogicManager(
      * Gets variable in specific activity.
      * @param activity - activity name (example: MainActivity).
      * @param variableName - variable name.
+     * @return [VariableModel] or null if it does not exist.
      */
     fun getVariable(activity: String, variableName: String) =
-        getVariables(activity)?.first { it.name == variableName }
+        getVariables(activity)?.firstOrNull { it.name == variableName }
 
     /**
      * Removes variable by [variableName].
@@ -230,9 +236,10 @@ class LogicManager(
      * Gets component by [componentId] in specific [activity].
      * @param activity - activity name (example: MainActivity)
      * @param componentId - component id (name which user set).
+     * @return [ComponentModel] or null if component does not exist.
      */
     fun getComponent(activity: String, componentId: String) =
-        getComponents(activity)?.first { it.id == componentId }
+        getComponents(activity)?.firstOrNull { it.id == componentId }
 
     /**
      * Removes component by [componentId] in specific [activity].
@@ -262,16 +269,17 @@ class LogicManager(
      */
     fun getMoreblocks(activity: String) =
         getPairBlock("$activity.java_func")?.map { (name, data) ->
-            SketchwareMoreblockModel(name, data.serialize<List<SpecField>>())
+            SketchwareMoreblockModel(name, data.toSpecFields())
         }
 
     /**
      * Gets moreblock by name.
      * @param activity - activity name (example: activity).
      * @param name - moreblock name.
+     * @return [SketchwareMoreblockModel] or null if moreblock does not exist.
      */
     fun getMoreblock(activity: String, name: String) =
-        getMoreblocks(activity)?.first { it.name == name }
+        getMoreblocks(activity)?.firstOrNull { it.name == name }
 
     /**
      * Gets moreblock's logic.
@@ -320,13 +328,15 @@ class LogicManager(
     fun editMoreblockInfo(
         activity: String,
         name: String,
-        editor: SketchwareMoreblockModel.() -> Unit
+        editor: (SketchwareMoreblockModel) -> Unit
     ) {
-        val moreblocks = getMoreblocks("activity")?.toMutableList()
+        val moreblocks = getMoreblocks(activity)?.toMutableList()
             ?: throw MoreblocksNotFoundException(activity)
         val moreblock = getMoreblock(activity, name)
             ?: throw MoreblockNotFoundException(activity, name)
-        moreblocks[moreblocks.indexOf(moreblock)] = moreblock.apply(editor)
+        val index = moreblocks.indexOfFirst { it.name == moreblock.name }
+            .takeUnless { it == -1 } ?: throw MoreblockNotFoundException(activity, moreblock.name)
+        moreblocks[index] = moreblock.apply(editor)
         saveMoreblocks(activity, moreblocks)
     }
 
@@ -344,6 +354,18 @@ class LogicManager(
         } ?: throw MoreblocksNotFoundException(activity)).also {
             removeBlock("$activity.java_${name}_moreBlock")
         }
+
+    /**
+     * Adds moreblock to specific [activity].
+     * @param activity - activity name (example: MainActivity, see [SketchwareDataFileModel.activityName]).
+     * @param name - moreblock name.
+     * @param spec - moreblock spec (arguments, fields. Example: toast %s.message).
+     */
+    fun addMoreblock(activity: String, name: String, spec: List<SpecField>) = saveMoreblocks(
+        "$activity.java_func", getMoreblocks(activity).orEmpty().toMutableList().apply {
+            add(SketchwareMoreblockModel(name, spec))
+        }
+    )
 
     /**
      * Gets logic of event.
@@ -408,7 +430,7 @@ class LogicManager(
      * @throws EventNotFoundException - if event doesn't exist.
      */
     @Throws(EventNotFoundException::class)
-    fun editOnCreateLogic(activity: String, editor: MutableList<BlockModel>.() -> Unit) =
+    fun editOnCreateLogic(activity: String, editor: (MutableList<BlockModel>) -> Unit) =
         editOnCreateLogic(
             activity, getOnCreateLogic(activity)?.toMutableList()?.apply(editor)
                 ?: throw EventNotFoundException(activity, "onCreate", "initializeLogic")
@@ -430,7 +452,7 @@ class LogicManager(
         })
 
     private fun saveMoreblocks(activity: String, list: List<SketchwareMoreblockModel>) =
-        saveTag("$activity.java_components", list.joinToString("\n"))
+        saveTag("$activity.java_func", list.joinToString("\n"))
 
     private fun saveEventLogic(
         activity: String, targetId: String, eventName: String, list: List<BlockModel>
