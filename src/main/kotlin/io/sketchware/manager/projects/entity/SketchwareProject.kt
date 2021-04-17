@@ -24,7 +24,7 @@ open class SketchwareProject(
     }
 
     private val fileManager = async(start = CoroutineStart.LAZY) {
-        FileManager(File(locations.dataFolder, "file"))
+        ContentManager(File(locations.dataFolder, "file"))
     }
 
     private val libraryManager = async(start = CoroutineStart.LAZY) {

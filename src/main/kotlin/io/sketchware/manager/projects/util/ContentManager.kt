@@ -15,14 +15,14 @@ import kotlinx.coroutines.launch
 import java.io.File
 import kotlin.coroutines.CoroutineContext
 
-class FileManager(
+class ContentManager(
     private var value: String,
     private val file: File,
     override val coroutineContext: CoroutineContext = Dispatchers.Main
 ) : CoroutineScope, Editor {
 
     companion object {
-        suspend operator fun invoke(file: File) = FileManager(
+        suspend operator fun invoke(file: File) = ContentManager(
             file.readOrNull()?.decrypt()?.byteArrayToString() ?: "", file
         )
     }

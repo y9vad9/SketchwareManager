@@ -16,9 +16,9 @@ private const val fileValue = "@activity\n" +
         "{\"fileName\":\"custom\",\"fileType\":1,\"keyboardSetting\":0,\"options\":0,\"orientation\":2,\"theme\":-1}\n" +
         "{\"fileName\":\"_drawer_editor\",\"fileType\":2,\"keyboardSetting\":0,\"options\":0,\"orientation\":2,\"theme\":-1}"
 
-internal class FileManagerTest {
+internal class ContentManagerTest {
 
-    private val fileManager = FileManager(fileValue, File("/"))
+    private val fileManager = ContentManager(fileValue, File("/"))
 
     @Test
     fun getActivities() {
