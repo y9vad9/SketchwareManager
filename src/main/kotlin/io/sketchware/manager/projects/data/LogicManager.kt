@@ -1,14 +1,14 @@
 package io.sketchware.manager.projects.data
 
-import io.sketchware.annotations.ExperimentalSWManagerAPI
-import io.sketchware.exceptions.*
-import io.sketchware.interfaces.Editor
-import io.sketchware.interfaces.listeners.ActionFinishListener
-import io.sketchware.models.projects.*
-import io.sketchware.utils.SketchwareEncryptor
-import io.sketchware.utils.SketchwareEncryptor.decrypt
-import io.sketchware.utils.internal.*
-import io.sketchware.utils.serializers.toSpecFields
+import io.sketchware.annotation.ExperimentalSWManagerAPI
+import io.sketchware.exception.*
+import io.sketchware.`interface`.Editor
+import io.sketchware.`interface`.listener.ActionFinishListener
+import io.sketchware.model.project.*
+import io.sketchware.util.SketchwareEncryptor
+import io.sketchware.util.SketchwareEncryptor.decrypt
+import io.sketchware.util.internal.*
+import io.sketchware.util.serializer.toSpecFields
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -31,17 +31,17 @@ class LogicManager(
      * @param forName - Name of block.
      */
     private inline fun <reified Model> getBlock(forName: String) =
-        TagFormatter.getListByTag<Model>(forName, value)
+        BeansParser.getListByTag<Model>(forName, value)
 
     /**
      * Gets block with pairs (splitted by :) for name of tag [forName].
      */
     private fun getPairBlock(forName: String) =
-        value.getByTag(forName.normalizeTag())?.let { TagFormatter.parseTextBlocks(it) }
+        value.getByTag(forName.normalizeTag())?.let { BeansParser.parseTextBlocks(it) }
 
     private fun saveTag(name: String, stringToSave: String) {
         println("$name:\n$stringToSave")
-        value = TagFormatter.addTag(name, stringToSave, value)
+        value = BeansParser.addTag(name, stringToSave, value)
         println(value)
     }
 
@@ -77,7 +77,7 @@ class LogicManager(
      * @param activity - activity name (example: MainActivity).
      */
     fun getEvents(activity: String) =
-        getBlock<SketchwareEventModel>("$activity.java_events")
+        getBlock<EventModel>("$activity.java_events")
 
     /**
      * Gets specific event.
@@ -85,7 +85,7 @@ class LogicManager(
      * @param targetId - target string id (example: button1).
      * @param eventName - event name (example: onClick).
      * @see getEvents
-     * @return [SketchwareEventModel] or null if event with
+     * @return [EventModel] or null if event with
      * specific [targetId] and [eventName] in [activity] not found.
      */
     fun getEvent(activity: String, targetId: String, eventName: String) =
@@ -107,7 +107,7 @@ class LogicManager(
         activity: String,
         targetId: String,
         eventName: String,
-        newEventModel: SketchwareEventModel
+        newEventModel: EventModel
     ) = saveEvents(activity, getEvents(activity)?.toMutableList()?.apply {
         removeIf { it.name == eventName && it.targetId == targetId }
         add(newEventModel)
@@ -119,7 +119,7 @@ class LogicManager(
      * @param activity - activity name (example: MainActivity).
      * @param targetId - target string id (example: button1).
      * @param eventName - event name (example: onClick).
-     * @param editor - lambda with [SketchwareEventModel] in context to edit.
+     * @param editor - lambda with [EventModel] in context to edit.
      * @throws EventsNotFoundException - if in specific [activity] does not exist any event.
      * @throws EventNotFoundException - if event with name [eventName]
      * for [targetId] in activity [activity] not found
@@ -130,7 +130,7 @@ class LogicManager(
         activity: String,
         targetId: String,
         eventName: String,
-        editor: SketchwareEventModel.() -> Unit
+        editor: EventModel.() -> Unit
     ) = with(
         getEvent(activity, targetId, eventName)
             ?: throw EventNotFoundException(activity, targetId, eventName)
@@ -164,7 +164,7 @@ class LogicManager(
      * @throws EventAlreadyExistsException - if event already exist in [activity].
      */
     @Throws(EventAlreadyExistsException::class)
-    fun addEvent(activity: String, eventModel: SketchwareEventModel, logic: List<BlockModel>) =
+    fun addEvent(activity: String, eventModel: EventModel, logic: List<BlockModel>) =
         saveEvents(activity, (getEvents(activity) ?: emptyList()).toMutableList().apply {
             if (any { it.targetId == eventModel.targetId && it.name == eventModel.name })
                 throw EventAlreadyExistsException(activity, eventModel.targetId, eventModel.name)
@@ -264,19 +264,19 @@ class LogicManager(
     /**
      * Get activity moreblocks
      * @param activity activity name (Example: MainActivity)
-     * @return List of [SketchwareMoreblockModel] in specific activity or null
+     * @return List of [MoreblockModel] in specific activity or null
      * if activity / moreblocks doesn't exist.
      */
     fun getMoreblocks(activity: String) =
         getPairBlock("$activity.java_func")?.map { (name, data) ->
-            SketchwareMoreblockModel(name, data.toSpecFields())
+            MoreblockModel(name, data.toSpecFields())
         }
 
     /**
      * Gets moreblock by name.
      * @param activity - activity name (example: activity).
      * @param name - moreblock name.
-     * @return [SketchwareMoreblockModel] or null if moreblock does not exist.
+     * @return [MoreblockModel] or null if moreblock does not exist.
      */
     fun getMoreblock(activity: String, name: String) =
         getMoreblocks(activity)?.firstOrNull { it.name == name }
@@ -328,7 +328,7 @@ class LogicManager(
     fun editMoreblockInfo(
         activity: String,
         name: String,
-        editor: (SketchwareMoreblockModel) -> Unit
+        editor: (MoreblockModel) -> Unit
     ) {
         val moreblocks = getMoreblocks(activity)?.toMutableList()
             ?: throw MoreblocksNotFoundException(activity)
@@ -357,13 +357,13 @@ class LogicManager(
 
     /**
      * Adds moreblock to specific [activity].
-     * @param activity - activity name (example: MainActivity, see [SketchwareDataFileModel.activityName]).
+     * @param activity - activity name (example: MainActivity, see [FileDataModel.activityName]).
      * @param name - moreblock name.
      * @param spec - moreblock spec (arguments, fields. Example: toast %s.message).
      */
     fun addMoreblock(activity: String, name: String, spec: List<SpecField>) = saveMoreblocks(
         "$activity.java_func", getMoreblocks(activity).orEmpty().toMutableList().apply {
-            add(SketchwareMoreblockModel(name, spec))
+            add(MoreblockModel(name, spec))
         }
     )
 
@@ -436,7 +436,7 @@ class LogicManager(
                 ?: throw EventNotFoundException(activity, "onCreate", "initializeLogic")
         )
 
-    private fun saveEvents(activity: String, list: List<SketchwareEventModel>) =
+    private fun saveEvents(activity: String, list: List<EventModel>) =
         saveTag("$activity.java_events", list.joinToString("\n") {
             it.deserialize()
         })
@@ -451,7 +451,7 @@ class LogicManager(
             it.deserialize()
         })
 
-    private fun saveMoreblocks(activity: String, list: List<SketchwareMoreblockModel>) =
+    private fun saveMoreblocks(activity: String, list: List<MoreblockModel>) =
         saveTag("$activity.java_func", list.joinToString("\n"))
 
     private fun saveEventLogic(

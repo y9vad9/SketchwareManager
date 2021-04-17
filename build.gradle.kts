@@ -38,33 +38,30 @@ tasks.withType<Test> {
     useJUnitPlatform()
 }
 
-allprojects {
-    group = "io.sketchware"
-    version = libraryVersion
-
-    apply(plugin = "maven-publish")
-
-    publishing {
-        apply(plugin = "maven-publish")
-        publications {
-            create<MavenPublication>("Deploy") {
-                groupId = group as String
-                artifactId = "SketchwareManager"
-                version = libraryVersion
-            }
-        }
-
-        repositories {
-            maven {
-                name = "sketchware-api"
-                url = uri(localProperties!!["serverURI"]!!)
-                credentials {
-                    username = (localProperties["username"] as String?)!!
-                    password = (localProperties["password"] as String?)!!
-                }
+publishing {
+    publications {
+        create<MavenPublication>("Deploy") {
+            groupId = "io.sketchware"
+            artifactId = "SketchwareManager"
+            version = libraryVersion
+            pom {
+                name.set("Sketchware Manager Library")
+                description.set("Coroutine-based JVM Library")
             }
         }
     }
+
+    repositories {
+        maven {
+            name = "SketchwareManager"
+            url = uri("sftp://${localProperties!!["serverIp"]}:22/${localProperties["deployPath"]}")
+            credentials {
+                username = (localProperties["username"] as String?)!!
+                password = (localProperties["password"] as String?)!!
+            }
+        }
+    }
+
 }
 
 

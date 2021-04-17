@@ -1,14 +1,14 @@
 package io.sketchware.manager.projects.data
 
-import io.sketchware.exceptions.LibraryNotFoundException
-import io.sketchware.interfaces.Editor
-import io.sketchware.interfaces.listeners.ActionFinishListener
-import io.sketchware.models.projects.SketchwareLibraryDataModel
-import io.sketchware.models.projects.SketchwareLibraryModel
-import io.sketchware.utils.SketchwareEncryptor.decrypt
-import io.sketchware.utils.SketchwareEncryptor.encrypt
-import io.sketchware.utils.delegates.lazyInit
-import io.sketchware.utils.internal.*
+import io.sketchware.exception.LibraryNotFoundException
+import io.sketchware.`interface`.Editor
+import io.sketchware.`interface`.listener.ActionFinishListener
+import io.sketchware.model.project.SketchwareLibraryDataModel
+import io.sketchware.model.project.LibraryModel
+import io.sketchware.util.SketchwareEncryptor.decrypt
+import io.sketchware.util.SketchwareEncryptor.encrypt
+import io.sketchware.util.delegate.lazyResetable
+import io.sketchware.util.internal.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -26,8 +26,8 @@ class LibraryManager(
             LibraryManager(file.readOrNull()?.decrypt()?.byteArrayToString() ?: "", file)
     }
 
-    private val librariesDelegate = lazyInit {
-        mutableListOf<SketchwareLibraryModel>().apply {
+    private val librariesDelegate = lazyResetable {
+        mutableListOf<LibraryModel>().apply {
             Regex("(?<=@).*?(?=\\n@|$)", RegexOption.DOT_MATCHES_ALL)
                 .findAll(value).forEach { matchResult ->
                     val name = matchResult.value.substring(
@@ -35,7 +35,7 @@ class LibraryManager(
                             .takeUnless { it == -1 } ?: matchResult.value.length
                     )
                     add(
-                        SketchwareLibraryModel(
+                        LibraryModel(
                             name, matchResult.value.replace(name, "").serialize()
                         )
                     )
@@ -65,7 +65,7 @@ class LibraryManager(
         librariesList[libraryIndex].information = librariesList[libraryIndex].information.apply(editor)
     }
 
-    private fun saveLibraries(list: List<SketchwareLibraryModel>) = list.forEach { library ->
+    private fun saveLibraries(list: List<LibraryModel>) = list.forEach { library ->
         value = ""
         value += "@${library.name}\n${library.deserialize()}\n\n"
         librariesDelegate.reset()

@@ -1,8 +1,8 @@
 package io.sketchware.manager.collections.managers
 
-import io.sketchware.models.collections.BlockCollectionItem
-import io.sketchware.utils.internal.byteArrayToString
-import io.sketchware.utils.internal.read
+import io.sketchware.model.collection.BlockCollectionItem
+import io.sketchware.util.internal.byteArrayToString
+import io.sketchware.util.internal.read
 import java.io.File
 
 class BlockCollectionManager(

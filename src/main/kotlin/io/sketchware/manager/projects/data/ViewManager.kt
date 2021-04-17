@@ -1,16 +1,16 @@
 package io.sketchware.manager.projects.data
 
-import io.sketchware.annotations.ExperimentalSWManagerAPI
-import io.sketchware.exceptions.ViewAlreadyExistsException
-import io.sketchware.exceptions.ViewNotFoundException
-import io.sketchware.interfaces.Editor
-import io.sketchware.interfaces.listeners.ActionFinishListener
-import io.sketchware.models.view.WidgetRoot
-import io.sketchware.utils.SketchwareEncryptor.decrypt
-import io.sketchware.utils.SketchwareEncryptor.encrypt
-import io.sketchware.utils.ViewBuilder
-import io.sketchware.utils.internal.*
-import io.sketchware.utils.internal.TagFormatter.toSaveableValue
+import io.sketchware.annotation.ExperimentalSWManagerAPI
+import io.sketchware.exception.ViewAlreadyExistsException
+import io.sketchware.exception.ViewNotFoundException
+import io.sketchware.`interface`.Editor
+import io.sketchware.`interface`.listener.ActionFinishListener
+import io.sketchware.model.view.WidgetRoot
+import io.sketchware.util.SketchwareEncryptor.decrypt
+import io.sketchware.util.SketchwareEncryptor.encrypt
+import io.sketchware.util.ViewBuilder
+import io.sketchware.util.internal.*
+import io.sketchware.util.internal.BeansParser.toSaveableValue
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -37,7 +37,7 @@ class ViewManager(
      */
     fun getView(viewName: String, widgetName: String? = null): List<WidgetRoot>? =
         value.getByTag("$viewName.xml".plus(widgetName?.let { "_$widgetName" } ?: ""))
-            ?.let(TagFormatter::parseAsArray)
+            ?.let(BeansParser::parseBeans)
 
     /**
      * Edits view with name [viewName] and [widgetName] (if exist).

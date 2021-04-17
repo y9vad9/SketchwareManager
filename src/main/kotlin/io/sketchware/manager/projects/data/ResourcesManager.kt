@@ -1,12 +1,12 @@
 package io.sketchware.manager.projects.data
 
-import io.sketchware.interfaces.Editor
-import io.sketchware.interfaces.listeners.ActionFinishListener
-import io.sketchware.models.projects.ProjectResource
-import io.sketchware.utils.SketchwareEncryptor.decrypt
-import io.sketchware.utils.delegates.lazyInit
-import io.sketchware.utils.internal.*
-import io.sketchware.utils.internal.TagFormatter.toSaveableValue
+import io.sketchware.`interface`.Editor
+import io.sketchware.`interface`.listener.ActionFinishListener
+import io.sketchware.model.project.ProjectResource
+import io.sketchware.util.SketchwareEncryptor.decrypt
+import io.sketchware.util.delegate.lazyResetable
+import io.sketchware.util.internal.*
+import io.sketchware.util.internal.BeansParser.toSaveableValue
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.MainCoroutineDispatcher
@@ -24,8 +24,8 @@ class ResourcesManager(
             ResourcesManager(file.readOrNull()?.decrypt()?.byteArrayToString() ?: "", file)
     }
 
-    private val imagesDelegate = lazyInit {
-        TagFormatter.getListByTag<ProjectResource>("images", value) ?: emptyList()
+    private val imagesDelegate = lazyResetable {
+        BeansParser.getListByTag<ProjectResource>("images", value) ?: emptyList()
     }
 
     /**
@@ -33,8 +33,8 @@ class ResourcesManager(
      */
     val images by imagesDelegate
 
-    private val fontsDelegate = lazyInit {
-        TagFormatter.getListByTag<ProjectResource>("fonts", value) ?: emptyList()
+    private val fontsDelegate = lazyResetable {
+        BeansParser.getListByTag<ProjectResource>("fonts", value) ?: emptyList()
     }
 
     /**
@@ -42,8 +42,8 @@ class ResourcesManager(
      */
     val fonts by fontsDelegate
 
-    private val soundsDelegate = lazyInit {
-        TagFormatter.getListByTag<ProjectResource>("sounds", value) ?: emptyList()
+    private val soundsDelegate = lazyResetable {
+        BeansParser.getListByTag<ProjectResource>("sounds", value) ?: emptyList()
     }
 
     /**
@@ -57,7 +57,7 @@ class ResourcesManager(
      * @param resource - information about image.
      */
     fun addImage(resource: ProjectResource) {
-        value = TagFormatter.addTag("images", images.toMutableList().apply {
+        value = BeansParser.addTag("images", images.toMutableList().apply {
             add(resource)
         }.toSaveableValue(), value)
         imagesDelegate.reset()
@@ -69,7 +69,7 @@ class ResourcesManager(
      * @param resource - information about font.
      */
     fun addFont(resource: ProjectResource) {
-        value = TagFormatter.addTag("fonts", fonts.toMutableList().apply {
+        value = BeansParser.addTag("fonts", fonts.toMutableList().apply {
             add(resource)
         }.toSaveableValue(), value)
         fontsDelegate.reset()
@@ -81,7 +81,7 @@ class ResourcesManager(
      * @param resource - information about sound.
      */
     fun addSound(resource: ProjectResource) {
-        value = TagFormatter.addTag("sounds", sounds.toMutableList().apply {
+        value = BeansParser.addTag("sounds", sounds.toMutableList().apply {
             add(resource)
         }.toSaveableValue(), value)
         soundsDelegate.reset()
@@ -94,7 +94,7 @@ class ResourcesManager(
      * @param name - name of resource (example: ic_arrow_back).
      */
     fun removeImage(name: String) {
-        value = TagFormatter.addTag("images", images.toMutableList().apply {
+        value = BeansParser.addTag("images", images.toMutableList().apply {
             removeIf { it.name == name }
         }.toSaveableValue(), value)
         imagesDelegate.reset()
@@ -107,7 +107,7 @@ class ResourcesManager(
      * @param name - name of resource (example: google_sans).
      */
     fun removeFont(name: String) {
-        value = TagFormatter.addTag("fonts", images.toMutableList().apply {
+        value = BeansParser.addTag("fonts", images.toMutableList().apply {
             removeIf { it.name == name }
         }.toSaveableValue(), value)
         fontsDelegate.reset()
@@ -120,7 +120,7 @@ class ResourcesManager(
      * @param name - name of resource (example: some_ringtone).
      */
     fun removeSound(name: String) {
-        value = TagFormatter.addTag("sounds", images.toMutableList().apply {
+        value = BeansParser.addTag("sounds", images.toMutableList().apply {
             removeIf { it.name == name }
         }.toSaveableValue(), value)
         soundsDelegate.reset()

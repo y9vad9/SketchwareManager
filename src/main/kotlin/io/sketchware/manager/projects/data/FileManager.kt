@@ -1,14 +1,14 @@
 package io.sketchware.manager.projects.data
 
-import io.sketchware.annotations.ExperimentalSWManagerAPI
-import io.sketchware.interfaces.Editor
-import io.sketchware.interfaces.listeners.ActionFinishListener
-import io.sketchware.models.projects.SketchwareDataFileModel
-import io.sketchware.utils.SketchwareEncryptor.decrypt
-import io.sketchware.utils.SketchwareEncryptor.encrypt
-import io.sketchware.utils.delegates.lazyInit
-import io.sketchware.utils.internal.*
-import io.sketchware.utils.internal.TagFormatter.toSaveableValue
+import io.sketchware.annotation.ExperimentalSWManagerAPI
+import io.sketchware.`interface`.Editor
+import io.sketchware.`interface`.listener.ActionFinishListener
+import io.sketchware.model.project.FileDataModel
+import io.sketchware.util.SketchwareEncryptor.decrypt
+import io.sketchware.util.SketchwareEncryptor.encrypt
+import io.sketchware.util.delegate.lazyResetable
+import io.sketchware.util.internal.*
+import io.sketchware.util.internal.BeansParser.toSaveableValue
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -27,23 +27,23 @@ class FileManager(
         )
     }
 
-    private val activitiesDelegate = lazyInit {
-        TagFormatter.getListByTag<SketchwareDataFileModel>("activity", value) ?: emptyList()
+    private val activitiesDelegate = lazyResetable {
+        BeansParser.getListByTag<FileDataModel>("activity", value) ?: emptyList()
     }
 
     /**
      * Gets activities in current scope.
-     * @return list of [SketchwareDataFileModel] with data about activity.
+     * @return list of [FileDataModel] with data about activity.
      */
     val activities by activitiesDelegate
 
-    private val customViewsDelegate = lazyInit {
-        TagFormatter.getListByTag<SketchwareDataFileModel>("customview", value) ?: emptyList()
+    private val customViewsDelegate = lazyResetable {
+        BeansParser.getListByTag<FileDataModel>("customview", value) ?: emptyList()
     }
 
     /**
      * Gets custom views in specific scope.
-     * @return list of [SketchwareDataFileModel] with data about activity.
+     * @return list of [FileDataModel] with data about activity.
      */
     val customViews by customViewsDelegate
 
@@ -51,8 +51,8 @@ class FileManager(
      * Adds activity to current scope.
      * @param model - new activity to add.
      */
-    fun addActivity(model: SketchwareDataFileModel) {
-        value = TagFormatter.addTag("activity", activities.toMutableList().apply {
+    fun addActivity(model: FileDataModel) {
+        value = BeansParser.addTag("activity", activities.toMutableList().apply {
             add(model)
         }.joinToString("\n") { it.deserialize() }, value)
         activitiesDelegate.reset()
@@ -62,8 +62,8 @@ class FileManager(
      * Adds custom view to current scope.
      * @param model - new custom view to add.
      */
-    fun addCustomView(model: SketchwareDataFileModel) {
-        value = TagFormatter.addTag("customview", customViews.toMutableList().apply {
+    fun addCustomView(model: FileDataModel) {
+        value = BeansParser.addTag("customview", customViews.toMutableList().apply {
             add(model)
         }.joinToString("\n") { it.deserialize() }, value)
         customViewsDelegate.reset()
@@ -75,7 +75,7 @@ class FileManager(
      */
     @ExperimentalSWManagerAPI
     fun removeActivity(fileName: String) {
-        value = TagFormatter.addTag("activity", activities.toMutableList().apply {
+        value = BeansParser.addTag("activity", activities.toMutableList().apply {
             removeIf { it.fileName == fileName }
         }.toSaveableValue(), value)
         activitiesDelegate.reset()
@@ -87,7 +87,7 @@ class FileManager(
      */
     @ExperimentalSWManagerAPI
     fun removeCustomView(fileName: String) {
-        value = TagFormatter.addTag("customview", customViews.toMutableList().apply {
+        value = BeansParser.addTag("customview", customViews.toMutableList().apply {
             removeIf { it.fileName == fileName }
         }.toSaveableValue(), value)
         customViewsDelegate.reset()

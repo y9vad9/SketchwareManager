@@ -1,12 +1,12 @@
 package io.sketchware.manager.collections.managers
 
-import io.sketchware.interfaces.BaseCollectionManager
-import io.sketchware.interfaces.Editor
-import io.sketchware.interfaces.listeners.ActionFinishListener
-import io.sketchware.utils.SketchwareEncryptor.decrypt
-import io.sketchware.utils.SketchwareEncryptor.encrypt
-import io.sketchware.utils.delegates.lazyInit
-import io.sketchware.utils.internal.*
+import io.sketchware.`interface`.BaseCollectionManager
+import io.sketchware.`interface`.Editor
+import io.sketchware.`interface`.listener.ActionFinishListener
+import io.sketchware.util.SketchwareEncryptor.decrypt
+import io.sketchware.util.SketchwareEncryptor.encrypt
+import io.sketchware.util.delegate.lazyResetable
+import io.sketchware.util.internal.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -19,8 +19,8 @@ open class CollectionManager<Item>(
     private val serializer: KSerializer<Item>
 ) : BaseCollectionManager<Item>, Editor, CoroutineScope {
 
-    private val allProperty = lazyInit {
-        TagFormatter.parseAsArray(value, serializer)
+    private val allProperty = lazyResetable {
+        BeansParser.parseBeans(value, serializer)
     }
 
     /**

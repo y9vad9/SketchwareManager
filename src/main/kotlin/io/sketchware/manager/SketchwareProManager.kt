@@ -1,14 +1,14 @@
 package io.sketchware.manager
 
-import io.sketchware.interfaces.Manager
+import io.sketchware.`interface`.Manager
 import io.sketchware.manager.collections.CollectionsManager
-import io.sketchware.manager.customs.SketchwareProCustomManager
-import io.sketchware.manager.projects.SketchwareProProjectsManager
+import io.sketchware.manager.customs.SWProCustomManager
+import io.sketchware.manager.projects.SWProProjectsManager
 import java.io.File
 
 class SketchwareProManager(
     sketchwareFolder: File
-) : Manager<SketchwareProProjectsManager> {
+) : Manager<SWProProjectsManager> {
     /**
      * @param folderPath - path to sketchware folder.
      */
@@ -18,7 +18,7 @@ class SketchwareProManager(
      * Sketchware projects manager for this instance.
      * Responsible for sketchware projects.
      */
-    override val projectsManager = SketchwareProProjectsManager(sketchwareFolder)
+    override val projectsManager = SWProProjectsManager(sketchwareFolder)
 
     /**
      * Sketchware collections manager.
@@ -29,7 +29,7 @@ class SketchwareProManager(
     /**
      * Sketchware Pro Customs Manager. Responsible for sketchware pro customs (components, blocks, etc)
      */
-    val customsManager = SketchwareProCustomManager(
+    val customsManager = SWProCustomManager(
         File(sketchwareFolder, "data/system"),
         File(sketchwareFolder, "data/settings.json"), File(sketchwareFolder, "resources/block/Menu Block")
     )

@@ -1,1 +1,1 @@
-rootProject.name = "SketchwareManagerLib"
+rootProject.name = "SketchwareManager"

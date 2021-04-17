@@ -1,6 +1,6 @@
 package io.sketchware.manager.projects.data
 
-import io.sketchware.models.projects.ProjectResource
+import io.sketchware.model.project.ProjectResource
 import org.junit.jupiter.api.Assertions.assertNotNull
 import org.junit.jupiter.api.Assertions.assertNull
 import org.junit.jupiter.api.Test

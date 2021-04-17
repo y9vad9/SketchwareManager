@@ -1,8 +1,8 @@
 package io.sketchware.manager
 
-import io.sketchware.interfaces.Manager
+import io.sketchware.`interface`.Manager
 import io.sketchware.manager.collections.CollectionsManager
-import io.sketchware.manager.projects.SketchwareProjectsManager
+import io.sketchware.manager.projects.SWProjectsManager
 import java.io.File
 
 /**
@@ -21,7 +21,7 @@ import java.io.File
  * Basic class for access with sketchware.
  * @param sketchwareFolder - basic sketchware folder (example: /storage/emulated/0/.sketchware).
  */
-open class SketchwareManager(private val sketchwareFolder: File) : Manager<SketchwareProjectsManager> {
+open class SketchwareManager(private val sketchwareFolder: File) : Manager<SWProjectsManager> {
     /**
      * @param folderPath - path to sketchware folder.
      */
@@ -31,7 +31,7 @@ open class SketchwareManager(private val sketchwareFolder: File) : Manager<Sketc
      * Sketchware projects manager for this instance.
      * Responsible for sketchware projects.
      */
-    override val projectsManager = SketchwareProjectsManager(sketchwareFolder)
+    override val projectsManager = SWProjectsManager(sketchwareFolder)
 
     /**
      * The manager responsible for the Sketchware collections.

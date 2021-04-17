@@ -1,6 +1,6 @@
 package io.sketchware.manager.collections.managers
 
-import io.sketchware.models.collections.BlockCollectionItem
+import io.sketchware.model.collection.BlockCollectionItem
 import org.junit.jupiter.api.Assertions.assertNotNull
 import org.junit.jupiter.api.Assertions.assertNull
 import org.junit.jupiter.api.Test

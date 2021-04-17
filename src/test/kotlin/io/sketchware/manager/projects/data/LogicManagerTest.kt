@@ -1,10 +1,10 @@
 package io.sketchware.manager.projects.data
 
-import io.sketchware.annotations.ExperimentalSWManagerAPI
-import io.sketchware.models.projects.BlockModel
-import io.sketchware.models.projects.ComponentModel
-import io.sketchware.models.projects.SketchwareEventModel
-import io.sketchware.models.projects.VariableModel
+import io.sketchware.annotation.ExperimentalSWManagerAPI
+import io.sketchware.model.project.BlockModel
+import io.sketchware.model.project.ComponentModel
+import io.sketchware.model.project.EventModel
+import io.sketchware.model.project.VariableModel
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
@@ -104,7 +104,7 @@ internal class LogicManagerTest {
     @Test
     fun addEvent() {
         manager.addEvent(
-            testActivity, SketchwareEventModel(
+            testActivity, EventModel(
                 "testName", 0, "targetTest", 0
             ), listOf()
         )

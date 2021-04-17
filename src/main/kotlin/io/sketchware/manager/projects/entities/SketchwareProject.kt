@@ -1,13 +1,12 @@
 package io.sketchware.manager.projects.entities
 
-import io.sketchware.exceptions.ValueRequireException
-import io.sketchware.manager.exporters.ProjectExporter
+import io.sketchware.exception.ValueRequireException
 import io.sketchware.manager.projects.data.*
-import io.sketchware.models.projects.ProjectConfigModel
-import io.sketchware.models.projects.ProjectFilesLocations
-import io.sketchware.utils.SketchwareEncryptor.decrypt
-import io.sketchware.utils.SketchwareEncryptor.encrypt
-import io.sketchware.utils.internal.*
+import io.sketchware.model.project.ProjectConfigModel
+import io.sketchware.model.project.ProjectFilesLocations
+import io.sketchware.util.SketchwareEncryptor.decrypt
+import io.sketchware.util.SketchwareEncryptor.encrypt
+import io.sketchware.util.internal.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.CoroutineStart
 import kotlinx.coroutines.Dispatchers
@@ -67,12 +66,6 @@ open class SketchwareProject(
         resources.iconsFolder.copy(newLocations.resources.iconsFolder)
         resources.imagesFolder.copy(newLocations.resources.iconsFolder)
     }
-
-    /**
-     * Simple project exporter.
-     * Will not export custom settings or anything other than project files.
-     */
-    open val simpleExporter by lazy { ProjectExporter(locations) }
 
     /**
      * Returns config with data about sketchware project.

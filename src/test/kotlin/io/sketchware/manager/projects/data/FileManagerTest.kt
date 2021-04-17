@@ -1,7 +1,7 @@
 package io.sketchware.manager.projects.data
 
-import io.sketchware.annotations.ExperimentalSWManagerAPI
-import io.sketchware.models.projects.*
+import io.sketchware.annotation.ExperimentalSWManagerAPI
+import io.sketchware.model.project.*
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Test
 import java.io.File
@@ -35,7 +35,7 @@ internal class FileManagerTest {
     @Test
     fun addActivity() {
         fileManager.addActivity(
-            SketchwareDataFileModel(
+            FileDataModel(
                 "file_name_test", FileType.Activity, KeyboardSetting.Unspecified, 0,
                 Orientation.Both, ActivityTheme.NO_ACTIONBAR
             )
@@ -46,7 +46,7 @@ internal class FileManagerTest {
     @Test
     fun addCustomView() {
         fileManager.addCustomView(
-            SketchwareDataFileModel(
+            FileDataModel(
                 "file_name_test2", FileType.CustomView, KeyboardSetting.Unspecified, 0,
                 Orientation.Both, ActivityTheme.NO_ACTIONBAR
             )
