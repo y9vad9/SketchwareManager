@@ -35,5 +35,13 @@ class FileDataModel(
     @Contextual
     val theme: ActivityTheme
 ) {
-    val activityName get() = "${fileName.snakeToUpperCamelCase()}Activity"
+    /**
+     * @return converted [fileName] to java name (foo_bar_foobar -> FooBarFoobarActivity).
+     */
+    val javaName get() = "${fileName.snakeToUpperCamelCase()}Activity"
+
+    /**
+     * @return converted [fileName] to xml name (foo_bar_foobar -> foo_bar_foobar.xml).
+     */
+    val xmlName get() = "$fileName.xml"
 }
