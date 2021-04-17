@@ -6,7 +6,7 @@ import kotlinx.serialization.descriptors.buildClassSerialDescriptor
 import kotlinx.serialization.encoding.Decoder
 import kotlinx.serialization.encoding.Encoder
 
-object YesNoSerializer : KSerializer<Boolean> {
+internal object YesNoSerializer : KSerializer<Boolean> {
     override fun deserialize(decoder: Decoder) = when (decoder.decodeString().toLowerCase()) {
         "y" -> true
         "n" -> false
