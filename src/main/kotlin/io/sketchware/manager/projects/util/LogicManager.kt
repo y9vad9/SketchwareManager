@@ -1,9 +1,9 @@
 package io.sketchware.manager.projects.util
 
-import io.sketchware.annotation.ExperimentalSWManagerAPI
-import io.sketchware.exception.*
 import io.sketchware.`interface`.Editor
 import io.sketchware.`interface`.listener.ActionFinishListener
+import io.sketchware.annotation.ExperimentalSWManagerAPI
+import io.sketchware.exception.*
 import io.sketchware.model.project.*
 import io.sketchware.model.project.logic.*
 import io.sketchware.util.SketchwareEncryptor

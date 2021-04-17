@@ -50,9 +50,9 @@ data class MenuSpecArgument(override var text: String) : SpecArgument(text) {
                 it.serialName == this
             } ?: throw InvalidMenuArgumentTypeException(this)
         }
-    set(value) {
-        menuArgumentTypeName = value.serialName
-    }
+        set(value) {
+            menuArgumentTypeName = value.serialName
+        }
 
     /**
      * Returns name of menu's argument type.
@@ -81,7 +81,7 @@ class SpecFieldBuilder internal constructor(internal val list: MutableList<SpecF
      * @throws IllegalArgumentException if [text] is not valid (string should contains only words or space).
      */
     @Throws(IllegalArgumentException::class)
-    fun text(text: String) = if(" " in text.validateSpaceable())
+    fun text(text: String) = if (" " in text.validateSpaceable())
         list.addAll(text.split(" ")
             .map { SpecField(it) })
     else list.add(SpecField(text))
@@ -146,7 +146,7 @@ class SpecFieldBuilder internal constructor(internal val list: MutableList<SpecF
      */
     @Throws(IllegalArgumentException::class)
     fun append(field: SpecField) {
-        when(field) {
+        when (field) {
             is SpecArgument -> field.argumentName.validate()
             else -> field.text.validate()
         }
@@ -159,7 +159,7 @@ class SpecFieldBuilder internal constructor(internal val list: MutableList<SpecF
      */
     @Throws(IllegalArgumentException::class)
     private fun String.validateSpaceable(): String =
-        if(Regex("[a-zA-Z| ]*").matches(this))
+        if (Regex("[a-zA-Z| ]*").matches(this))
             this
         else throw IllegalArgumentException(
             "Field should contain only from english letters or space, but input is '$this'."
@@ -171,7 +171,7 @@ class SpecFieldBuilder internal constructor(internal val list: MutableList<SpecF
      */
     @Throws(IllegalArgumentException::class)
     private fun String.validate(): String =
-        if(Regex("[a-zA-Z]*").matches(this))
+        if (Regex("[a-zA-Z]*").matches(this))
             this
         else throw IllegalArgumentException(
             "Field should contain only from english letters, but input is '$this'."

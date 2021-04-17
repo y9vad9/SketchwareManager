@@ -4,8 +4,8 @@ import io.sketchware.`interface`.CustomMenusManager
 import io.sketchware.`interface`.Editor
 import io.sketchware.`interface`.listener.ActionFinishListener
 import io.sketchware.model.custom.BlockInputMenu
-import io.sketchware.model.custom.SWProMenu
 import io.sketchware.model.custom.MenuData
+import io.sketchware.model.custom.SWProMenu
 import io.sketchware.util.delegate.lazyResetable
 import io.sketchware.util.internal.*
 import kotlinx.coroutines.CoroutineScope

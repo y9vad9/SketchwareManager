@@ -1,10 +1,10 @@
 package io.sketchware.manager.projects.util
 
+import io.sketchware.`interface`.Editor
+import io.sketchware.`interface`.listener.ActionFinishListener
 import io.sketchware.annotation.ExperimentalSWManagerAPI
 import io.sketchware.exception.ViewAlreadyExistsException
 import io.sketchware.exception.ViewNotFoundException
-import io.sketchware.`interface`.Editor
-import io.sketchware.`interface`.listener.ActionFinishListener
 import io.sketchware.model.project.view.WidgetRoot
 import io.sketchware.util.SketchwareEncryptor.decrypt
 import io.sketchware.util.SketchwareEncryptor.encrypt
