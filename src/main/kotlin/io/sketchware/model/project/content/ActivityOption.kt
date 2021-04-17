@@ -1,7 +1,7 @@
 package io.sketchware.model.project.content
 
 import io.sketchware.`interface`.IdInterface
-import io.sketchware.util.SWConst
+import io.sketchware.model.SWConst
 import kotlinx.serialization.Serializable
 
 @Serializable

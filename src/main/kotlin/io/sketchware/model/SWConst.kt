@@ -1,4 +1,4 @@
-package io.sketchware.util
+package io.sketchware.model
 
 /**
  * Contains Sketchware Activity Info constants.
@@ -44,6 +44,11 @@ internal object SWConst {
          * Widget type: LinearLayout (V/H)
          */
         const val LINEAR_LAYOUT = 0
+
+        /**
+         * Widget type: View (Unknown)
+         */
+        const val VIEW = 1
 
         /**
          * Widget type: HorizontalScrollView
@@ -125,6 +130,30 @@ internal object SWConst {
          */
         const val MAP_VIEW = 18
 
+    }
+
+    object ComponentType {
+        const val INTENT = 1
+        const val SHARED_PREFERENCES = 2
+        const val CALENDAR = 3
+        const val VIBRATOR = 4
+        const val TIMER = 5
+        const val DIALOG = 7
+        const val MEDIA_PLAYER = 8
+        const val SOUND_POOL = 9
+        const val ANIMATOR = 10
+        const val GYROSCOPE = 11
+        const val CAMERA = 15
+        const val PICKER = 16
+        const val FIREBASE_DATABASE = 6
+        const val FIREBASE_AUTH = 12
+        const val FIREBASE_STORAGE = 14
+        const val INTERSTITIAL_AD = 13
+        const val TEXT_TO_SPEECH = 18
+        const val SPEECH_TO_TEXT = 19
+        const val REQUEST_NETWORK = 17
+        const val BLUETOOTH_CONNECT = 20
+        const val LOCATION_MANAGER = 21
     }
 
 }

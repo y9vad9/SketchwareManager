@@ -44,9 +44,9 @@ data class MenuSpecArgument(override var text: String) : SpecArgument(text) {
      * @throws InvalidMenuArgumentTypeException if argument is custom
      * or not implemented yet.
      */
-    var menuArgumentType: MenuArgumentType
+    var menuArgumentType: ComponentType
         get() = with(menuArgumentTypeName) {
-            return enumValues<MenuArgumentType>().firstOrNull {
+            return enumValues<ComponentType>().firstOrNull {
                 it.serialName == this
             } ?: throw InvalidMenuArgumentTypeException(this)
         }
@@ -123,7 +123,7 @@ class SpecFieldBuilder internal constructor(internal val list: MutableList<SpecF
      * @throws IllegalArgumentException if [text] is not valid (string should contains only english letters).
      */
     @Throws(IllegalArgumentException::class)
-    fun menu(variableName: String, type: MenuArgumentType) = variableName.validate().let {
+    fun menu(variableName: String, type: ComponentType) = variableName.validate().let {
         list.add(MenuSpecArgument("%m.${type.serialName}.$it"))
     }
 
