@@ -1,9 +1,9 @@
 package io.sketchware.manager
 
 import io.sketchware.`interface`.Manager
-import io.sketchware.manager.collections.CollectionsManager
-import io.sketchware.manager.customs.SWStudioCustomManager
-import io.sketchware.manager.projects.SketchwareStudioProjectsManager
+import io.sketchware.manager.collection.CollectionsManager
+import io.sketchware.manager.custom.SWStudioCustomManager
+import io.sketchware.manager.project.SketchwareStudioProjectsManager
 import java.io.File
 
 class SketchwareStudioManager(

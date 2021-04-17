@@ -1,6 +1,6 @@
 package io.sketchware.`interface`
 
-import io.sketchware.manager.collections.CollectionsManager
+import io.sketchware.manager.collection.CollectionsManager
 
 
 interface Manager<ProjectsManager> {

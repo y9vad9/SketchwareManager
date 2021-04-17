@@ -1,6 +1,6 @@
 package io.sketchware.util.internal
 
-import io.sketchware.manager.projects.entities.SketchwareProject
+import io.sketchware.manager.project.entity.SketchwareProject
 import io.sketchware.model.project.ProjectFilesLocations
 import io.sketchware.model.project.ProjectResourcesFiles
 import java.io.File
