@@ -6,7 +6,7 @@ import kotlinx.serialization.descriptors.buildClassSerialDescriptor
 import kotlinx.serialization.encoding.Decoder
 import kotlinx.serialization.encoding.Encoder
 
-class StringBooleanSerializer(
+internal class StringBooleanSerializer(
     override val descriptor: SerialDescriptor = buildClassSerialDescriptor("stringToBoolean")
 ) : KSerializer<Boolean> {
     override fun deserialize(decoder: Decoder): Boolean {

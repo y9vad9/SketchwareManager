@@ -1,10 +1,10 @@
 package io.sketchware.util.internal
 
-import io.sketchware.model.project.ActivityTheme
-import io.sketchware.model.project.FileType
-import io.sketchware.model.project.KeyboardSetting
-import io.sketchware.model.project.Orientation
-import io.sketchware.model.view.LayoutOrientation
+import io.sketchware.model.project.content.ActivityTheme
+import io.sketchware.model.project.content.FileType
+import io.sketchware.model.project.content.KeyboardSetting
+import io.sketchware.model.project.content.Orientation
+import io.sketchware.model.project.view.LayoutOrientation
 import io.sketchware.util.serializer.idSerializer
 import kotlinx.serialization.KSerializer
 import kotlinx.serialization.decodeFromString

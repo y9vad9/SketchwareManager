@@ -1,18 +1,18 @@
 package io.sketchware.util.serializer
 
-import io.sketchware.model.project.ActivityOption
-import io.sketchware.util.SWConst.OPTION_ACTIVITY_DRAWER
-import io.sketchware.util.SWConst.OPTION_ACTIVITY_FAB
-import io.sketchware.util.SWConst.OPTION_ACTIVITY_FULL_SCREEN
-import io.sketchware.util.SWConst.OPTION_ACTIVITY_MASK
-import io.sketchware.util.SWConst.OPTION_ACTIVITY_TOOLBAR
+import io.sketchware.model.project.content.ActivityOption
+import io.sketchware.util.SWConst.ActivityOption.OPTION_ACTIVITY_DRAWER
+import io.sketchware.util.SWConst.ActivityOption.OPTION_ACTIVITY_FAB
+import io.sketchware.util.SWConst.ActivityOption.OPTION_ACTIVITY_FULL_SCREEN
+import io.sketchware.util.SWConst.ActivityOption.OPTION_ACTIVITY_MASK
+import io.sketchware.util.SWConst.ActivityOption.OPTION_ACTIVITY_TOOLBAR
 import kotlinx.serialization.KSerializer
 import kotlinx.serialization.descriptors.SerialDescriptor
 import kotlinx.serialization.descriptors.buildClassSerialDescriptor
 import kotlinx.serialization.encoding.Decoder
 import kotlinx.serialization.encoding.Encoder
 
-class ActivityOptionSerializer public constructor() : KSerializer<List<ActivityOption>> {
+internal class ActivityOptionSerializer : KSerializer<List<ActivityOption>> {
 
     override val descriptor: SerialDescriptor = buildClassSerialDescriptor("ActivityOptionSerializer")
 
@@ -25,7 +25,7 @@ class ActivityOptionSerializer public constructor() : KSerializer<List<ActivityO
         if ((value and OPTION_ACTIVITY_MASK) and OPTION_ACTIVITY_FAB == OPTION_ACTIVITY_FAB)
             add(ActivityOption.FAB)
         if ((value and OPTION_ACTIVITY_MASK) and OPTION_ACTIVITY_FULL_SCREEN == OPTION_ACTIVITY_FULL_SCREEN)
-            add(ActivityOption.FULLSCREEN)
+            add(ActivityOption.FULL_SCREEN)
     }.toList()
 
     override fun serialize(encoder: Encoder, value: List<ActivityOption>) {

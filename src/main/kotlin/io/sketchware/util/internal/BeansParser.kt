@@ -4,7 +4,7 @@ import kotlinx.serialization.KSerializer
 import kotlinx.serialization.serializer
 
 internal object BeansParser {
-    private val regex = Regex("\\{.*?\\}\$(?:\\{|\\s|\\Z)", RegexOption.MULTILINE)
+    private val regex = Regex("\\{.*?}\$(?:\\{|\\s|\\Z)", RegexOption.MULTILINE)
 
     inline fun <reified T> parseBeans(string: String) =
         parseBeans(string, serializer<T>())

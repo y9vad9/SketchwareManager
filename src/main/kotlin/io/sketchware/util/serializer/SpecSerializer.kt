@@ -1,13 +1,13 @@
 package io.sketchware.util.serializer
 
-import io.sketchware.model.project.*
+import io.sketchware.model.project.logic.*
 import kotlinx.serialization.KSerializer
 import kotlinx.serialization.descriptors.SerialDescriptor
 import kotlinx.serialization.descriptors.buildClassSerialDescriptor
 import kotlinx.serialization.encoding.Decoder
 import kotlinx.serialization.encoding.Encoder
 
-object SpecSerializer : KSerializer<List<SpecField>> {
+internal object SpecSerializer : KSerializer<List<SpecField>> {
 
     override val descriptor: SerialDescriptor = buildClassSerialDescriptor("SpecSerializer")
 

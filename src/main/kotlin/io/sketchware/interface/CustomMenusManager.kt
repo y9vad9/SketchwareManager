@@ -1,7 +1,7 @@
 package io.sketchware.`interface`
 
 import io.sketchware.`interface`.listener.ActionFinishListener
-import io.sketchware.model.custom.CustomMenu
+import io.sketchware.model.custom.SWProMenu
 import kotlinx.coroutines.Job
 import java.io.File
 
@@ -10,13 +10,13 @@ interface CustomMenusManager : FileExportable, Editor {
     /**
      * @return list of custom menus.
      */
-    val menus: List<CustomMenu>
+    val menus: List<SWProMenu>
 
     /**
      * Adds custom menu.
      * @param menu menu to add
      */
-    fun addCustomMenu(menu: CustomMenu)
+    fun addCustomMenu(menu: SWProMenu)
 
     /**
      * Removes custom menu by id.
@@ -27,16 +27,16 @@ interface CustomMenusManager : FileExportable, Editor {
     /**
      * Edits custom menu.
      * @param id menu string id.
-     * @param builder Lambda with [CustomMenu] in context to edit already exists menu data.
+     * @param builder Lambda with [SWProMenu] in context to edit already exists menu data.
      */
-    fun editMenu(id: String, builder: CustomMenu.() -> Unit)
+    fun editMenu(id: String, builder: SWProMenu.() -> Unit)
 
     /**
      * Edits custom menu.
      * @param id menu string id.
      * @param menu new menu data.
      */
-    fun editMenu(id: String, menu: CustomMenu)
+    fun editMenu(id: String, menu: SWProMenu)
 
     /**
      * Imports custom menus from the [file].

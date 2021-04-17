@@ -4,7 +4,7 @@ import io.sketchware.`interface`.CustomMenusManager
 import io.sketchware.`interface`.Editor
 import io.sketchware.`interface`.listener.ActionFinishListener
 import io.sketchware.model.custom.BlockInputMenu
-import io.sketchware.model.custom.CustomMenu
+import io.sketchware.model.custom.SWProMenu
 import io.sketchware.model.custom.MenuData
 import io.sketchware.util.delegate.lazyResetable
 import io.sketchware.util.internal.*
@@ -36,7 +36,7 @@ class SWProCustomMenusManager(
             val menu = menusData[key]!!
             val values = menu.map { it.value.split("+") }.flatten()
 
-            return@map CustomMenu(
+            return@map SWProMenu(
                 menus.map(BlockInputMenu::id).first(key::equals),
                 menus.find { key == it.id }?.name
                     ?: error("Unexpected error while getting custom menu. Name is unspecified."),
@@ -55,7 +55,7 @@ class SWProCustomMenusManager(
      * Adds custom menu.
      * @param menu menu to add
      */
-    override fun addCustomMenu(menu: CustomMenu) = saveCustomMenus(
+    override fun addCustomMenu(menu: SWProMenu) = saveCustomMenus(
         menus.toMutableList().also { it.add(menu) }
     )
 
@@ -72,9 +72,9 @@ class SWProCustomMenusManager(
     /**
      * Edits custom menu.
      * @param id menu string id.
-     * @param builder Lambda with [CustomMenu] in context to edit already exists menu data.
+     * @param builder Lambda with [SWProMenu] in context to edit already exists menu data.
      */
-    override fun editMenu(id: String, builder: CustomMenu.() -> Unit) = editMenu(
+    override fun editMenu(id: String, builder: SWProMenu.() -> Unit) = editMenu(
         id, menus.toMutableList().first { it.id == id }.apply(builder)
     )
 
@@ -83,7 +83,7 @@ class SWProCustomMenusManager(
      * @param id menu string id.
      * @param menu new menu data.
      */
-    override fun editMenu(id: String, menu: CustomMenu) = saveCustomMenus(
+    override fun editMenu(id: String, menu: SWProMenu) = saveCustomMenus(
         menus.toMutableList().apply {
             val oldMenu = first { it.id == id }
             set(indexOf(oldMenu), menu)
@@ -97,7 +97,7 @@ class SWProCustomMenusManager(
      * If provider isn't specified, prime menu will be removed.
      */
     override suspend fun import(file: File, conflictProvider: ((conflictId: String) -> String)?) {
-        val newMenus = file.read().byteArrayToString().serialize<List<CustomMenu>>()
+        val newMenus = file.read().byteArrayToString().serialize<List<SWProMenu>>()
         val allMenus = menus.toMutableList()
         newMenus.forEach { menu ->
             allMenus.find { it.id == menu.id }?.let {
@@ -144,7 +144,7 @@ class SWProCustomMenusManager(
         callback.onFinish()
     }
 
-    private fun saveCustomMenus(list: List<CustomMenu>) {
+    private fun saveCustomMenus(list: List<SWProMenu>) {
         val blocks = mutableListOf<BlockInputMenu>()
         val dataList = mutableListOf<MutableMap<String, List<MenuData>>>()
         list.forEach {

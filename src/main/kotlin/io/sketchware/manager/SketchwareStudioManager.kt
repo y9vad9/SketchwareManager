@@ -3,7 +3,7 @@ package io.sketchware.manager
 import io.sketchware.`interface`.Manager
 import io.sketchware.manager.collection.CollectionsManager
 import io.sketchware.manager.custom.SWStudioCustomManager
-import io.sketchware.manager.project.SketchwareStudioProjectsManager
+import io.sketchware.manager.projects.SketchwareStudioProjectsManager
 import java.io.File
 
 class SketchwareStudioManager(

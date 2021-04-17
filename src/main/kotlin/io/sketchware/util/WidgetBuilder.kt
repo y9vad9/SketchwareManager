@@ -1,6 +1,6 @@
 package io.sketchware.util
 
-import io.sketchware.model.view.WidgetRoot
+import io.sketchware.model.project.view.WidgetRoot
 
 //TODO Widget Builder
 class WidgetBuilder(

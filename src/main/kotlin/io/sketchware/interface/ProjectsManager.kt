@@ -1,6 +1,6 @@
 package io.sketchware.`interface`
 
-import io.sketchware.manager.project.entity.SketchwareProject
+import io.sketchware.manager.projects.entity.SketchwareProject
 
 interface ProjectsManager<Project : SketchwareProject> {
     /**

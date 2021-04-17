@@ -3,7 +3,7 @@ package io.sketchware.manager.custom.menus
 import io.sketchware.`interface`.CustomMenusManager
 import io.sketchware.`interface`.Editor
 import io.sketchware.`interface`.listener.ActionFinishListener
-import io.sketchware.model.custom.CustomMenu
+import io.sketchware.model.custom.SWProMenu
 import io.sketchware.model.custom.SWStudioMenu
 import io.sketchware.util.delegate.lazyResetable
 import io.sketchware.util.internal.*
@@ -24,7 +24,7 @@ class SWStudioCustomMenusManager(
 
     private val menusProperty = lazyResetable {
         menusValue.serialize<List<SWStudioMenu>>().map {
-            CustomMenu(it.name, it.name, it.title, it.data)
+            SWProMenu(it.name, it.name, it.title, it.data)
         }
     }
 
@@ -37,7 +37,7 @@ class SWStudioCustomMenusManager(
      * Adds custom menu.
      * @param menu menu to add
      */
-    override fun addCustomMenu(menu: CustomMenu) = saveCustomMenus(
+    override fun addCustomMenu(menu: SWProMenu) = saveCustomMenus(
         menus.toMutableList().also { it.add(menu) }
     )
 
@@ -54,9 +54,9 @@ class SWStudioCustomMenusManager(
     /**
      * Edits custom menu.
      * @param id menu string id.
-     * @param builder Lambda with [CustomMenu] in context to edit already exists menu data.
+     * @param builder Lambda with [SWProMenu] in context to edit already exists menu data.
      */
-    override fun editMenu(id: String, builder: CustomMenu.() -> Unit) = editMenu(
+    override fun editMenu(id: String, builder: SWProMenu.() -> Unit) = editMenu(
         id, menus.toMutableList().first { it.id == id }.apply(builder)
     )
 
@@ -65,7 +65,7 @@ class SWStudioCustomMenusManager(
      * @param id menu string id.
      * @param menu new menu data.
      */
-    override fun editMenu(id: String, menu: CustomMenu) = saveCustomMenus(
+    override fun editMenu(id: String, menu: SWProMenu) = saveCustomMenus(
         menus.toMutableList().apply {
             val oldMenu = first { it.id == id }
             set(indexOf(oldMenu), menu)
@@ -80,7 +80,7 @@ class SWStudioCustomMenusManager(
      * in [conflictProvider#conflicId],prime menu will be removed.
      */
     override suspend fun import(file: File, conflictProvider: ((conflictId: String) -> String)?) {
-        val newMenus = file.read().byteArrayToString().serialize<List<CustomMenu>>()
+        val newMenus = file.read().byteArrayToString().serialize<List<SWProMenu>>()
         val allMenus = menus.toMutableList()
         newMenus.forEach { menu ->
             allMenus.find { it.id == menu.id }?.let {
@@ -129,7 +129,7 @@ class SWStudioCustomMenusManager(
         callback.onFinish()
     }
 
-    private fun saveCustomMenus(list: List<CustomMenu>) {
+    private fun saveCustomMenus(list: List<SWProMenu>) {
         menusValue = list.map {
             it.toSWStudioMenu()
         }.deserialize()

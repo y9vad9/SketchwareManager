@@ -1,7 +1,7 @@
 package io.sketchware.model.collection
 
 import io.sketchware.`interface`.CollectionItem
-import io.sketchware.model.project.BlockModel
+import io.sketchware.model.project.logic.BlockModel
 import io.sketchware.util.serializer.ListBlockModelSerializer
 import kotlinx.serialization.Serializable
 
