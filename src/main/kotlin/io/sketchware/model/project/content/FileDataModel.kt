@@ -1,6 +1,7 @@
 package io.sketchware.model.project.content
 
 import io.sketchware.util.internal.snakeToUpperCamelCase
+import io.sketchware.util.serializer.ActivityOptionSerializer
 import kotlinx.serialization.Contextual
 import kotlinx.serialization.Serializable
 
@@ -24,7 +25,8 @@ class FileDataModel(
      * Contains data about enabled components in activity:
      * For example: is drawer enabled, is FAB enabled, etc.
      */
-    val options: Int,
+    @Serializable(with = ActivityOptionSerializer::class)
+    val options: List<ActivityOption>,
     /**
      * Allowed activity orientation setting.
      */

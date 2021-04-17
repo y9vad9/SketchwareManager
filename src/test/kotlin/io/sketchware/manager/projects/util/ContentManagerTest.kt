@@ -36,18 +36,18 @@ internal class ContentManagerTest {
     fun addActivity() {
         fileManager.addActivity(
             FileDataModel(
-                "file_name_test", FileType.ACTIVITY, KeyboardSetting.UNSPECIFIED, 0,
+                "file_name_test", FileType.ACTIVITY, KeyboardSetting.UNSPECIFIED, listOf(ActivityOption.DRAWER),
                 Orientation.BOTH, ActivityTheme.NO_ACTIONBAR
             )
         )
-        assertNotNull(fileManager.activities.find { it.activityName == "FileNameTestActivity" })
+        assertNotNull(fileManager.activities.find { it.javaName == "FileNameTestActivity" })
     }
 
     @Test
     fun addCustomView() {
         fileManager.addCustomView(
             FileDataModel(
-                "file_name_test2", FileType.CUSTOMVIEW, KeyboardSetting.UNSPECIFIED, 0,
+                "file_name_test2", FileType.CUSTOMVIEW, KeyboardSetting.UNSPECIFIED, listOf(),
                 Orientation.BOTH, ActivityTheme.NO_ACTIONBAR
             )
         )
@@ -58,7 +58,7 @@ internal class ContentManagerTest {
     @Test
     fun removeActivity() {
         fileManager.removeActivity("file_name_test")
-        assertNull(fileManager.activities.find { it.activityName == "FileNameTestActivity" })
+        assertNull(fileManager.activities.find { it.javaName == "FileNameTestActivity" })
     }
 
     @OptIn(ExperimentalSWManagerAPI::class)
