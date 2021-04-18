@@ -4,7 +4,6 @@ import io.sketchware.`interface`.Editor
 import io.sketchware.`interface`.listener.ActionFinishListener
 import io.sketchware.annotation.ExperimentalSWManagerAPI
 import io.sketchware.exception.*
-import io.sketchware.model.project.*
 import io.sketchware.model.project.logic.*
 import io.sketchware.util.SketchwareEncryptor
 import io.sketchware.util.SketchwareEncryptor.decrypt
@@ -115,11 +114,11 @@ class LogicManager(
             .takeIf { it != -1 } ?: throw EventNotFoundException(activity, targetId, eventName)
         events[index] = newEventModel
         saveEvents(activity, events)
-        if(targetId != newEventModel.targetId || eventName != newEventModel.name) {
+        if (targetId != newEventModel.targetId || eventName != newEventModel.name) {
             val eventLogic = getEventLogic(activity, targetId, eventName) ?: return
             removeEventLogic(activity, targetId, eventName)
             saveEventLogic(activity, newEventModel.targetId, newEventModel.name, eventLogic)
-         }
+        }
     }
 
     /**
@@ -161,7 +160,7 @@ class LogicManager(
     fun removeEvent(activity: String, targetId: String, eventName: String): Boolean {
         val events = getEvents(activity)?.toMutableList() ?: return false
         val isRemoved = events.removeIf { it.targetId == targetId && it.name == eventName }
-        if(isRemoved)
+        if (isRemoved)
             saveEvents(activity, events)
         return isRemoved
     }
@@ -218,7 +217,7 @@ class LogicManager(
      */
     @Throws(VariableNameExistException::class)
     fun addListVariable(activity: String, variableName: String, listType: ListType, force: Boolean = false) {
-        if(getListVariable(activity, variableName) != null && !force)
+        if (getListVariable(activity, variableName) != null && !force)
             throw VariableNameExistException(activity, variableName)
         saveListVariables(activity, getListVariables(activity).orEmpty().toMutableList().apply {
             add(ListVariableModel(variableName, listType))
@@ -236,7 +235,7 @@ class LogicManager(
     fun removeListVariable(activity: String, variableName: String): Boolean {
         val listVariables = getListVariables(activity)?.toMutableList() ?: return false
         val isRemoved = listVariables.removeIf { it.name == variableName }
-        if(isRemoved)
+        if (isRemoved)
             saveListVariables(activity, listVariables)
         return isRemoved
     }
@@ -268,7 +267,7 @@ class LogicManager(
     fun removeVariable(activity: String, variableName: String): Boolean {
         val variables = getVariables(activity)?.toMutableList() ?: return false
         val isRemoved = variables.removeIf { it.name == variableName }
-        if(isRemoved)
+        if (isRemoved)
             saveVariables(activity, variables)
         return isRemoved
     }
@@ -319,7 +318,7 @@ class LogicManager(
     fun removeComponent(activity: String, componentId: String): Boolean {
         val components = getComponents(activity)?.toMutableList() ?: return false
         val isRemoved = components.removeIf { it.id == componentId }
-        if(isRemoved)
+        if (isRemoved)
             saveComponents(activity, components)
         return isRemoved
     }
@@ -331,7 +330,7 @@ class LogicManager(
      */
     fun addComponent(activity: String, componentModel: ComponentModel, force: Boolean = false) =
         saveComponents(activity, (getComponents(activity) ?: emptyList()).toMutableList().apply {
-            if(any { it.id == componentModel.id } && !force)
+            if (any { it.id == componentModel.id } && !force)
                 throw ComponentAlreadyExistException(activity, componentModel.id)
             add(componentModel)
         })
@@ -415,7 +414,7 @@ class LogicManager(
         val newMoreblock = moreblock.apply(editor)
         moreblocks[index] = newMoreblock
         saveMoreblocks(activity, moreblocks)
-        if(newMoreblock.name != name) {
+        if (newMoreblock.name != name) {
             val logic = getMoreblockLogic(activity, name) ?: return
             removeEventLogic(activity, name, "moreBlock")
             saveEventLogic(activity, name, "moreBlock", logic)
@@ -432,7 +431,7 @@ class LogicManager(
     fun removeMoreblock(activity: String, name: String): Boolean {
         val moreblocks = getMoreblocks(activity)?.toMutableList() ?: return false
         val isRemoved = moreblocks.removeIf { it.name == name }
-        if(isRemoved) {
+        if (isRemoved) {
             removeBlock("$activity.java_${name}_moreBlock")
             saveMoreblocks(activity, moreblocks)
         }
@@ -449,7 +448,7 @@ class LogicManager(
      */
     fun addMoreblock(activity: String, name: String, spec: List<SpecField>, force: Boolean = false) = saveMoreblocks(
         "$activity.java_func", getMoreblocks(activity).orEmpty().toMutableList().apply {
-            if(any { it.name == name } && !force)
+            if (any { it.name == name } && !force)
                 throw MoreblockAlreadyExistException(activity, name)
             add(MoreblockModel(name, spec))
         }

@@ -3,7 +3,7 @@ package io.sketchware.model.project.view
 import io.sketchware.`interface`.IdInterface
 import io.sketchware.model.SWConst
 
-enum class WidgetType(override val id: Int, val serialName: String? = null): IdInterface {
+enum class WidgetType(override val id: Int, val serialName: String? = null) : IdInterface {
     LINEAR_LAYOUT(SWConst.WidgetType.LINEAR_LAYOUT),
     VIEW(SWConst.WidgetType.VIEW, "view"),
     HORIZONTAL_SCROLL(SWConst.WidgetType.HORIZONTAL_SCROLL),

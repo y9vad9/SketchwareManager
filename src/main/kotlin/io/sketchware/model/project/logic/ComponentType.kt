@@ -3,9 +3,9 @@ package io.sketchware.model.project.logic
 import io.sketchware.`interface`.IdInterface
 import io.sketchware.model.SWConst
 
-enum class ComponentType(override val id: Int, val serialName: String): IdInterface {
-    Intent(SWConst.ComponentType.INTENT,"intent"),
-    SharedPreferences(SWConst.ComponentType.SHARED_PREFERENCES,"sharedpreferences"),
+enum class ComponentType(override val id: Int, val serialName: String) : IdInterface {
+    Intent(SWConst.ComponentType.INTENT, "intent"),
+    SharedPreferences(SWConst.ComponentType.SHARED_PREFERENCES, "sharedpreferences"),
     Calendar(SWConst.ComponentType.CALENDAR, "calendar"),
     Vibrator(SWConst.ComponentType.VIBRATOR, "vibrator"),
     Timer(SWConst.ComponentType.TIMER, "timer"),

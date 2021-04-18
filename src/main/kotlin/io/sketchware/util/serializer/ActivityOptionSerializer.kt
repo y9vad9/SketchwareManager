@@ -1,11 +1,11 @@
 package io.sketchware.util.serializer
 
-import io.sketchware.model.project.content.ActivityOption
 import io.sketchware.model.SWConst.ActivityOption.OPTION_ACTIVITY_DRAWER
 import io.sketchware.model.SWConst.ActivityOption.OPTION_ACTIVITY_FAB
 import io.sketchware.model.SWConst.ActivityOption.OPTION_ACTIVITY_FULL_SCREEN
 import io.sketchware.model.SWConst.ActivityOption.OPTION_ACTIVITY_MASK
 import io.sketchware.model.SWConst.ActivityOption.OPTION_ACTIVITY_TOOLBAR
+import io.sketchware.model.project.content.ActivityOption
 import kotlinx.serialization.KSerializer
 import kotlinx.serialization.descriptors.SerialDescriptor
 import kotlinx.serialization.descriptors.buildClassSerialDescriptor
