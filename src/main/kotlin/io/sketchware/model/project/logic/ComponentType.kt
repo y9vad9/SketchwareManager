@@ -21,7 +21,7 @@ enum class ComponentType(override val id: Int, val serialName: String): IdInterf
     FirebaseStorage(SWConst.ComponentType.FIREBASE_STORAGE, "firebasestorage"),
     AdmobInterstitialAd(SWConst.ComponentType.INTERSTITIAL_AD, "admobInterstitialAd"),
     TextToSpeech(SWConst.ComponentType.TEXT_TO_SPEECH, "texttospeech"),
-    SpeechToText(SWConst.ComponentType.TEXT_TO_SPEECH, "speechtotext"),
+    SpeechToText(SWConst.ComponentType.SPEECH_TO_TEXT, "speechtotext"),
     RequestNetwork(SWConst.ComponentType.REQUEST_NETWORK, "requestnetwork"),
     BluetoothConnect(SWConst.ComponentType.BLUETOOTH_CONNECT, "bluetooth"),
     LocationManager(SWConst.ComponentType.LOCATION_MANAGER, "locationmanager")
