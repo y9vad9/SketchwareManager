@@ -143,10 +143,7 @@ class LogicManager(
         getEvent(activity, targetId, eventName)
             ?: throw EventNotFoundException(activity, targetId, eventName)
     ) {
-        val list = getEvents(activity)?.toMutableList()
-            ?: throw EventsNotFoundException(activity)
-        list[list.indexOf(this)] = this.apply(editor)
-        saveEvents(activity, list)
+        editEventInfo(activity, targetId, eventName, this.apply(editor))
     }
 
     /**
