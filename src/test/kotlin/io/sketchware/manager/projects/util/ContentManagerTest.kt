@@ -7,14 +7,14 @@ import org.junit.jupiter.api.Test
 import java.io.File
 
 private const val fileValue = "@activity\n" +
-        "{\"fileName\":\"main\",\"fileType\":0,\"keyboardSetting\":2,\"options\":2,\"orientation\":2,\"theme\":-1}\n" +
-        "{\"fileName\":\"menu\",\"fileType\":0,\"keyboardSetting\":2,\"options\":2,\"orientation\":2,\"theme\":-1}\n" +
-        "{\"fileName\":\"editor\",\"fileType\":0,\"keyboardSetting\":2,\"options\":2,\"orientation\":2,\"theme\":-1}\n" +
-        "{\"fileName\":\"collage\",\"fileType\":0,\"keyboardSetting\":2,\"options\":2,\"orientation\":2,\"theme\":-1}\n" +
-        "@customview\n" +
-        "{\"fileName\":\"files\",\"fileType\":1,\"keyboardSetting\":0,\"options\":0,\"orientation\":2,\"theme\":-1}\n" +
-        "{\"fileName\":\"custom\",\"fileType\":1,\"keyboardSetting\":0,\"options\":0,\"orientation\":2,\"theme\":-1}\n" +
-        "{\"fileName\":\"_drawer_editor\",\"fileType\":2,\"keyboardSetting\":0,\"options\":0,\"orientation\":2,\"theme\":-1}"
+    "{\"fileName\":\"main\",\"fileType\":0,\"keyboardSetting\":2,\"options\":2,\"orientation\":2,\"theme\":-1}\n" +
+    "{\"fileName\":\"menu\",\"fileType\":0,\"keyboardSetting\":2,\"options\":2,\"orientation\":2,\"theme\":-1}\n" +
+    "{\"fileName\":\"editor\",\"fileType\":0,\"keyboardSetting\":2,\"options\":2,\"orientation\":2,\"theme\":-1}\n" +
+    "{\"fileName\":\"collage\",\"fileType\":0,\"keyboardSetting\":2,\"options\":2,\"orientation\":2,\"theme\":-1}\n" +
+    "@customview\n" +
+    "{\"fileName\":\"files\",\"fileType\":1,\"keyboardSetting\":0,\"options\":0,\"orientation\":2,\"theme\":-1}\n" +
+    "{\"fileName\":\"custom\",\"fileType\":1,\"keyboardSetting\":0,\"options\":0,\"orientation\":2,\"theme\":-1}\n" +
+    "{\"fileName\":\"_drawer_editor\",\"fileType\":2,\"keyboardSetting\":0,\"options\":0,\"orientation\":2,\"theme\":-1}"
 
 internal class ContentManagerTest {
 

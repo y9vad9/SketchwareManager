@@ -2,7 +2,7 @@ package io.sketchware.model.project.widget
 
 import io.sketchware.model.project.view.WidgetProperties
 
-class ButtonWidget(view: WidgetProperties): BaseWidget(view) {
+class ButtonWidget(view: WidgetProperties) : BaseWidget(view) {
 
     private val textProps get() = view.text
 

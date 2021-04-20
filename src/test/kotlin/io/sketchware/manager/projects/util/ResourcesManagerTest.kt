@@ -7,13 +7,13 @@ import org.junit.jupiter.api.Test
 import java.io.File
 
 private const val resourcesValue = "@images\n" +
-        "{\"resFullName\":\"png.png\",\"resName\":\"png\",\"resType\":1}\n" +
-        "{\"resFullName\":\"cuadro1.png\",\"resName\":\"cuadro1\",\"resType\":1}" +
-        "@sounds\n" +
-        "{\"resFullName\":\"sound.mp3\",\"resName\":\"sound\",\"resType\":1}" +
-        "@fonts\n" +
-        "{\"resFullName\":\"texto1.ttf\",\"resName\":\"texto1\",\"resType\":1}\n" +
-        "{\"resFullName\":\"texto2.ttf\",\"resName\":\"texto2\",\"resType\":1}"
+    "{\"resFullName\":\"png.png\",\"resName\":\"png\",\"resType\":1}\n" +
+    "{\"resFullName\":\"cuadro1.png\",\"resName\":\"cuadro1\",\"resType\":1}" +
+    "@sounds\n" +
+    "{\"resFullName\":\"sound.mp3\",\"resName\":\"sound\",\"resType\":1}" +
+    "@fonts\n" +
+    "{\"resFullName\":\"texto1.ttf\",\"resName\":\"texto1\",\"resType\":1}\n" +
+    "{\"resFullName\":\"texto2.ttf\",\"resName\":\"texto2\",\"resType\":1}"
 
 internal class ResourcesManagerTest {
 

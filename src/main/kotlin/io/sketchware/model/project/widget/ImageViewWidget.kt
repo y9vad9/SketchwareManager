@@ -2,7 +2,7 @@ package io.sketchware.model.project.widget
 
 import io.sketchware.model.project.view.WidgetProperties
 
-class ImageViewWidget(view: WidgetProperties): BaseWidget(view) {
+class ImageViewWidget(view: WidgetProperties) : BaseWidget(view) {
     private val imageProperties get() = view.image
 
     /**

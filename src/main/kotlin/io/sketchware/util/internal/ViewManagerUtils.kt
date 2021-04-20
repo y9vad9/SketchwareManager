@@ -35,20 +35,20 @@ internal object ViewManagerUtils {
      * @return [List] with widgets properties.
      */
     fun BaseWidget.toSketchwareFormat(): List<WidgetProperties> {
-        return if(this is ViewGroupWidget)
+        return if (this is ViewGroupWidget)
             children.map { it.toSketchwareFormat() }.flatten()
         else listOf(this.view)
     }
 
     private fun WidgetProperties.toWidget(
         childrenProvider: (String) -> List<BaseWidget>
-    ) = if(!canHaveChildren) 
+    ) = if (!canHaveChildren)
         toNonChildableWidget()
     else getChildableWidget(childrenProvider)
-    
+
     private fun WidgetProperties.getChildableWidget(
         childrenProvider: (String) -> List<BaseWidget>
-    ) = when(type) {
+    ) = when (type) {
         WidgetType.HORIZONTAL_SCROLL -> ScrollViewWidget(
             this, childrenProvider(id).toMutableList()
         )

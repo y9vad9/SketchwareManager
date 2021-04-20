@@ -71,7 +71,8 @@ data class WidgetProperties(
      * Says is widget can have children.
      * @return [Boolean] - true if can, false if cannot.
      */
-    val canHaveChildren get() = type == WidgetType.LINEAR_LAYOUT
-        || type == WidgetType.VERTICAL_SCROLL || type == WidgetType.VERTICAL_SCROLL
+    val canHaveChildren
+        get() = type == WidgetType.LINEAR_LAYOUT
+            || type == WidgetType.VERTICAL_SCROLL || type == WidgetType.VERTICAL_SCROLL
 
 }

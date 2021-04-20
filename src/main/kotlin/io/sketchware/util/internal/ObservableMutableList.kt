@@ -18,9 +18,10 @@ class ObservableList<E> internal constructor(
         original.add(index, element)
         listener(original)
     }
+
     fun remove(element: E): Boolean {
         val status = original.remove(element)
-        if(status)
+        if (status)
             listener(original)
         return status
     }

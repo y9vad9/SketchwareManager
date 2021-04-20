@@ -8,56 +8,56 @@ import org.junit.jupiter.api.Test
 import java.io.File
 
 private const val logicValue = "@MainActivity.java_var\n" +
-        "2:varstr\n" +
-        "3:varmal\n" +
-        "\n" +
-        "@MainActivity.java_list\n" +
-        "3:listmal\n" +
-        "\n" +
-        "@MainActivity.java_func\n" +
-        "Snackbar:Snackbar on %m.view.view with label %s.label\n" +
-        "\n" +
-        "@MainActivity.java_components\n" +
-        "{\"componentId\":\"intent\",\"param1\":\"\",\"param2\":\"\",\"param3\":\"\",\"type\":1}\n" +
-        "{\"componentId\":\"prefs\",\"param1\":\"prefs\",\"param2\":\"\",\"param3\":\"\",\"type\":2}\n" +
-        "{\"componentId\":\"player\",\"param1\":\"\",\"param2\":\"\",\"param3\":\"\",\"type\":8}\n" +
-        "{\"componentId\":\"picker\",\"param1\":\"*/*\",\"param2\":\"\",\"param3\":\"\",\"type\":16}\n" +
-        "\n" +
-        "@MainActivity.java_events\n" +
-        "{\"eventName\":\"onBackPressed\",\"eventType\":3,\"targetId\":\"onBackPressed\",\"targetType\":0}\n" +
-        "{\"eventName\":\"onFilesPicked\",\"eventType\":2,\"targetId\":\"picker\",\"targetType\":16}\n" +
-        "{\"eventName\":\"onFilesPickedCancel\",\"eventType\":2,\"targetId\":\"picker\",\"targetType\":16}\n" +
-        "{\"eventName\":\"onClick\",\"eventType\":1,\"targetId\":\"edittext1\",\"targetType\":5}\n" +
-        "{\"eventName\":\"onClick\",\"eventType\":1,\"targetId\":\"imageview1\",\"targetType\":6}\n" +
-        "{\"eventName\":\"onClick\",\"eventType\":4,\"targetId\":\"button\",\"targetType\":3}\n" +
-        "\n" +
-        "@MainActivity.java_onBackPressed_onBackPressed\n" +
-        "{\"color\":-13851166,\"id\":\"10\",\"nextBlock\":11,\"opCode\":\"doToast\",\"parameters\":[\"1\"],\"spec\":\"Toast %s\",\"subStack1\":-1,\"subStack2\":-1,\"type\":\" \",\"typeName\":\"\"}\n" +
-        "{\"color\":-13851166,\"id\":\"11\",\"nextBlock\":-1,\"opCode\":\"doToast\",\"parameters\":[\"2\"],\"spec\":\"Toast %s\",\"subStack1\":-1,\"subStack2\":-1,\"type\":\" \",\"typeName\":\"\"}\n" +
-        "\n" +
-        "@MainActivity.java_picker_onFilesPicked\n" +
-        "{\"color\":-13851166,\"id\":\"10\",\"nextBlock\":11,\"opCode\":\"doToast\",\"parameters\":[\"\"],\"spec\":\"Toast %s\",\"subStack1\":-1,\"subStack2\":-1,\"type\":\" \",\"typeName\":\"\"}\n" +
-        "{\"color\":-13851166,\"id\":\"11\",\"nextBlock\":-1,\"opCode\":\"finishActivity\",\"parameters\":[],\"spec\":\"Finish Activity\",\"subStack1\":-1,\"subStack2\":-1,\"type\":\"f\",\"typeName\":\"\"}\n" +
-        "\n" +
-        "@MainActivity.java_Snackbar_moreBlock\n" +
-        "{\"color\":-10701022,\"id\":\"10\",\"nextBlock\":-1,\"opCode\":\"addSourceDirectly\",\"parameters\":[\"android.support.design.widget.Snackbar.make(_view, _label.toString(), android.support.design.widget.Snackbar.LENGTH_SHORT).show();\"],\"spec\":\"add source directly %s.inputOnly\",\"subStack1\":-1,\"subStack2\":-1,\"type\":\" \",\"typeName\":\"\"}\n" +
-        "\n" +
-        "@MainActivity.java_imageview1_onClick\n" +
-        "{\"color\":-13851166,\"id\":\"10\",\"nextBlock\":-1,\"opCode\":\"finishActivity\",\"parameters\":[],\"spec\":\"Finish Activity\",\"subStack1\":-1,\"subStack2\":-1,\"type\":\"f\",\"typeName\":\"\"}\n" +
-        "\n" +
-        "@MainActivity.java_edittext1_onClick\n" +
-        "{\"color\":-7711273,\"id\":\"10\",\"nextBlock\":-1,\"opCode\":\"definedFunc\",\"parameters\":[\"checkbox1\",\"label\"],\"spec\":\"Snackbar on %m.view.view with label %s.label\",\"subStack1\":-1,\"subStack2\":-1,\"type\":\" \",\"typeName\":\"\"}\n" +
-        "\n" +
-        "@MainActivity.java_button_onClick\n" +
-        "{\"color\":-13851166,\"id\":\"10\",\"nextBlock\":-1,\"opCode\":\"finishActivity\",\"parameters\":[],\"spec\":\"Finish Activity\",\"subStack1\":-1,\"subStack2\":-1,\"type\":\"f\",\"typeName\":\"\"}\n" +
-        "\n" +
-        "@MainActivity.java_onCreate_initializeLogic\n" +
-        "{\"color\":-13851166,\"id\":\"10\",\"nextBlock\":11,\"opCode\":\"copyToClipboard\",\"parameters\":[\"1\"],\"spec\":\"copyToClipboard %s\",\"subStack1\":-1,\"subStack2\":-1,\"type\":\" \",\"typeName\":\"\"}\n" +
-        "{\"color\":-13851166,\"id\":\"11\",\"nextBlock\":-1,\"opCode\":\"setTitle\",\"parameters\":[\"test\"],\"spec\":\"Activity set title %s\",\"subStack1\":-1,\"subStack2\":-1,\"type\":\" \",\"typeName\":\"\"}\n" +
-        "\n" +
-        "@MainActivity.java_picker_onFilesPickedCancel\n" +
-        "{\"color\":-13851166,\"id\":\"10\",\"nextBlock\":11,\"opCode\":\"doToast\",\"parameters\":[\"1\"],\"spec\":\"Toast %s\",\"subStack1\":-1,\"subStack2\":-1,\"type\":\" \",\"typeName\":\"\"}\n" +
-        "{\"color\":-13851166,\"id\":\"11\",\"nextBlock\":-1,\"opCode\":\"intentSetAction\",\"parameters\":[\"intent\",\"ACTION_DIAL\"],\"spec\":\"%m.intent setAction %m.intentAction\",\"subStack1\":-1,\"subStack2\":-1,\"type\":\" \",\"typeName\":\"\"}"
+    "2:varstr\n" +
+    "3:varmal\n" +
+    "\n" +
+    "@MainActivity.java_list\n" +
+    "3:listmal\n" +
+    "\n" +
+    "@MainActivity.java_func\n" +
+    "Snackbar:Snackbar on %m.view.view with label %s.label\n" +
+    "\n" +
+    "@MainActivity.java_components\n" +
+    "{\"componentId\":\"intent\",\"param1\":\"\",\"param2\":\"\",\"param3\":\"\",\"type\":1}\n" +
+    "{\"componentId\":\"prefs\",\"param1\":\"prefs\",\"param2\":\"\",\"param3\":\"\",\"type\":2}\n" +
+    "{\"componentId\":\"player\",\"param1\":\"\",\"param2\":\"\",\"param3\":\"\",\"type\":8}\n" +
+    "{\"componentId\":\"picker\",\"param1\":\"*/*\",\"param2\":\"\",\"param3\":\"\",\"type\":16}\n" +
+    "\n" +
+    "@MainActivity.java_events\n" +
+    "{\"eventName\":\"onBackPressed\",\"eventType\":3,\"targetId\":\"onBackPressed\",\"targetType\":0}\n" +
+    "{\"eventName\":\"onFilesPicked\",\"eventType\":2,\"targetId\":\"picker\",\"targetType\":16}\n" +
+    "{\"eventName\":\"onFilesPickedCancel\",\"eventType\":2,\"targetId\":\"picker\",\"targetType\":16}\n" +
+    "{\"eventName\":\"onClick\",\"eventType\":1,\"targetId\":\"edittext1\",\"targetType\":5}\n" +
+    "{\"eventName\":\"onClick\",\"eventType\":1,\"targetId\":\"imageview1\",\"targetType\":6}\n" +
+    "{\"eventName\":\"onClick\",\"eventType\":4,\"targetId\":\"button\",\"targetType\":3}\n" +
+    "\n" +
+    "@MainActivity.java_onBackPressed_onBackPressed\n" +
+    "{\"color\":-13851166,\"id\":\"10\",\"nextBlock\":11,\"opCode\":\"doToast\",\"parameters\":[\"1\"],\"spec\":\"Toast %s\",\"subStack1\":-1,\"subStack2\":-1,\"type\":\" \",\"typeName\":\"\"}\n" +
+    "{\"color\":-13851166,\"id\":\"11\",\"nextBlock\":-1,\"opCode\":\"doToast\",\"parameters\":[\"2\"],\"spec\":\"Toast %s\",\"subStack1\":-1,\"subStack2\":-1,\"type\":\" \",\"typeName\":\"\"}\n" +
+    "\n" +
+    "@MainActivity.java_picker_onFilesPicked\n" +
+    "{\"color\":-13851166,\"id\":\"10\",\"nextBlock\":11,\"opCode\":\"doToast\",\"parameters\":[\"\"],\"spec\":\"Toast %s\",\"subStack1\":-1,\"subStack2\":-1,\"type\":\" \",\"typeName\":\"\"}\n" +
+    "{\"color\":-13851166,\"id\":\"11\",\"nextBlock\":-1,\"opCode\":\"finishActivity\",\"parameters\":[],\"spec\":\"Finish Activity\",\"subStack1\":-1,\"subStack2\":-1,\"type\":\"f\",\"typeName\":\"\"}\n" +
+    "\n" +
+    "@MainActivity.java_Snackbar_moreBlock\n" +
+    "{\"color\":-10701022,\"id\":\"10\",\"nextBlock\":-1,\"opCode\":\"addSourceDirectly\",\"parameters\":[\"android.support.design.widget.Snackbar.make(_view, _label.toString(), android.support.design.widget.Snackbar.LENGTH_SHORT).show();\"],\"spec\":\"add source directly %s.inputOnly\",\"subStack1\":-1,\"subStack2\":-1,\"type\":\" \",\"typeName\":\"\"}\n" +
+    "\n" +
+    "@MainActivity.java_imageview1_onClick\n" +
+    "{\"color\":-13851166,\"id\":\"10\",\"nextBlock\":-1,\"opCode\":\"finishActivity\",\"parameters\":[],\"spec\":\"Finish Activity\",\"subStack1\":-1,\"subStack2\":-1,\"type\":\"f\",\"typeName\":\"\"}\n" +
+    "\n" +
+    "@MainActivity.java_edittext1_onClick\n" +
+    "{\"color\":-7711273,\"id\":\"10\",\"nextBlock\":-1,\"opCode\":\"definedFunc\",\"parameters\":[\"checkbox1\",\"label\"],\"spec\":\"Snackbar on %m.view.view with label %s.label\",\"subStack1\":-1,\"subStack2\":-1,\"type\":\" \",\"typeName\":\"\"}\n" +
+    "\n" +
+    "@MainActivity.java_button_onClick\n" +
+    "{\"color\":-13851166,\"id\":\"10\",\"nextBlock\":-1,\"opCode\":\"finishActivity\",\"parameters\":[],\"spec\":\"Finish Activity\",\"subStack1\":-1,\"subStack2\":-1,\"type\":\"f\",\"typeName\":\"\"}\n" +
+    "\n" +
+    "@MainActivity.java_onCreate_initializeLogic\n" +
+    "{\"color\":-13851166,\"id\":\"10\",\"nextBlock\":11,\"opCode\":\"copyToClipboard\",\"parameters\":[\"1\"],\"spec\":\"copyToClipboard %s\",\"subStack1\":-1,\"subStack2\":-1,\"type\":\" \",\"typeName\":\"\"}\n" +
+    "{\"color\":-13851166,\"id\":\"11\",\"nextBlock\":-1,\"opCode\":\"setTitle\",\"parameters\":[\"test\"],\"spec\":\"Activity set title %s\",\"subStack1\":-1,\"subStack2\":-1,\"type\":\" \",\"typeName\":\"\"}\n" +
+    "\n" +
+    "@MainActivity.java_picker_onFilesPickedCancel\n" +
+    "{\"color\":-13851166,\"id\":\"10\",\"nextBlock\":11,\"opCode\":\"doToast\",\"parameters\":[\"1\"],\"spec\":\"Toast %s\",\"subStack1\":-1,\"subStack2\":-1,\"type\":\" \",\"typeName\":\"\"}\n" +
+    "{\"color\":-13851166,\"id\":\"11\",\"nextBlock\":-1,\"opCode\":\"intentSetAction\",\"parameters\":[\"intent\",\"ACTION_DIAL\"],\"spec\":\"%m.intent setAction %m.intentAction\",\"subStack1\":-1,\"subStack2\":-1,\"type\":\" \",\"typeName\":\"\"}"
 
 internal class LogicManagerTest {
 

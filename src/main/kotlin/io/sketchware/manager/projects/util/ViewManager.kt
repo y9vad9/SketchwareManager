@@ -3,7 +3,7 @@ package io.sketchware.manager.projects.util
 import io.sketchware.`interface`.Editor
 import io.sketchware.`interface`.listener.ActionFinishListener
 import io.sketchware.model.project.view.WidgetProperties
-import io.sketchware.model.project.widget.*
+import io.sketchware.model.project.widget.RootView
 import io.sketchware.util.SketchwareEncryptor.decrypt
 import io.sketchware.util.SketchwareEncryptor.encrypt
 import io.sketchware.util.internal.*
@@ -87,7 +87,8 @@ class ViewManager(
          * Edits view name.
          * It will replace old one with new one in [ViewManager] and here locally.
          */
-        var viewName get() = _viewName
+        var viewName
+            get() = _viewName
             set(value) {
                 _viewName = value
                 this@ViewManager.value = this@ViewManager.value.replace("@$viewName", "@$value")

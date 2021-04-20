@@ -27,9 +27,9 @@ data class CustomBlockGroup(
     override fun equals(other: Any?): Boolean {
         (other as CustomBlockGroup)
         return groupId == other.groupId
-                && name == other.name
-                && hexColor == other.hexColor
-                && blocks == other.blocks
+            && name == other.name
+            && hexColor == other.hexColor
+            && blocks == other.blocks
     }
 
     override fun hashCode(): Int {

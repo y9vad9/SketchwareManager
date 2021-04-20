@@ -7,6 +7,7 @@ open class SeekBarWidget(view: WidgetProperties) : BaseWidget(view) {
      * Stores data about max progress value of seekbar.
      */
     var maxProgress by view::max
+
     /**
      * Stores seekbar progress.
      */

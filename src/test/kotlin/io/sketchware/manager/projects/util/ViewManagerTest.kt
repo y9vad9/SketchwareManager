@@ -1,7 +1,7 @@
 package io.sketchware.manager.projects.util
 
-import io.sketchware.model.project.widget.ViewGroupWidget
 import io.sketchware.model.project.widget.TextViewWidget
+import io.sketchware.model.project.widget.ViewGroupWidget
 import org.junit.jupiter.api.Test
 import java.io.File
 
@@ -15,9 +15,9 @@ internal class ViewManagerTest {
     fun getView() {
         val view = manager.getView("main")!!
         view.root.children.forEach {
-            if(it is ViewGroupWidget)
+            if (it is ViewGroupWidget)
                 println(it.children)
-            else if(it is TextViewWidget)
+            else if (it is TextViewWidget)
                 it.text = "some text"
 
             it.id = "some_new_id"
