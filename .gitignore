@@ -7,3 +7,4 @@
 /build/
 /buildSrc/build/
 /local.properties
+/deploy.properties
