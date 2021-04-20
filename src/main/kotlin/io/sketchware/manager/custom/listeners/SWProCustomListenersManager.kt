@@ -7,7 +7,7 @@ import io.sketchware.model.custom.CustomEvent
 import io.sketchware.model.custom.CustomListenerGroup
 import io.sketchware.util.delegate.lazyResetable
 import io.sketchware.util.internal.*
-import io.sketchware.util.serializer.toSpecFields
+import io.sketchware.util.internal.serializer.toSpecFields
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch

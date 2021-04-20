@@ -1,7 +1,7 @@
 package io.sketchware.manager.projects.util
 
-import org.junit.jupiter.api.Assertions.assertNotNull
-import org.junit.jupiter.api.Assertions.assertTrue
+import io.sketchware.model.project.widget.ViewGroupWidget
+import io.sketchware.model.project.widget.TextViewWidget
 import org.junit.jupiter.api.Test
 import java.io.File
 
@@ -13,16 +13,19 @@ internal class ViewManagerTest {
 
     @Test
     fun getView() {
-        assertNotNull(manager.getView("_drawer_main"))
-        assertNotNull(manager.getView("main"))
-        assertNotNull(manager.getView("main", "fab"))
+        val view = manager.getView("main")!!
+        view.root.children.forEach {
+            if(it is ViewGroupWidget)
+                println(it.children)
+            else if(it is TextViewWidget)
+                it.text = "some text"
+
+            it.id = "some_new_id"
+        }
     }
 
     @Test
     fun editView() {
-        manager.editView("main") {
-            it.forEach { widget -> widget.id = "test" }
-        }
-        assertTrue { manager.getView("main")?.all { it.id == "test" } == true }
+
     }
 }

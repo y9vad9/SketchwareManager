@@ -1,6 +1,6 @@
 package io.sketchware.model.project.library
 
-import io.sketchware.util.serializer.YesNoSerializer
+import io.sketchware.util.internal.serializer.YesNoSerializer
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 

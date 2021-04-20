@@ -7,7 +7,10 @@ import io.sketchware.model.project.content.Orientation
 import io.sketchware.model.project.logic.ListType
 import io.sketchware.model.project.logic.VariableType
 import io.sketchware.model.project.view.LayoutOrientation
-import io.sketchware.util.serializer.idSerializer
+import io.sketchware.model.project.view.SpinnerMode
+import io.sketchware.model.project.view.TextStyle
+import io.sketchware.model.project.view.WidgetType
+import io.sketchware.util.internal.serializer.idSerializer
 import kotlinx.serialization.KSerializer
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.encodeToString
@@ -23,6 +26,9 @@ private val serializationModule = SerializersModule {
     contextual(idSerializer<ActivityTheme>())
     contextual(idSerializer<VariableType>())
     contextual(idSerializer<ListType>())
+    contextual(idSerializer(WidgetType.VIEW))
+    contextual(idSerializer<TextStyle>())
+    contextual(idSerializer<SpinnerMode>())
 }
 
 internal val json = Json {

@@ -1,6 +1,6 @@
 package io.sketchware.model.project
 
-import io.sketchware.util.serializer.StringNumberConvertor
+import io.sketchware.util.internal.serializer.StringNumberConvertor
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 

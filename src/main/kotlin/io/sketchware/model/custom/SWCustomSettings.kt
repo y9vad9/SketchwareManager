@@ -1,6 +1,6 @@
 package io.sketchware.model.custom
 
-import io.sketchware.util.serializer.PathToFileSerializer
+import io.sketchware.util.internal.serializer.PathToFileSerializer
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 import java.io.File

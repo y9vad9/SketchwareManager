@@ -2,18 +2,16 @@ package io.sketchware.manager.projects.util
 
 import io.sketchware.`interface`.Editor
 import io.sketchware.`interface`.listener.ActionFinishListener
-import io.sketchware.annotation.ExperimentalSWManagerAPI
-import io.sketchware.exception.ViewAlreadyExistsException
-import io.sketchware.exception.ViewNotFoundException
-import io.sketchware.model.project.view.WidgetRoot
+import io.sketchware.model.project.view.WidgetProperties
+import io.sketchware.model.project.widget.*
 import io.sketchware.util.SketchwareEncryptor.decrypt
 import io.sketchware.util.SketchwareEncryptor.encrypt
-import io.sketchware.util.ViewBuilder
 import io.sketchware.util.internal.*
+import io.sketchware.util.internal.BeansParser.removeTag
 import io.sketchware.util.internal.BeansParser.toSaveableValue
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
+import io.sketchware.util.internal.ViewManagerUtils.getChildrenOf
+import io.sketchware.util.internal.ViewManagerUtils.toSketchwareFormat
+import kotlinx.coroutines.*
 import java.io.File
 import kotlin.coroutines.CoroutineContext
 
@@ -23,6 +21,12 @@ class ViewManager(
     override val coroutineContext: CoroutineContext = Dispatchers.Main
 ) : CoroutineScope, Editor {
 
+    /**
+     * Stores [Set] with [View] which was got from [getView].
+     * Using to save changes which was done in [View] controller.
+     */
+    private val views: MutableSet<View> by lazy { mutableSetOf() }
+
     companion object {
         suspend operator fun invoke(file: File) = ViewManager(
             file.readOrNull()?.byteArrayToString() ?: "", file
@@ -30,72 +34,83 @@ class ViewManager(
     }
 
     /**
-     * Gets view by [viewName] and [widgetName] (if exist).
-     * @param viewName - View name (for example: main, without .xml).
-     * @param widgetName - specific widget to get (for example: fab).
-     * @return list of [WidgetRoot] with data about view.
+     * Gets view by [viewName] and [widgetName] (if specified).
+     * @param viewName - view name (for example: main).
+     * @param widgetName - widget name (for example: fab).
+     * @return [View] with view controller.
      */
-    fun getView(viewName: String, widgetName: String? = null): List<WidgetRoot>? =
-        value.getByTag("$viewName.xml".plus(widgetName?.let { "_$widgetName" } ?: ""))
-            ?.let(BeansParser::parseBeans)
+    fun getView(viewName: String, widgetName: String? = null): View? {
+        val name = "$viewName.xml".plus(widgetName?.let { "_$widgetName" } ?: "")
+        views.find { it.viewName == name }
+            ?.let { return it }
 
-    /**
-     * Edits view with name [viewName] and [widgetName] (if exist).
-     * @param viewName - View name (for example: main, without .xml).
-     * @param widgetName - specific widget to get in [viewName].
-     * @param widgets - new widgets to save.
-     */
-    fun editView(
-        viewName: String, widgetName: String? = null, widgets: List<WidgetRoot>
-    ) = saveView(viewName, widgetName, widgets)
+        val widgets = value.getByTag(name)
+            ?.let { BeansParser.parseBeans<WidgetProperties>(it) } ?: return null
 
-    /**
-     * Adds widget to current scope.
-     * @param viewName - View name (for example: main, without .xml).
-     * @param widgetName - specific widget to get in [viewName].
-     * @param widgets - widgets to save.
-     * @throws ViewAlreadyExistsException - if view and/or widget with same name already exists.
-     */
-    @Throws(ViewAlreadyExistsException::class)
-    fun addView(
-        viewName: String,
-        widgetName: String? = null,
-        widgets: List<WidgetRoot>
-    ) = if (getView(viewName, widgetName) == null)
-        editView(viewName, widgetName, widgets)
-    else throw ViewAlreadyExistsException(viewName, widgetName)
-
-    /**
-     * Adds view to current scope.
-     * @throws ViewAlreadyExistsException - if view and/or widget with same name already exists.
-     */
-    @ExperimentalSWManagerAPI
-    @Throws(ViewAlreadyExistsException::class)
-    fun addView(builder: ViewBuilder.() -> Unit) = ViewBuilder().apply(builder).apply {
-        addView(name, layoutName, widgetBuilder.widgets)
+        val view = View(viewName, widgets.toMutableList())
+        views.add(view)
+        return view
     }
 
     /**
-     * Edits view with name [viewName] and [widgetName] (if exist).
-     * @param viewName - View name (for example: main, without .xml).
-     * @param widgetName - specific widget to get in [viewName].
-     * @param editor - editor.
+     * Saves data locally to [value].
      */
-    fun editView(
-        viewName: String,
-        widgetName: String? = null,
-        editor: (MutableList<WidgetRoot>) -> Unit
-    ) = editView(
-        viewName,
-        widgetName,
-        getView(viewName, widgetName)?.toMutableList()?.apply(editor)
-            ?: throw ViewNotFoundException(file.path, viewName, widgetName)
-    )
+    private fun saveAllLocally() = views.forEach { view ->
+        view.save()
+    }
+
+    /**
+     * Class which contains data about some view.
+     * @see [getView].
+     */
+    inner class View internal constructor(
+        private var _viewName: String,
+        private val list: MutableList<WidgetProperties>
+    ) {
+
+        /**
+         * Gets list of widgets in root.
+         * @return [RootView] with widgets.
+         */
+        val root get() = RootView(list.getChildrenOf("root").toMutableList())
+
+        /**
+         * Removes view in [ViewManager].
+         * The View will be removed and it will no longer be possible
+         * to get it outside of this Instance. You can call [save] later to bring the View back.
+         */
+        fun remove() {
+            value = removeTag(viewName, value)
+        }
+
+        /**
+         * Edits view name.
+         * It will replace old one with new one in [ViewManager] and here locally.
+         */
+        var viewName get() = _viewName
+            set(value) {
+                _viewName = value
+                this@ViewManager.value = this@ViewManager.value.replace("@$viewName", "@$value")
+            }
+
+        /**
+         * Saves view in to [ViewManager].
+         * If view was removed (by [remove]) it will turn it back.
+         */
+        fun save() {
+            value = BeansParser.addTag(
+                viewName,
+                root.toSketchwareFormat().joinToString("\n") { it.deserialize() },
+                value
+            )
+        }
+
+    }
 
     private fun saveView(
         viewName: String,
         widget: String? = null,
-        list: List<WidgetRoot>
+        list: List<WidgetProperties>
     ) = synchronized(this) {
         val name = "$viewName.xml".plus(
             if (widget == null)
@@ -122,6 +137,7 @@ class ViewManager(
      */
     override suspend fun fetch() {
         value = file.read().decrypt().byteArrayToString()
+        views.clear()
     }
 
     /**
@@ -136,6 +152,9 @@ class ViewManager(
      * Saves data which was edited.
      */
     override suspend fun save() {
+        withContext(GlobalScope.coroutineContext) {
+            saveAllLocally()
+        }
         file.write(value.toByteArray().encrypt())
     }
 

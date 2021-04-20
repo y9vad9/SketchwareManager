@@ -1,6 +1,6 @@
 package io.sketchware.model.project.logic
 
-import io.sketchware.util.serializer.SpecSerializer
+import io.sketchware.util.internal.serializer.SpecSerializer
 import kotlinx.serialization.Serializable
 
 /**

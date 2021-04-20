@@ -1,10 +1,7 @@
 package io.sketchware.manager.projects.util
 
 import io.sketchware.annotation.ExperimentalSWManagerAPI
-import io.sketchware.model.project.logic.BlockModel
-import io.sketchware.model.project.logic.ComponentModel
-import io.sketchware.model.project.logic.EventModel
-import io.sketchware.model.project.logic.VariableModel
+import io.sketchware.model.project.logic.*
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
@@ -130,7 +127,7 @@ internal class LogicManagerTest {
 
     @Test
     fun addVariable() {
-        val variable = VariableModel(0, "test")
+        val variable = VariableModel(VariableType.BOOLEAN, "test")
         manager.addVariable(testActivity, variable.name, variable.type)
         assertNotNull(manager.getVariable(testActivity, variable.name))
     }

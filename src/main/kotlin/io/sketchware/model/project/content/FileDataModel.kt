@@ -1,7 +1,7 @@
 package io.sketchware.model.project.content
 
 import io.sketchware.util.internal.snakeToUpperCamelCase
-import io.sketchware.util.serializer.ActivityOptionSerializer
+import io.sketchware.util.internal.serializer.ActivityOptionSerializer
 import kotlinx.serialization.Contextual
 import kotlinx.serialization.Serializable
 

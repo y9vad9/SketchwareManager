@@ -1,8 +1,8 @@
 package io.sketchware.model.custom
 
 import io.sketchware.model.project.logic.SpecField
-import io.sketchware.util.serializer.SpecSerializer
-import io.sketchware.util.serializer.StringNumberConvertor
+import io.sketchware.util.internal.serializer.SpecSerializer
+import io.sketchware.util.internal.serializer.StringNumberConvertor
 import kotlinx.serialization.Serializable
 
 @Serializable

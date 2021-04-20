@@ -1,7 +1,7 @@
 package io.sketchware.model.project.logic
 
-import io.sketchware.util.serializer.SpecSerializer
-import io.sketchware.util.serializer.StringNumberConvertor
+import io.sketchware.util.internal.serializer.SpecSerializer
+import io.sketchware.util.internal.serializer.StringNumberConvertor
 import kotlinx.serialization.Serializable
 
 /**

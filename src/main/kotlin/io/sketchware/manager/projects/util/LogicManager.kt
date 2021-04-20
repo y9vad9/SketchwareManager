@@ -8,7 +8,7 @@ import io.sketchware.model.project.logic.*
 import io.sketchware.util.SketchwareEncryptor
 import io.sketchware.util.SketchwareEncryptor.decrypt
 import io.sketchware.util.internal.*
-import io.sketchware.util.serializer.toSpecFields
+import io.sketchware.util.internal.serializer.toSpecFields
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
