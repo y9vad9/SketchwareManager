@@ -1,4 +1,4 @@
-package io.sketchware.util.serializer
+package io.sketchware.util.internal.serializer
 
 import io.sketchware.model.project.logic.BlockModel
 import io.sketchware.util.internal.BeansParser

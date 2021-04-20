@@ -1,4 +1,4 @@
-package io.sketchware.util.serializer
+package io.sketchware.util.internal.serializer
 
 import io.sketchware.model.SWConst.ActivityOption.OPTION_ACTIVITY_DRAWER
 import io.sketchware.model.SWConst.ActivityOption.OPTION_ACTIVITY_FAB
@@ -12,7 +12,7 @@ import kotlinx.serialization.descriptors.buildClassSerialDescriptor
 import kotlinx.serialization.encoding.Decoder
 import kotlinx.serialization.encoding.Encoder
 
-internal class ActivityOptionSerializer : KSerializer<List<ActivityOption>> {
+internal object ActivityOptionSerializer : KSerializer<List<ActivityOption>> {
 
     override val descriptor: SerialDescriptor = buildClassSerialDescriptor("ActivityOptionSerializer")
 
