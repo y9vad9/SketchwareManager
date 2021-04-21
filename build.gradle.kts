@@ -30,6 +30,6 @@ applyDeploy()
 tasks.withType<KotlinCompile> {
     kotlinOptions {
         useIR = true
-        freeCompilerArgs = freeCompilerArgs.plus("-Xopt-in=kotlin.RequiresOptIn")
+        freeCompilerArgs = freeCompilerArgs + "-Xopt-in=kotlin.RequiresOptIn"
     }
 }
