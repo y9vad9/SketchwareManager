@@ -1,6 +1,7 @@
+import `fun`.kotlingang.neon.deploy.Deploy
+import `fun`.kotlingang.neon.deploy.DeployConfiguration
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 import org.jetbrains.kotlin.konan.properties.loadProperties
-import `fun`.kotlingang.neon.deploy.*
-import org.jetbrains.kotlin.gradle.tasks.*
 
 plugins {
     kotlin(Plugins.JVM) version Versions.KOTLIN
@@ -15,14 +16,11 @@ repositories {
     mavenCentral()
 }
 
-publishing {
-
-}
-
 dependencies {
     implementation(Dependencies.KOTLIN_COROUTINES)
     implementation(Dependencies.KOTLIN_SERIALIZATION_JSON)
     implementation(Dependencies.JUNIT)
+    implementation(kotlin("stdlib-jdk8"))
 }
 
 val deployPropertiesFile: File = project.file("deploy.properties")
@@ -37,10 +35,6 @@ if(deployPropertiesFile.exists()) {
         password = properties.getProperty("password")
         destinationFolderPath = properties.getProperty("destination")
     }
-}
-
-tasks.withType<Test> {
-    useJUnitPlatform()
 }
 
 tasks.withType<KotlinCompile> {

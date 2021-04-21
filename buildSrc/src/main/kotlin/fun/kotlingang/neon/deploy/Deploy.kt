@@ -4,8 +4,10 @@ import Library
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.api.publish.PublishingExtension
+import org.gradle.api.publish.maven.MavenPublication
 import org.gradle.kotlin.dsl.apply
 import org.gradle.kotlin.dsl.create
+import org.gradle.kotlin.dsl.get
 import org.gradle.kotlin.dsl.the
 
 internal fun deployError(message: String) {
@@ -16,8 +18,7 @@ internal fun fieldMissingError(fieldName: String) = deployError("Field with name
 
 class Deploy : Plugin<Project> {
     override fun apply(target: Project) {
-        target.apply(plugin = "org.gradle.maven-publish")
-        val config = target.extensions.create<DeployConfiguration>(name = "Deploy")
+        val config = target.extensions.create<DeployConfiguration>(name = "deploy")
 
         target.afterEvaluate {
 
@@ -30,19 +31,38 @@ class Deploy : Plugin<Project> {
             if(config.destinationFolderPath == null)
                 fieldMissingError(config::destinationFolderPath.name)
 
-            project.the<PublishingExtension>().repositories.maven {
-                name = Library.NAME
-                version = Library.VERSION
+            project.the<PublishingExtension>().apply {
+                apply(plugin = "maven-publish")
 
-                url = uri("sftp://${config.host}:22/${config.destinationFolderPath}")
+                publications {
+                    create<MavenPublication>("deploy") {
+                        group = Library.PACKAGE
+                        artifactId = Library.NAME
+                        version = Library.VERSION
 
-                credentials {
-                    username = config.user
-                    password = config.password
+                        pom {
+                            name.set(Library.NAME)
+                            description.set("Coroutine-based Sketchware Manager JVM Library.")
+                        }
+
+                        from(components["kotlin"])
+                    }
                 }
 
-            }
+                repositories {
+                    maven {
+                        name = Library.NAME
+                        version = Library.VERSION
 
+                        url = uri("sftp://${config.host}:22/${config.destinationFolderPath}")
+
+                        credentials {
+                            username = config.user
+                            password = config.password
+                        }
+                    }
+                }
+            }
         }
     }
 
