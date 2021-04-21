@@ -20,7 +20,6 @@ dependencies {
     implementation(Dependencies.KOTLIN_COROUTINES)
     implementation(Dependencies.KOTLIN_SERIALIZATION_JSON)
     implementation(Dependencies.JUNIT)
-    implementation(kotlin("stdlib-jdk8"))
 }
 
 val deployPropertiesFile: File = project.file("deploy.properties")
