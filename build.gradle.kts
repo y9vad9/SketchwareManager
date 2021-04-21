@@ -1,7 +1,4 @@
-import `fun`.kotlingang.neon.deploy.Deploy
-import `fun`.kotlingang.neon.deploy.DeployConfiguration
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
-import org.jetbrains.kotlin.konan.properties.loadProperties
 
 plugins {
     kotlin(Plugins.JVM) version Versions.KOTLIN
@@ -17,28 +14,22 @@ repositories {
 }
 
 dependencies {
-    implementation(Dependencies.KOTLIN_COROUTINES)
-    implementation(Dependencies.KOTLIN_SERIALIZATION_JSON)
+    implementation(Dependencies.COROUTINES)
+    implementation(Dependencies.JSON)
     implementation(Dependencies.JUNIT)
 }
 
-val deployPropertiesFile: File = project.file("deploy.properties")
-
-if(deployPropertiesFile.exists()) {
-    val properties = loadProperties(deployPropertiesFile.absolutePath)
-
-    project.apply<Deploy>()
-    project.configure<DeployConfiguration> {
-        user = properties.getProperty("user")
-        host = properties.getProperty("host")
-        password = properties.getProperty("password")
-        destinationFolderPath = properties.getProperty("destination")
-    }
-}
+/**
+ * Enabling maven publish task for library
+ * if `deploy.properties` exists in project folder.
+ * deploy.properties should have next fields: host(server remote address), user (sftp user on remote server),
+ * password (user's password), destination (destination folder path on remote server)
+ */
+applyDeploy()
 
 tasks.withType<KotlinCompile> {
     kotlinOptions {
         useIR = true
-        freeCompilerArgs += "-Xopt-in=kotlin.RequiresOptIn"
+        freeCompilerArgs = freeCompilerArgs.plus("-Xopt-in=kotlin.RequiresOptIn")
     }
 }
