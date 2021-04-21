@@ -39,7 +39,7 @@ internal object SWConst {
         const val THEME_NONE = -1
     }
 
-    object WidgetType {
+    object WidgetTypeIds {
         /**
          * Widget type: LinearLayout (V/H)
          */

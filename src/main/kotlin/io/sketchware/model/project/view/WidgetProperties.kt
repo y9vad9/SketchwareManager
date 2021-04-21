@@ -1,6 +1,7 @@
 package io.sketchware.model.project.view
 
-import io.sketchware.util.internal.serialize
+import io.sketchware.util.internal.serializer.IntToBooleanSerializer
+import kotlinx.serialization.Contextual
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
@@ -8,6 +9,7 @@ import kotlinx.serialization.Serializable
 data class WidgetProperties(
     var adSize: String = "",
     var adUnitId: String = "",
+    var debug: String? = null,
     var alpha: Double = 1.0,
     var checked: Int = 0,
     var choiceMode: Int = 0,
@@ -15,7 +17,8 @@ data class WidgetProperties(
     var convert: String? = null,
     var customView: String = "",
     var dividerHeight: Int = 0,
-    var enabled: Int = 0,
+    @Serializable(with = IntToBooleanSerializer::class)
+    var enabled: Boolean = true,
     var firstDayOfWeek: Int = 0,
     var id: String = "",
     var image: Image = Image(),
@@ -36,6 +39,7 @@ data class WidgetProperties(
     var progressStyle: String = "?android:progressBarStyle",
     var scaleX: Double = 0.0,
     var scaleY: Double = 0.0,
+    @Contextual
     var spinnerMode: SpinnerMode = SpinnerMode.DROPDOWN,
     var text: Text = Text(),
     var translationX: Double = 0.0,
@@ -46,10 +50,10 @@ data class WidgetProperties(
     /**
      * Converts [typeId] to sketchware widget type.
      * Note: if it is impossible to convert (for example,
-     * if the widget is with Sketchware Pro), it will return [WidgetType.VIEW].
+     * if the widget from Sketchware Pro), it will return [WidgetType.VIEW].
      * @return [WidgetType].
      */
-    val type get() = typeId.toString().serialize<WidgetType>()
+    val widgetType get() = WidgetType.values().find { it.id == typeId } ?: WidgetType.VIEW
 
     /**
      * Converts [parentTypeId] to sketchware widget type.
@@ -57,7 +61,7 @@ data class WidgetProperties(
      * if the widget is with Sketchware Pro), it will return [WidgetType.VIEW].
      * @return [WidgetType].
      */
-    val parentType get() = parentTypeId.toString().serialize<WidgetType>()
+    val widgetParentType get() = WidgetType.values().find { it.id == parentTypeId } ?: WidgetType.VIEW
 
     /**
      * Converts [preParentTypeId] to sketchware widget type.
@@ -65,14 +69,26 @@ data class WidgetProperties(
      * if the widget is with Sketchware Pro), it will return [WidgetType.VIEW].
      * @return [WidgetType].
      */
-    val preParentType get() = preParentTypeId.toString().serialize<WidgetType>()
+    val widgetPreParentType get() = WidgetType.values().find { it.id == preParentTypeId } ?: WidgetType.VIEW
 
     /**
      * Says is widget can have children.
      * @return [Boolean] - true if can, false if cannot.
      */
     val canHaveChildren
-        get() = type == WidgetType.LINEAR_LAYOUT
-            || type == WidgetType.VERTICAL_SCROLL || type == WidgetType.VERTICAL_SCROLL
+        get() = widgetType == WidgetType.LINEAR_LAYOUT
+            || widgetType == WidgetType.VERTICAL_SCROLL || widgetType == WidgetType.VERTICAL_SCROLL
+
+    /**
+     * @return [adSize] converted to [AdSize] enum.
+     */
+    var adViewSize get() = try {
+        AdSize.valueOf(adSize)
+    } catch (_: Exception) {
+        null
+    }
+    set(value) {
+        adSize = value?.name ?: ""
+    }
 
 }

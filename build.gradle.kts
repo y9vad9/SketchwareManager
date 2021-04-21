@@ -27,9 +27,14 @@ dependencies {
  */
 applyDeploy()
 
-tasks.withType<KotlinCompile> {
-    kotlinOptions {
-        useIR = true
-        freeCompilerArgs = freeCompilerArgs + "-Xopt-in=kotlin.RequiresOptIn"
+tasks.apply {
+    withType<KotlinCompile> {
+        kotlinOptions {
+            useIR = true
+            freeCompilerArgs = freeCompilerArgs + "-Xopt-in=kotlin.RequiresOptIn"
+        }
+    }
+    withType<Test> {
+        useJUnitPlatform()
     }
 }
