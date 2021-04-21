@@ -82,13 +82,14 @@ data class WidgetProperties(
     /**
      * @return [adSize] converted to [AdSize] enum.
      */
-    var adViewSize get() = try {
-        AdSize.valueOf(adSize)
-    } catch (_: Exception) {
-        null
-    }
-    set(value) {
-        adSize = value?.name ?: ""
-    }
+    var adViewSize
+        get() = try {
+            AdSize.valueOf(adSize)
+        } catch (_: Exception) {
+            null
+        }
+        set(value) {
+            adSize = value?.name ?: ""
+        }
 
 }
