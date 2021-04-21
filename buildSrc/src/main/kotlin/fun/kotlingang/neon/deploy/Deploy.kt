@@ -22,13 +22,13 @@ class Deploy : Plugin<Project> {
 
         target.afterEvaluate {
 
-            if(config.user == null)
+            if (config.user == null)
                 fieldMissingError(config::user.name)
-            if(config.host == null)
+            if (config.host == null)
                 fieldMissingError(config::host.name)
-            if(config.password == null)
+            if (config.password == null)
                 fieldMissingError(config::password.name)
-            if(config.destinationFolderPath == null)
+            if (config.destinationFolderPath == null)
                 fieldMissingError(config::destinationFolderPath.name)
 
             project.the<PublishingExtension>().apply {

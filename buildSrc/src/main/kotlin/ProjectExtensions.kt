@@ -15,7 +15,7 @@ import java.io.File
 fun Project.applyDeploy() {
     val deployPropertiesFile: File = project.file("deploy.properties")
 
-    if(deployPropertiesFile.exists()) {
+    if (deployPropertiesFile.exists()) {
         val properties = loadProperties(deployPropertiesFile)
 
         project.apply<Deploy>()
