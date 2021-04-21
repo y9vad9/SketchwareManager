@@ -56,7 +56,7 @@ class ViewManager(
      * Saves data locally to [value].
      */
     private fun saveAllLocally() = views.forEach { view ->
-        view.save()
+        saveView(view.viewName, view.root.toSketchwareFormat())
     }
 
     /**
@@ -78,6 +78,8 @@ class ViewManager(
          * Removes view in [ViewManager].
          * The View will be removed and it will no longer be possible
          * to get it outside of this Instance. You can call [save] later to bring the View back.
+         * @return [Boolean] - `true` if successfully removed from [views]
+         * and [value] or `false` if it wasn't deleted (for example, if it already deleted).
          */
         fun remove(): Boolean {
             value = removeTag(viewName, value)
@@ -96,16 +98,11 @@ class ViewManager(
             }
 
         /**
-         * Saves view in to [ViewManager].
+         * Mark view as changed.
          * If view was removed (by [remove]) it will turn it back.
          * No need to call it, if you aren't removed view before.
          */
-        fun save() {
-            value = BeansParser.addTag(
-                viewName,
-                root.toSketchwareFormat().joinToString("\n") { it.deserialize() },
-                value
-            )
+        fun notifyChanged() {
             views.add(this)
         }
 
@@ -113,18 +110,13 @@ class ViewManager(
 
     private fun saveView(
         viewName: String,
-        widget: String? = null,
         list: List<WidgetProperties>
     ) = synchronized(this) {
-        val name = "$viewName.xml".plus(
-            if (widget == null)
-                "" else "_$widget"
-        )
         value = value.replaceOrInsertAtTop(
-            "(@$name.*?)(?=@|\$)".toRegex(),
+            "(@${viewName.normalizeTag()}.*?)(?=@|\$)".toRegex(),
             if (list.isEmpty())
                 throw IllegalStateException("list cannot be empty")
-            else "@$name${list.toSaveableValue()}\n\n"
+            else "@$viewName${list.toSaveableValue()}\n\n"
         )
     }
 
