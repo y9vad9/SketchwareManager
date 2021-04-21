@@ -12,12 +12,14 @@ Why this particular library?
 
 ## Implementation
 
+> Here is just dev-test build, it's not production ready.
+
 ```kotlin
 repositories {
     maven("https://dl.kotlingang.fun")
 }
 dependencies {
-    implementation("io.sketchware:SketchwareManager:dev-2.4.3")
+    implementation("io.sketchware:SketchwareManager:dev-2.4.3-build1")
 }
 ```
 
