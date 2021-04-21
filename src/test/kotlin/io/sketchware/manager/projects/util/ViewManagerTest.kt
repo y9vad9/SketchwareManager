@@ -1,7 +1,6 @@
 package io.sketchware.manager.projects.util
 
-import io.sketchware.model.project.widget.TextViewWidget
-import io.sketchware.model.project.widget.ViewGroupWidget
+import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Test
 import java.io.File
 
@@ -13,19 +12,22 @@ internal class ViewManagerTest {
 
     @Test
     fun getView() {
-        val view = manager.getView("main")!!
-        view.root.children.forEach {
-            if (it is ViewGroupWidget)
-                println(it.children)
-            else if (it is TextViewWidget)
-                it.text = "some text"
-
-            it.id = "some_new_id"
-        }
+        val view = manager.getView("main")
+        assertNotNull(view)
     }
 
     @Test
-    fun editView() {
-
+    fun removeView() {
+        val view = manager.getView("main")!!
+        assertTrue(view.remove())
+        assertNull(manager.getView("main"))
     }
+
+    @Test
+    fun getRoot() {
+        val view = manager.getView("main")
+        assertNotNull(view?.root)
+        assertTrue { view?.root?.children?.isNotEmpty() == true }
+    }
+
 }

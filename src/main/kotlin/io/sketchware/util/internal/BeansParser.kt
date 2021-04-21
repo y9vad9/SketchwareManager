@@ -34,7 +34,7 @@ internal object BeansParser {
 
     fun removeTag(name: String, value: String): String {
         return value.replace(
-            "(@${name.normalizeTag()}.*?)(?=@|\$)".toRegex(),
+            Regex("(@${name.normalizeTag()}.*?)(?=@|\$)", RegexOption.DOT_MATCHES_ALL),
             "\n"
         )
     }

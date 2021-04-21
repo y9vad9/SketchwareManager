@@ -79,8 +79,9 @@ class ViewManager(
          * The View will be removed and it will no longer be possible
          * to get it outside of this Instance. You can call [save] later to bring the View back.
          */
-        fun remove() {
+        fun remove(): Boolean {
             value = removeTag(viewName, value)
+            return views.remove(this)
         }
 
         /**
@@ -97,6 +98,7 @@ class ViewManager(
         /**
          * Saves view in to [ViewManager].
          * If view was removed (by [remove]) it will turn it back.
+         * No need to call it, if you aren't removed view before.
          */
         fun save() {
             value = BeansParser.addTag(
@@ -104,6 +106,7 @@ class ViewManager(
                 root.toSketchwareFormat().joinToString("\n") { it.deserialize() },
                 value
             )
+            views.add(this)
         }
 
     }

@@ -242,7 +242,7 @@ class LogicManager(
      * @param activity - activity name (example: MainActivity).
      */
     fun getVariables(activity: String) = getPairBlock("$activity.java_var")?.map {
-        VariableModel(it.first.serialize(), it.second)
+        VariableModel(variableTypeFrom(it.first.toInt()), it.second)
     }
 
     /**

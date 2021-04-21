@@ -48,7 +48,7 @@ internal object ViewManagerUtils {
 
     private fun WidgetProperties.getChildableWidget(
         childrenProvider: (String) -> List<BaseWidget>
-    ) = when (type) {
+    ) = when (widgetType) {
         WidgetType.HORIZONTAL_SCROLL -> ScrollViewWidget(
             this, childrenProvider(id).toMutableList()
         )
@@ -61,7 +61,7 @@ internal object ViewManagerUtils {
         else -> error("Widget with id $id can not have child elements.")
     }
 
-    private fun WidgetProperties.toNonChildableWidget() = when (type) {
+    private fun WidgetProperties.toNonChildableWidget() = when (widgetType) {
         WidgetType.TEXTVIEW -> TextViewWidget(this)
         WidgetType.EDITTEXT -> EditTextWidget(this)
         WidgetType.BUTTON -> ButtonWidget(this)
