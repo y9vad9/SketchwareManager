@@ -1,6 +1,7 @@
 package io.sketchware.manager.collection.managers
 
-import io.sketchware.model.collection.FileCollectionItem
+import `fun`.kotlingang.sketchware.editors.collections.FileCollectionEditor
+import `fun`.kotlingang.sketchware.objects.collections.FileCollectionItem
 import org.junit.jupiter.api.Assertions.assertNotNull
 import org.junit.jupiter.api.Assertions.assertNull
 import org.junit.jupiter.api.Test
@@ -11,7 +12,7 @@ private const val fileCollectionValue =
 
 internal class FileCollectionManagerTest {
 
-    private val manager = FileCollectionManager(fileCollectionValue, File("/"))
+    private val manager = FileCollectionEditor(fileCollectionValue, File("/"))
 
     @Test
     fun getAll() {

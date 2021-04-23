@@ -1,13 +1,14 @@
 package io.sketchware.manager.collection.managers
 
-import io.sketchware.model.collection.MoreblockCollectionItem
+import `fun`.kotlingang.sketchware.editors.collections.MoreblockCollectionEditor
+import `fun`.kotlingang.sketchware.objects.collections.MoreblockCollectionItem
 import org.junit.jupiter.api.Assertions.assertNotNull
 import org.junit.jupiter.api.Assertions.assertNull
 import org.junit.jupiter.api.Test
 import java.io.File
 
 internal class MoreblockCollectionManagerTest {
-    private val manager = MoreblockCollectionManager(
+    private val manager = MoreblockCollectionEditor(
         String(
             javaClass.getResourceAsStream("/collections/moreblocks")!!.readBytes()
         ), File("")
