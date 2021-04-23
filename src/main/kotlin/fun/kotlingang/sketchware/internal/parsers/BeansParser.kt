@@ -1,10 +1,10 @@
 package `fun`.kotlingang.sketchware.internal.parsers
 
-import `fun`.kotlingang.sketchware.internal.json.deserialize
-import `fun`.kotlingang.sketchware.internal.json.serialize
 import `fun`.kotlingang.sketchware.internal.extensions.getByTag
 import `fun`.kotlingang.sketchware.internal.extensions.normalizeTag
 import `fun`.kotlingang.sketchware.internal.extensions.replaceOrInsertAtTop
+import `fun`.kotlingang.sketchware.internal.json.deserialize
+import `fun`.kotlingang.sketchware.internal.json.serialize
 import kotlinx.serialization.KSerializer
 import kotlinx.serialization.serializer
 

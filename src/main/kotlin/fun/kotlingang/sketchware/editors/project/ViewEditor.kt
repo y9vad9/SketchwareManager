@@ -1,18 +1,15 @@
 package `fun`.kotlingang.sketchware.editors.project
 
-import `fun`.kotlingang.sketchware.internal.extensions.*
-import `fun`.kotlingang.sketchware.internal.parsers.BeansParser
-import `fun`.kotlingang.sketchware.interfaces.Editor
-import `fun`.kotlingang.sketchware.interfaces.callbacks.ActionFinishListener
-import `fun`.kotlingang.sketchware.objects.project.view.properties.WidgetProperties
-import `fun`.kotlingang.sketchware.objects.project.view.widgets.RootView
 import `fun`.kotlingang.sketchware.encryptor.SketchwareEncryptor.decrypt
 import `fun`.kotlingang.sketchware.encryptor.SketchwareEncryptor.encrypt
+import `fun`.kotlingang.sketchware.interfaces.Editor
+import `fun`.kotlingang.sketchware.interfaces.callbacks.ActionFinishListener
+import `fun`.kotlingang.sketchware.internal.extensions.*
+import `fun`.kotlingang.sketchware.internal.parsers.BeansParser
 import `fun`.kotlingang.sketchware.internal.parsers.BeansParser.removeTag
 import `fun`.kotlingang.sketchware.internal.parsers.BeansParser.toSaveableValue
-import `fun`.kotlingang.sketchware.internal.extensions.getByTag
-import `fun`.kotlingang.sketchware.internal.extensions.normalizeTag
-import `fun`.kotlingang.sketchware.internal.extensions.replaceOrInsertAtTop
+import `fun`.kotlingang.sketchware.objects.project.view.properties.WidgetProperties
+import `fun`.kotlingang.sketchware.objects.project.view.widgets.RootView
 import kotlinx.coroutines.*
 import java.io.File
 import kotlin.coroutines.CoroutineContext

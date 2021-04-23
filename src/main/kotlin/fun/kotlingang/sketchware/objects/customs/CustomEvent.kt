@@ -1,7 +1,7 @@
 package `fun`.kotlingang.sketchware.objects.customs
 
-import `fun`.kotlingang.sketchware.objects.project.logic.SpecField
 import `fun`.kotlingang.sketchware.internal.json.serializers.SpecSerializer
+import `fun`.kotlingang.sketchware.objects.project.logic.SpecField
 import kotlinx.serialization.Serializable
 
 /**

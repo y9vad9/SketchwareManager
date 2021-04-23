@@ -1,7 +1,7 @@
 package `fun`.kotlingang.sketchware.objects.project
 
-import `fun`.kotlingang.sketchware.objects.project.information.ProjectFilesLocations
 import `fun`.kotlingang.sketchware.internal.extensions.getFilesOrEmpty
+import `fun`.kotlingang.sketchware.objects.project.information.ProjectFilesLocations
 import java.io.File
 
 open class SketchwareProProject(

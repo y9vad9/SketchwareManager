@@ -1,18 +1,14 @@
 package `fun`.kotlingang.sketchware.objects.project
 
 import `fun`.kotlingang.sketchware.editors.project.*
-import `fun`.kotlingang.sketchware.internal.extensions.*
-import `fun`.kotlingang.sketchware.internal.extensions.bytesToString
-import `fun`.kotlingang.sketchware.internal.extensions.read
-import `fun`.kotlingang.sketchware.internal.extensions.removeFiles
-import `fun`.kotlingang.sketchware.internal.extensions.write
-import `fun`.kotlingang.sketchware.internal.json.deserialize
-import `fun`.kotlingang.sketchware.internal.json.serialize
-import `fun`.kotlingang.sketchware.internal.exceptions.ValueRequireException
-import `fun`.kotlingang.sketchware.objects.project.information.ProjectConfig
-import `fun`.kotlingang.sketchware.objects.project.information.ProjectFilesLocations
 import `fun`.kotlingang.sketchware.encryptor.SketchwareEncryptor.decrypt
 import `fun`.kotlingang.sketchware.encryptor.SketchwareEncryptor.encrypt
+import `fun`.kotlingang.sketchware.internal.exceptions.ValueRequireException
+import `fun`.kotlingang.sketchware.internal.extensions.*
+import `fun`.kotlingang.sketchware.internal.json.deserialize
+import `fun`.kotlingang.sketchware.internal.json.serialize
+import `fun`.kotlingang.sketchware.objects.project.information.ProjectConfig
+import `fun`.kotlingang.sketchware.objects.project.information.ProjectFilesLocations
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.CoroutineStart
 import kotlinx.coroutines.Dispatchers

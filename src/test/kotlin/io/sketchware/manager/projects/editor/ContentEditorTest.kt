@@ -1,5 +1,6 @@
 package io.sketchware.manager.projects.editor
 
+import `fun`.kotlingang.sketchware.annotations.ExperimentalSWManagerAPI
 import `fun`.kotlingang.sketchware.editors.project.ContentEditor
 import `fun`.kotlingang.sketchware.objects.project.content.*
 import io.sketchware.model.project.content.KeyboardSetting
@@ -55,14 +56,14 @@ internal class ContentEditorTest {
         assertNotNull(fileManager.customViews.find { it.fileName == "file_name_test2" })
     }
 
-    @OptIn(`fun`.kotlingang.sketchware.annotations.ExperimentalSWManagerAPI::class)
+    @OptIn(ExperimentalSWManagerAPI::class)
     @Test
     fun removeActivity() {
         fileManager.removeActivity("file_name_test")
         assertNull(fileManager.activities.find { it.javaName == "FileNameTestActivity" })
     }
 
-    @OptIn(`fun`.kotlingang.sketchware.annotations.ExperimentalSWManagerAPI::class)
+    @OptIn(ExperimentalSWManagerAPI::class)
     @Test
     fun removeCustomView() {
         fileManager.removeCustomView("file_name_test2")

@@ -1,5 +1,6 @@
 package `fun`.kotlingang.sketchware.internal.json
 
+import `fun`.kotlingang.sketchware.internal.json.serializers.idSerializer
 import `fun`.kotlingang.sketchware.objects.project.content.ActivityTheme
 import `fun`.kotlingang.sketchware.objects.project.content.FileType
 import `fun`.kotlingang.sketchware.objects.project.content.Orientation
@@ -9,7 +10,6 @@ import `fun`.kotlingang.sketchware.objects.project.view.properties.LayoutOrienta
 import `fun`.kotlingang.sketchware.objects.project.view.properties.SpinnerMode
 import `fun`.kotlingang.sketchware.objects.project.view.properties.TextStyle
 import `fun`.kotlingang.sketchware.objects.project.view.properties.WidgetType
-import `fun`.kotlingang.sketchware.internal.json.serializers.idSerializer
 import io.sketchware.model.project.content.KeyboardSetting
 import kotlinx.serialization.KSerializer
 import kotlinx.serialization.decodeFromString

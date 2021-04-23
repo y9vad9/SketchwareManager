@@ -1,8 +1,8 @@
 package `fun`.kotlingang.sketchware.editors.collections
 
-import `fun`.kotlingang.sketchware.objects.collections.BlockCollectionItem
 import `fun`.kotlingang.sketchware.internal.extensions.bytesToString
 import `fun`.kotlingang.sketchware.internal.extensions.read
+import `fun`.kotlingang.sketchware.objects.collections.BlockCollectionItem
 import java.io.File
 
 class BlockCollectionEditor(

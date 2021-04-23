@@ -1,8 +1,8 @@
 package `fun`.kotlingang.sketchware.internal.json.serializers
 
-import `fun`.kotlingang.sketchware.objects.project.logic.BlockModel
 import `fun`.kotlingang.sketchware.internal.parsers.BeansParser
 import `fun`.kotlingang.sketchware.internal.parsers.BeansParser.toSaveableValue
+import `fun`.kotlingang.sketchware.objects.project.logic.BlockModel
 import kotlinx.serialization.KSerializer
 import kotlinx.serialization.descriptors.SerialDescriptor
 import kotlinx.serialization.descriptors.buildClassSerialDescriptor

@@ -1,7 +1,7 @@
 package `fun`.kotlingang.sketchware.objects.project.content
 
-import `fun`.kotlingang.sketchware.internal.json.serializers.ActivityOptionSerializer
 import `fun`.kotlingang.sketchware.internal.extensions.snakeToUpperCamelCase
+import `fun`.kotlingang.sketchware.internal.json.serializers.ActivityOptionSerializer
 import io.sketchware.model.project.content.KeyboardSetting
 import kotlinx.serialization.Contextual
 import kotlinx.serialization.Serializable
@@ -51,7 +51,7 @@ class FileDataModel(
      * @throws [IllegalStateException] if [fileType] is not Activity.
      * @return Converted [FileDataModel] to [ActivityView] if it's possible.
      */
-    fun toActivityView() = if(fileType == FileType.ACTIVITY)
+    fun toActivityView() = if (fileType == FileType.ACTIVITY)
         ActivityView(fileName, keyboardSetting, options, orientation, theme)
     else throw IllegalStateException("Cannot convert FileDataModel to ActivityView, FileDataModel is not an activity.")
 
@@ -60,7 +60,7 @@ class FileDataModel(
      * @throws [IllegalStateException] if [fileType] is not Activity.
      * @return Converted [FileDataModel] to [CustomView] if it's possible.
      */
-    fun toCustomView() = if(fileType == FileType.ACTIVITY)
+    fun toCustomView() = if (fileType == FileType.ACTIVITY)
         ActivityView(fileName, keyboardSetting, options, orientation, theme)
     else throw IllegalStateException("Cannot convert FileDataModel to ActivityView, FileDataModel is not an custom view.")
 
@@ -69,7 +69,7 @@ class FileDataModel(
      * @throws [IllegalStateException] if [fileType] is not Activity.
      * @return Converted [FileDataModel] to [ActivityView] if it's possible.
      */
-    fun toDrawerLayout() = if(fileType == FileType.ACTIVITY)
+    fun toDrawerLayout() = if (fileType == FileType.ACTIVITY)
         DrawerView(fileName)
     else throw IllegalStateException("Cannot convert FileDataModel to ActivityView, FileDataModel is not an custom view.")
 

@@ -1,14 +1,14 @@
 package `fun`.kotlingang.sketchware.manager.customs
 
-import `fun`.kotlingang.sketchware.interfaces.CustomMenusManager
 import `fun`.kotlingang.sketchware.editors.customs.SWProCustomBlocksEditor
 import `fun`.kotlingang.sketchware.editors.customs.SWProCustomComponentsEditor
 import `fun`.kotlingang.sketchware.editors.customs.SWProCustomListenersEditor
 import `fun`.kotlingang.sketchware.editors.customs.SWProCustomMenusEditor
-import `fun`.kotlingang.sketchware.objects.customs.SWCustomSettings
+import `fun`.kotlingang.sketchware.interfaces.CustomMenusManager
 import `fun`.kotlingang.sketchware.internal.extensions.bytesToString
 import `fun`.kotlingang.sketchware.internal.extensions.readOrNull
 import `fun`.kotlingang.sketchware.internal.json.serialize
+import `fun`.kotlingang.sketchware.objects.customs.SWCustomSettings
 import java.io.File
 
 open class SWProCustomManager(

@@ -35,7 +35,7 @@ open class SWProjectsManager(
      */
     override suspend fun nextFreeId(startId: Int): Int {
         val files = File(sketchwareFolder, "mysc/list")
-        return if(File(files, "$startId").exists())
+        return if (File(files, "$startId").exists())
             nextFreeId(startId + 1)
         else startId
     }
