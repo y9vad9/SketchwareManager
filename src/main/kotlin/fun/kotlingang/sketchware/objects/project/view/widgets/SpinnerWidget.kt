@@ -8,3 +8,11 @@ class SpinnerWidget(view: WidgetProperties) : BaseWidget(view) {
      */
     var spinnerMode by view::spinnerMode
 }
+
+/**
+ * @return [SpinnerWidget] instance created from [parent].
+ */
+fun SpinnerWidget(parent: ViewGroupWidget): SpinnerWidget = SpinnerWidget(WidgetProperties(
+    parent = parent.id, parentTypeId = parent.view.typeId,
+    preParent = parent.view.parent, preParentTypeId = parent.view.parentTypeId
+))

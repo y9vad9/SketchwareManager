@@ -1,10 +1,12 @@
 package `fun`.kotlingang.sketchware.objects.project.view.widgets
 
 import `fun`.kotlingang.sketchware.objects.project.view.properties.WidgetProperties
+import `fun`.kotlingang.sketchware.objects.project.view.properties.WidgetType
 
 open class BaseWidget internal constructor(
     internal val view: WidgetProperties
 ) {
+
     /**
      * Unique widget string identify.
      */
@@ -86,3 +88,11 @@ open class BaseWidget internal constructor(
     var layoutGravity by layout::layoutGravity
 
 }
+
+/**
+ * @return [BaseWidget] instance created from [parent].
+ */
+fun BaseWidget(parent: ViewGroupWidget): BaseWidget = BaseWidget(WidgetProperties(
+    parent = parent.id, parentTypeId = parent.view.typeId,
+    preParent = parent.view.parent, preParentTypeId = parent.view.parentTypeId
+))

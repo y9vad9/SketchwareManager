@@ -30,3 +30,11 @@ class ButtonWidget(view: WidgetProperties) : BaseWidget(view) {
     var textStyle by textProps::textType
 
 }
+
+/**
+ * @return [ButtonWidget] instance created from [parent].
+ */
+fun ButtonWidget(parent: ViewGroupWidget): ButtonWidget = ButtonWidget(WidgetProperties(
+    parent = parent.id, parentTypeId = parent.view.typeId,
+    preParent = parent.view.parent, preParentTypeId = parent.view.parentTypeId
+))

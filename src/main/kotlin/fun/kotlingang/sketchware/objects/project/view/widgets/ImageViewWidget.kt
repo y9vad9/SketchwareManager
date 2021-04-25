@@ -16,3 +16,11 @@ class ImageViewWidget(view: WidgetProperties) : BaseWidget(view) {
     var scaleType by imageProperties::scaleType
 
 }
+
+/**
+ * @return [FloatingActionButtonWidget] instance created from [parent].
+ */
+fun ImageViewWidget(parent: ViewGroupWidget): ImageViewWidget = ImageViewWidget(WidgetProperties(
+    parent = parent.id, parentTypeId = parent.view.typeId,
+    preParent = parent.view.parent, preParentTypeId = parent.view.parentTypeId
+))

@@ -35,3 +35,11 @@ open class EditTextWidget internal constructor(
      */
     var inputType by textProps::inputType
 }
+
+/**
+ * @return [EditTextWidget] instance created from [parent].
+ */
+fun EditTextWidget(parent: ViewGroupWidget): EditTextWidget = EditTextWidget(WidgetProperties(
+    parent = parent.id, parentTypeId = parent.view.typeId,
+    preParent = parent.view.parent, preParentTypeId = parent.view.parentTypeId
+))

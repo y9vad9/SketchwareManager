@@ -41,3 +41,11 @@ open class CheckboxWidget(view: WidgetProperties) : BaseWidget(view) {
     var textSize by textProps::textSize
 
 }
+
+/**
+ * @return [CheckboxWidget] instance created from [parent].
+ */
+fun CheckboxWidget(parent: ViewGroupWidget): CheckboxWidget = CheckboxWidget(WidgetProperties(
+    parent = parent.id, parentTypeId = parent.view.typeId,
+    preParent = parent.view.parent, preParentTypeId = parent.view.parentTypeId
+))

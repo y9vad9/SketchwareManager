@@ -8,3 +8,11 @@ class AdViewWidget(view: WidgetProperties) : BaseWidget(view) {
      */
     var size by view::adViewSize
 }
+
+/**
+ * @return [AdViewWidget] instance created from [parent].
+ */
+fun AdViewWidget(parent: ViewGroupWidget): AdViewWidget = AdViewWidget(WidgetProperties(
+    parent = parent.id, parentTypeId = parent.view.typeId,
+    preParent = parent.view.parent, preParentTypeId = parent.view.parentTypeId
+))

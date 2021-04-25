@@ -1,6 +1,6 @@
 package `fun`.kotlingang.sketchware.objects.project.view.properties
 
-import `fun`.kotlingang.sketchware.interfaces.Identifiable
+import `fun`.kotlingang.sketchware.interfaces.objects.Identifiable
 import `fun`.kotlingang.sketchware.objects.SWConst
 
 enum class WidgetType(override val id: Int, val serialName: String? = null) : Identifiable {

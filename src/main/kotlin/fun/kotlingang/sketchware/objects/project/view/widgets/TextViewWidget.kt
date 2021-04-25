@@ -48,3 +48,11 @@ open class TextViewWidget internal constructor(
      */
     var textStyle by textProps::textType
 }
+
+/**
+ * @return [TextViewWidget] instance created from [parent].
+ */
+fun TextViewWidget(parent: ViewGroupWidget): TextViewWidget = TextViewWidget(WidgetProperties(
+    parent = parent.id, parentTypeId = parent.view.typeId,
+    preParent = parent.view.parent, preParentTypeId = parent.view.parentTypeId
+))

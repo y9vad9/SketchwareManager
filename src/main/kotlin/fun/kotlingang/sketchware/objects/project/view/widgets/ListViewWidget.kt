@@ -13,3 +13,11 @@ class ListViewWidget(view: WidgetProperties) : BaseWidget(view) {
      */
     var customView by view::customView
 }
+
+/**
+ * @return [ListViewWidget] instance created from [parent].
+ */
+fun ListViewWidget(parent: ViewGroupWidget): ListViewWidget = ListViewWidget(WidgetProperties(
+    parent = parent.id, parentTypeId = parent.view.typeId,
+    preParent = parent.view.parent, preParentTypeId = parent.view.parentTypeId
+))

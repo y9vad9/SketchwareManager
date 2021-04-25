@@ -13,3 +13,11 @@ open class SeekBarWidget(view: WidgetProperties) : BaseWidget(view) {
      */
     var progress by view::progress
 }
+
+/**
+ * @return [SeekBarWidget] instance created from [parent].
+ */
+fun SeekBarWidget(parent: ViewGroupWidget): SeekBarWidget = SeekBarWidget(WidgetProperties(
+    parent = parent.id, parentTypeId = parent.view.typeId,
+    preParent = parent.view.parent, preParentTypeId = parent.view.parentTypeId
+))
