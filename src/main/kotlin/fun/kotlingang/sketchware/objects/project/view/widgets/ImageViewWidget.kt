@@ -2,7 +2,7 @@ package `fun`.kotlingang.sketchware.objects.project.view.widgets
 
 import `fun`.kotlingang.sketchware.objects.project.view.properties.WidgetProperties
 
-class ImageViewWidget(view: WidgetProperties) : BaseWidget(view) {
+class ImageViewWidget(view: WidgetProperties = WidgetProperties()) : BaseWidget(view) {
     private val imageProperties get() = view.image
 
     /**
@@ -17,10 +17,3 @@ class ImageViewWidget(view: WidgetProperties) : BaseWidget(view) {
 
 }
 
-/**
- * @return [FloatingActionButtonWidget] instance created from [parent].
- */
-fun ImageViewWidget(parent: ViewGroupWidget): ImageViewWidget = ImageViewWidget(WidgetProperties(
-    parent = parent.id, parentTypeId = parent.view.typeId,
-    preParent = parent.view.parent, preParentTypeId = parent.view.parentTypeId
-))

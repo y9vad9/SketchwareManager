@@ -3,7 +3,7 @@ package `fun`.kotlingang.sketchware.objects.project.view.widgets
 import `fun`.kotlingang.sketchware.objects.project.view.properties.WidgetProperties
 
 open class TextViewWidget internal constructor(
-    view: WidgetProperties
+    view: WidgetProperties = WidgetProperties()
 ) : BaseWidget(view) {
 
     internal val textProps get() = view.text
@@ -48,11 +48,3 @@ open class TextViewWidget internal constructor(
      */
     var textStyle by textProps::textType
 }
-
-/**
- * @return [TextViewWidget] instance created from [parent].
- */
-fun TextViewWidget(parent: ViewGroupWidget): TextViewWidget = TextViewWidget(WidgetProperties(
-    parent = parent.id, parentTypeId = parent.view.typeId,
-    preParent = parent.view.parent, preParentTypeId = parent.view.parentTypeId
-))

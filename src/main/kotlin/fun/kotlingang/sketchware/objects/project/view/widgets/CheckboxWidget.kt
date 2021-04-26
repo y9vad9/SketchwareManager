@@ -2,7 +2,7 @@ package `fun`.kotlingang.sketchware.objects.project.view.widgets
 
 import `fun`.kotlingang.sketchware.objects.project.view.properties.WidgetProperties
 
-open class CheckboxWidget(view: WidgetProperties) : BaseWidget(view) {
+open class CheckboxWidget(view: WidgetProperties = WidgetProperties()) : BaseWidget(view) {
 
     /**
      * Stores info about "checked" status of checkbox.
@@ -41,11 +41,3 @@ open class CheckboxWidget(view: WidgetProperties) : BaseWidget(view) {
     var textSize by textProps::textSize
 
 }
-
-/**
- * @return [CheckboxWidget] instance created from [parent].
- */
-fun CheckboxWidget(parent: ViewGroupWidget): CheckboxWidget = CheckboxWidget(WidgetProperties(
-    parent = parent.id, parentTypeId = parent.view.typeId,
-    preParent = parent.view.parent, preParentTypeId = parent.view.parentTypeId
-))

@@ -3,7 +3,7 @@ package `fun`.kotlingang.sketchware.objects.project.view.widgets
 import `fun`.kotlingang.sketchware.objects.project.view.properties.WidgetProperties
 
 open class EditTextWidget internal constructor(
-    view: WidgetProperties
+    view: WidgetProperties = WidgetProperties()
 ) : TextViewWidget(view) {
     /**
      * EditText hint text.
@@ -35,11 +35,3 @@ open class EditTextWidget internal constructor(
      */
     var inputType by textProps::inputType
 }
-
-/**
- * @return [EditTextWidget] instance created from [parent].
- */
-fun EditTextWidget(parent: ViewGroupWidget): EditTextWidget = EditTextWidget(WidgetProperties(
-    parent = parent.id, parentTypeId = parent.view.typeId,
-    preParent = parent.view.parent, preParentTypeId = parent.view.parentTypeId
-))
