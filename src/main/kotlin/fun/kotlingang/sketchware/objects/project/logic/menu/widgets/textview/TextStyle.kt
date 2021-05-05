@@ -8,6 +8,7 @@ enum class TextStyle {
     NORMAL,
     BOLD,
     ITALIC,
+
     @SerialName("bold|italic")
     BOLD_AND_ITALIC;
 

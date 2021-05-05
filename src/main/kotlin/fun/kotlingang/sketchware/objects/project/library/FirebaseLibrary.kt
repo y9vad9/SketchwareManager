@@ -8,7 +8,7 @@ data class FirebaseLibrary(
     var apiKey: String,
     var storageBucketUrl: String,
     override var isEnabled: Boolean
-): Library {
+) : Library {
     /**
      * Converts [FirebaseLibrary] to [LibraryDataModel] which originally formatted for sketchware.
      * @return [LibraryDataModel] converted from current instance.

@@ -6,7 +6,7 @@ import `fun`.kotlingang.sketchware.objects.project.logic.blocks.expressions.Expr
  * Used for arguments where a block can be invoked,
  * which returns an appropriate value.
  */
-interface ExpressibleArgument<EB: ExpressionBlock> {
+interface ExpressibleArgument<EB : ExpressionBlock> {
     /**
      * Block which returning some appropriate value.
      */

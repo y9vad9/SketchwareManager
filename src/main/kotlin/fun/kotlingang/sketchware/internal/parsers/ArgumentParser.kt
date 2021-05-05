@@ -41,14 +41,29 @@ internal object ArgumentParser {
                 blocks.getArgumentExpressible(FirebaseDatabaseComponentPickerMenuArgument::class, parameter)
             FIREBASE_STORAGE_PICKER ->
                 blocks.getArgumentExpressible(FirebaseStorageComponentPickerMenuArgument::class, parameter)
-            FIREBASE_AUTH_PICKER -> blocks.getArgumentExpressible(FirebaseAuthComponentPickerMenuArgument::class, parameter)
-            INTERSTITIAL_AD_PICKER -> blocks.getArgumentExpressible(InterstitialAdComponentPickerMenuArgument::class, parameter)
-            TEXT_TO_SPEECH_PICKER -> blocks.getArgumentExpressible(TextToSpeechComponentPickerMenuArgument::class, parameter)
+            FIREBASE_AUTH_PICKER -> blocks.getArgumentExpressible(
+                FirebaseAuthComponentPickerMenuArgument::class,
+                parameter
+            )
+            INTERSTITIAL_AD_PICKER -> blocks.getArgumentExpressible(
+                InterstitialAdComponentPickerMenuArgument::class,
+                parameter
+            )
+            TEXT_TO_SPEECH_PICKER -> blocks.getArgumentExpressible(
+                TextToSpeechComponentPickerMenuArgument::class,
+                parameter
+            )
             SPEECH_TO_TEXT_PICKER -> blocks.getArgumentExpressible(SpeechToTextComponentPicker::class, parameter)
-            REQUEST_NETWORK_PICKER -> blocks.getArgumentExpressible(RequestNetworkComponentPickerMenuArgument::class, parameter)
+            REQUEST_NETWORK_PICKER -> blocks.getArgumentExpressible(
+                RequestNetworkComponentPickerMenuArgument::class,
+                parameter
+            )
             SOUND_PICKER -> SoundMenuArgument(parameter.nullIfBlank())
             SOUND_POOL_PICKER -> blocks.getArgumentExpressible(SoundPoolComponentPickerMenuArgument::class, parameter)
-            OBJECT_ANIMATOR_PICKER -> blocks.getArgumentExpressible(ObjectAnimatorComponentPickerMenuArgument::class, parameter)
+            OBJECT_ANIMATOR_PICKER -> blocks.getArgumentExpressible(
+                ObjectAnimatorComponentPickerMenuArgument::class,
+                parameter
+            )
             VIBRATOR_PICKER -> blocks.getArgumentExpressible(VibratorComponentPickerMenuArgument::class, parameter)
             TIMER_PICKER -> blocks.getArgumentExpressible(TimerComponentPickerMenuArgument::class, parameter)
             DIALOG_PICKER -> blocks.getArgumentExpressible(DialogComponentPickerMenuArgument::class, parameter)

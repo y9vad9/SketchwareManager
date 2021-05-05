@@ -2,7 +2,6 @@ package `fun`.kotlingang.sketchware.objects.project.logic.blocks
 
 import `fun`.kotlingang.sketchware.objects.project.logic.BlockModel
 import `fun`.kotlingang.sketchware.objects.project.logic.arguments.Argument
-import `fun`.kotlingang.sketchware.objects.project.logic.arguments.primitives.BooleanExpressibleArgument
 
 class IfElseStyleBlock(
     model: BlockModel,

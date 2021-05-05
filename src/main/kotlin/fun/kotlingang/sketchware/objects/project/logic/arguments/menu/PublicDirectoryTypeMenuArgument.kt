@@ -7,4 +7,5 @@ import `fun`.kotlingang.sketchware.objects.project.logic.menu.components.file.Pu
  * Argument in blocks which contains public directory type.
  * @param selected - menu item which was selected.
  */
-class PublicDirectoryTypeMenuArgument(selected: PublicDirectoryType? = null) : EnumMenuArgument<PublicDirectoryType>(selected)
+class PublicDirectoryTypeMenuArgument(selected: PublicDirectoryType? = null) :
+    EnumMenuArgument<PublicDirectoryType>(selected)

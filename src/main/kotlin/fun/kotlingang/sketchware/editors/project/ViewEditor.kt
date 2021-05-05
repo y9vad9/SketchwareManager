@@ -2,8 +2,8 @@ package `fun`.kotlingang.sketchware.editors.project
 
 import `fun`.kotlingang.sketchware.encryptor.SketchwareEncryptor.decrypt
 import `fun`.kotlingang.sketchware.encryptor.SketchwareEncryptor.encrypt
-import `fun`.kotlingang.sketchware.interfaces.editors.Editor
 import `fun`.kotlingang.sketchware.interfaces.callbacks.ActionFinishListener
+import `fun`.kotlingang.sketchware.interfaces.editors.Editor
 import `fun`.kotlingang.sketchware.internal.extensions.*
 import `fun`.kotlingang.sketchware.internal.parsers.BeansParser
 import `fun`.kotlingang.sketchware.internal.parsers.BeansParser.removeTag

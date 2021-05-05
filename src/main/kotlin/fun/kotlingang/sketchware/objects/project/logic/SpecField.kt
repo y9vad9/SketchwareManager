@@ -1,7 +1,5 @@
 package `fun`.kotlingang.sketchware.objects.project.logic
 
-import `fun`.kotlingang.sketchware.annotations.ExperimentalSWManagerAPI
-import `fun`.kotlingang.sketchware.internal.exceptions.InvalidMenuArgumentTypeException
 import kotlinx.serialization.Serializable
 
 @Serializable
@@ -33,9 +31,10 @@ open class SpecArgument(override var text: String) : SpecField(text) {
 
 data class StringSpecArgument(override var text: String) : SpecArgument(text) {
     val options: List<String>
-    get() = text.split(".")
-        .filterIndexed { index, _ -> index != 0 }
+        get() = text.split(".")
+            .filterIndexed { index, _ -> index != 0 }
 }
+
 data class BooleanSpecArgument(override var text: String) : SpecArgument(text)
 data class NumberSpecArgument(override var text: String) : SpecArgument(text)
 

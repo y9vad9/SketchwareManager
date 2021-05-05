@@ -52,7 +52,7 @@ internal enum class MenuSpecArgumentType(val serialName: String) {
     TARGET_PROPERTY_PICKER("animatorproperty"),
     REPEAT_MODE_PICKER("aniRepeatMode"),
     INTERPOLATOR_PICKER("aniInterpolator"),
-    
+
 
     /**
      * Using for flags picking for intent.
@@ -70,7 +70,7 @@ internal enum class MenuSpecArgumentType(val serialName: String) {
     TEXT_TO_SPEECH_PICKER("texttospeech"),
     SPEECH_TO_TEXT_PICKER("speechtotext"),
     REQUEST_NETWORK_PICKER("requestnetwork");
-    
+
     companion object {
         fun of(input: String): MenuSpecArgumentType? {
             return values().firstOrNull { it.serialName == input }

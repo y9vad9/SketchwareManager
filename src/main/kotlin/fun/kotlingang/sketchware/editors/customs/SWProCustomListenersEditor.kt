@@ -1,8 +1,9 @@
 package `fun`.kotlingang.sketchware.editors.customs
 
-import `fun`.kotlingang.sketchware.interfaces.editors.Editor
 import `fun`.kotlingang.sketchware.interfaces.FileExportable
 import `fun`.kotlingang.sketchware.interfaces.callbacks.ActionFinishListener
+import `fun`.kotlingang.sketchware.interfaces.editors.Editor
+import `fun`.kotlingang.sketchware.internal.delegates.lazyResetable
 import `fun`.kotlingang.sketchware.internal.extensions.bytesToString
 import `fun`.kotlingang.sketchware.internal.extensions.read
 import `fun`.kotlingang.sketchware.internal.extensions.write
@@ -11,7 +12,6 @@ import `fun`.kotlingang.sketchware.internal.json.serialize
 import `fun`.kotlingang.sketchware.internal.json.serializers.toSpecFields
 import `fun`.kotlingang.sketchware.objects.customs.CustomEvent
 import `fun`.kotlingang.sketchware.objects.customs.CustomListenerGroup
-import `fun`.kotlingang.sketchware.internal.delegates.lazyResetable
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch

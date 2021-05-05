@@ -6,7 +6,6 @@ import `fun`.kotlingang.sketchware.objects.project.logic.BlockModel
 import `fun`.kotlingang.sketchware.objects.project.logic.BlockType
 import `fun`.kotlingang.sketchware.objects.project.logic.SpecArgument
 import `fun`.kotlingang.sketchware.objects.project.logic.SpecField
-import `fun`.kotlingang.sketchware.objects.project.logic.arguments.Argument
 import `fun`.kotlingang.sketchware.objects.project.logic.blocks.BaseBlock
 import `fun`.kotlingang.sketchware.objects.project.logic.blocks.IfElseStyleBlock
 import `fun`.kotlingang.sketchware.objects.project.logic.blocks.IfStyleBlock
@@ -16,8 +15,10 @@ import `fun`.kotlingang.sketchware.objects.project.logic.blocks.expressions.comp
 import `fun`.kotlingang.sketchware.objects.project.logic.blocks.expressions.primitives.BooleanExpressionBlock
 import `fun`.kotlingang.sketchware.objects.project.logic.blocks.expressions.primitives.NumberExpressionBlock
 import `fun`.kotlingang.sketchware.objects.project.logic.blocks.expressions.primitives.StringExpressionBlock
-import `fun`.kotlingang.sketchware.objects.project.logic.blocks.expressions.structured.*
-import java.util.*
+import `fun`.kotlingang.sketchware.objects.project.logic.blocks.expressions.structured.ListMapExpressionBlock
+import `fun`.kotlingang.sketchware.objects.project.logic.blocks.expressions.structured.ListNumberExpressionBlock
+import `fun`.kotlingang.sketchware.objects.project.logic.blocks.expressions.structured.ListStringExpressionBlock
+import `fun`.kotlingang.sketchware.objects.project.logic.blocks.expressions.structured.MapExpressionBlock
 
 internal object BlockParser {
     fun List<BlockModel>.toListOfBlocks() = sortedBy(BlockModel::id)
@@ -57,11 +58,11 @@ internal object BlockParser {
         BlockType.HEADER -> error("Header cannot be converted.")
     }
 
-    private fun getVariable(model: BlockModel) : GetVariableBlock {
+    private fun getVariable(model: BlockModel): GetVariableBlock {
         TODO()
     }
 
-    private fun getList(model: BlockModel) = when(model.typeName) {
+    private fun getList(model: BlockModel) = when (model.typeName) {
         "List String" -> ListStringExpressionBlock(model)
         "List Number" -> ListNumberExpressionBlock(model)
         "List Map" -> ListMapExpressionBlock(model)
@@ -70,7 +71,7 @@ internal object BlockParser {
 
     private fun getComponentExpressionBlock(
         specField: SpecField, model: BlockModel
-    ) : ComponentExpressionBlock = when (specField.text) {
+    ): ComponentExpressionBlock = when (specField.text) {
         SWConst.MenuSpecNames.INTENT_PICKER -> IntentExpressionBlock(model)
         SWConst.MenuSpecNames.VIBRATOR_PICKER -> VibratorExpressionBlock(model)
         SWConst.MenuSpecNames.CAMERA_PICKER -> CameraExpressionBlock(model)
