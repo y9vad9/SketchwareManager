@@ -4,8 +4,10 @@ import `fun`.kotlingang.sketchware.internal.json.serializers.idSerializer
 import `fun`.kotlingang.sketchware.objects.project.content.ActivityTheme
 import `fun`.kotlingang.sketchware.objects.project.content.FileType
 import `fun`.kotlingang.sketchware.objects.project.content.Orientation
+import `fun`.kotlingang.sketchware.objects.project.library.LibraryType
 import `fun`.kotlingang.sketchware.objects.project.logic.ListType
 import `fun`.kotlingang.sketchware.objects.project.logic.VariableType
+import `fun`.kotlingang.sketchware.objects.project.resources.ResourceType
 import `fun`.kotlingang.sketchware.objects.project.view.properties.LayoutOrientation
 import `fun`.kotlingang.sketchware.objects.project.view.properties.SpinnerMode
 import `fun`.kotlingang.sketchware.objects.project.view.properties.TextStyle
@@ -29,6 +31,8 @@ private val serializationModule = SerializersModule {
     contextual(idSerializer(WidgetType.VIEW))
     contextual(idSerializer<TextStyle>())
     contextual(idSerializer<SpinnerMode>())
+    contextual(idSerializer<LibraryType>())
+    contextual(idSerializer<ResourceType>())
 }
 
 internal val json = Json {

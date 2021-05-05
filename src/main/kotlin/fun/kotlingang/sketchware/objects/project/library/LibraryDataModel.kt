@@ -1,6 +1,7 @@
 package `fun`.kotlingang.sketchware.objects.project.library
 
 import `fun`.kotlingang.sketchware.internal.json.serializers.YesNoSerializer
+import kotlinx.serialization.Contextual
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
@@ -8,7 +9,7 @@ import kotlinx.serialization.Serializable
  * Sketchware library data.
  */
 @Serializable
-data class SketchwareLibraryDataModel(
+data class LibraryDataModel(
     /**
      * Ad units list (empty if it isn't admob component.
      */
@@ -17,7 +18,8 @@ data class SketchwareLibraryDataModel(
     /**
      * Unique library type id.
      */
-    var libType: Int,
+    @Contextual
+    var libType: LibraryType,
     /**
      * Any data about a library (may be missing) is different everywhere.
      */
@@ -33,7 +35,7 @@ data class SketchwareLibraryDataModel(
     /**
      * List of test devices (may be missing if it isn't admob library).
      */
-    var testDevices: List<String>,
+    var testDevices: List<AdMobTestDevice>,
     /**
      * Is library enabled.
      */

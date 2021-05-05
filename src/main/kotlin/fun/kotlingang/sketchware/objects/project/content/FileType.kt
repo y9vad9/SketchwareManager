@@ -1,6 +1,6 @@
 package `fun`.kotlingang.sketchware.objects.project.content
 
-import `fun`.kotlingang.sketchware.interfaces.Identifiable
+import `fun`.kotlingang.sketchware.interfaces.objects.Identifiable
 import `fun`.kotlingang.sketchware.objects.SWConst
 
 enum class FileType(override val id: Int) : Identifiable {

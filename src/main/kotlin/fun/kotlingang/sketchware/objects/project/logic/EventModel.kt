@@ -1,5 +1,7 @@
 package `fun`.kotlingang.sketchware.objects.project.logic
 
+import `fun`.kotlingang.sketchware.objects.project.view.properties.WidgetType
+import kotlinx.serialization.Contextual
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
@@ -25,5 +27,6 @@ data class EventModel(
     /**
      * Event target type id.
      */
-    var targetType: Int
+    @Contextual
+    var targetType: WidgetType
 )

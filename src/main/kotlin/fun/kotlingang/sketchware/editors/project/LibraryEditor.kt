@@ -2,7 +2,7 @@ package `fun`.kotlingang.sketchware.editors.project
 
 import `fun`.kotlingang.sketchware.encryptor.SketchwareEncryptor.decrypt
 import `fun`.kotlingang.sketchware.encryptor.SketchwareEncryptor.encrypt
-import `fun`.kotlingang.sketchware.interfaces.Editor
+import `fun`.kotlingang.sketchware.interfaces.editors.Editor
 import `fun`.kotlingang.sketchware.interfaces.callbacks.ActionFinishListener
 import `fun`.kotlingang.sketchware.internal.exceptions.LibraryNotFoundException
 import `fun`.kotlingang.sketchware.internal.extensions.bytesToString
@@ -12,8 +12,8 @@ import `fun`.kotlingang.sketchware.internal.extensions.write
 import `fun`.kotlingang.sketchware.internal.json.deserialize
 import `fun`.kotlingang.sketchware.internal.json.serialize
 import `fun`.kotlingang.sketchware.objects.project.library.LibraryModel
-import `fun`.kotlingang.sketchware.objects.project.library.SketchwareLibraryDataModel
-import io.sketchware.util.delegate.lazyResetable
+import `fun`.kotlingang.sketchware.objects.project.library.LibraryDataModel
+import `fun`.kotlingang.sketchware.internal.delegates.lazyResetable
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -56,13 +56,13 @@ class LibraryEditor(
     /**
      * Edits data about library.
      * @param name - library name.
-     * @param editor - lambda with [SketchwareLibraryDataModel] in context to edit.
+     * @param editor - lambda with [LibraryDataModel] in context to edit.
      * @throws LibraryNotFoundException if library does not exist.
      */
     @Throws(LibraryNotFoundException::class)
     fun editLibraryData(
         name: String,
-        editor: SketchwareLibraryDataModel.() -> Unit
+        editor: LibraryDataModel.() -> Unit
     ) {
         val librariesList = libraries.toMutableList()
         val libraryIndex = librariesList.indexOfFirst { it.name == name }

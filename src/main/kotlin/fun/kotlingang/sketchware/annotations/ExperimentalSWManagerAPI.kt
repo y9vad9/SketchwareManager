@@ -8,4 +8,4 @@ package `fun`.kotlingang.sketchware.annotations
  */
 @Target(AnnotationTarget.CLASS, AnnotationTarget.PROPERTY, AnnotationTarget.FUNCTION, AnnotationTarget.TYPEALIAS)
 @RequiresOptIn(level = RequiresOptIn.Level.WARNING)
-annotation class ExperimentalSWManagerAPI
+internal annotation class ExperimentalSWManagerAPI

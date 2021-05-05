@@ -2,7 +2,7 @@ package `fun`.kotlingang.sketchware.editors.project
 
 import `fun`.kotlingang.sketchware.encryptor.SketchwareEncryptor
 import `fun`.kotlingang.sketchware.encryptor.SketchwareEncryptor.decrypt
-import `fun`.kotlingang.sketchware.interfaces.Editor
+import `fun`.kotlingang.sketchware.interfaces.editors.Editor
 import `fun`.kotlingang.sketchware.interfaces.callbacks.ActionFinishListener
 import `fun`.kotlingang.sketchware.internal.exceptions.*
 import `fun`.kotlingang.sketchware.internal.extensions.*
@@ -11,7 +11,6 @@ import `fun`.kotlingang.sketchware.internal.json.serialize
 import `fun`.kotlingang.sketchware.internal.json.serializers.toSpecFields
 import `fun`.kotlingang.sketchware.internal.parsers.BeansParser
 import `fun`.kotlingang.sketchware.objects.project.logic.*
-import io.sketchware.exception.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -348,19 +347,19 @@ class LogicEditor(
     /**
      * Get activity moreblocks
      * @param activity activity name (Example: MainActivity)
-     * @return List of [MoreblockModel] in specific activity or null
+     * @return List of [MoreBlockModel] in specific activity or null
      * if activity / moreblocks doesn't exist.
      */
     fun getMoreblocks(activity: String) =
         getPairBlock("$activity.java_func")?.map { (name, data) ->
-            MoreblockModel(name, data.toSpecFields())
+            MoreBlockModel(name, data.toSpecFields())
         }
 
     /**
      * Gets moreblock by name.
      * @param activity - activity name (example: activity).
      * @param name - moreblock name.
-     * @return [MoreblockModel] or null if moreblock does not exist.
+     * @return [MoreBlockModel] or null if moreblock does not exist.
      */
     fun getMoreblock(activity: String, name: String) =
         getMoreblocks(activity)?.firstOrNull { it.name == name }
@@ -413,7 +412,7 @@ class LogicEditor(
     fun editMoreblockInfo(
         activity: String,
         name: String,
-        editor: (MoreblockModel) -> Unit
+        editor: (MoreBlockModel) -> Unit
     ) {
         val moreblocks = getMoreblocks(activity)?.toMutableList()
             ?: throw MoreblocksNotFoundException(activity)
@@ -463,7 +462,7 @@ class LogicEditor(
         "$activity.java_func", getMoreblocks(activity).orEmpty().toMutableList().apply {
             if (any { it.name == name } && !force)
                 throw MoreblockAlreadyExistException(activity, name)
-            add(MoreblockModel(name, spec))
+            add(MoreBlockModel(name, spec))
         }
     )
 
@@ -566,7 +565,7 @@ class LogicEditor(
             it.deserialize()
         })
 
-    private fun saveMoreblocks(activity: String, list: List<MoreblockModel>) =
+    private fun saveMoreblocks(activity: String, list: List<MoreBlockModel>) =
         saveTag("$activity.java_func", list.joinToString("\n"))
 
     private fun saveEventLogic(

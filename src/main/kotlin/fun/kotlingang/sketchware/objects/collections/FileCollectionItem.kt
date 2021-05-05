@@ -1,6 +1,6 @@
 package `fun`.kotlingang.sketchware.objects.collections
 
-import `fun`.kotlingang.sketchware.interfaces.CollectionItem
+import `fun`.kotlingang.sketchware.interfaces.objects.CollectionItem
 import kotlinx.serialization.Serializable
 
 @Serializable

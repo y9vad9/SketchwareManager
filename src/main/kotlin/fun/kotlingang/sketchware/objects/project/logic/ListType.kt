@@ -1,6 +1,6 @@
 package `fun`.kotlingang.sketchware.objects.project.logic
 
-import `fun`.kotlingang.sketchware.interfaces.Identifiable
+import `fun`.kotlingang.sketchware.interfaces.objects.Identifiable
 
 enum class ListType(override val id: Int, val serialName: String) : Identifiable {
     LIST_NUMBER(1, "listInt"),

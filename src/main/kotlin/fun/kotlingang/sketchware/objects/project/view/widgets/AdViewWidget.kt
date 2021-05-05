@@ -4,7 +4,7 @@ import `fun`.kotlingang.sketchware.objects.project.view.properties.WidgetPropert
 
 class AdViewWidget(view: WidgetProperties = WidgetProperties()) : BaseWidget(view) {
     /**
-     * AdView Banner Size.
+     * AdViewArgument Banner Size.
      */
     var size by view::adViewSize
 }

@@ -9,6 +9,6 @@ class ViewNotFoundException internal constructor(
         get() {
             return if (widget != null)
                 "Widget $widget not found in view $viewName at path $filePath."
-            else "View $viewName not found at path $filePath"
+            else "ViewArgument $viewName not found at path $filePath"
         }
 }

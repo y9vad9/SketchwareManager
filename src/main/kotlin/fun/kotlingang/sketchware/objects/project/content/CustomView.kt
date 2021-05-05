@@ -4,7 +4,7 @@ import io.sketchware.model.project.content.KeyboardSetting
 
 open class CustomView(
     /**
-     * Custom View xml name (without extension).
+     * Custom ViewArgument xml name (without extension).
      */
     val fileName: String
 ) {

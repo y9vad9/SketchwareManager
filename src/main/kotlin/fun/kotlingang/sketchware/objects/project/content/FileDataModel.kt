@@ -16,7 +16,7 @@ class FileDataModel(
      */
     var fileName: String,
     /**
-     * File type (Activity / Custom View).
+     * File type (Activity / Custom ViewArgument).
      */
     @Contextual
     var fileType: FileType,

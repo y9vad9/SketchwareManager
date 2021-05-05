@@ -1,6 +1,6 @@
 package `fun`.kotlingang.sketchware.manager
 
-import `fun`.kotlingang.sketchware.interfaces.SketchwareManager
+import `fun`.kotlingang.sketchware.interfaces.managers.SketchwareManager
 import `fun`.kotlingang.sketchware.manager.collections.CollectionsManager
 import `fun`.kotlingang.sketchware.manager.projects.SWProjectsManager
 import java.io.File

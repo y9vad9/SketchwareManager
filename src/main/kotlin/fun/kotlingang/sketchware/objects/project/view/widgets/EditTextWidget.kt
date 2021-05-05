@@ -6,14 +6,14 @@ open class EditTextWidget internal constructor(
     view: WidgetProperties = WidgetProperties()
 ) : TextViewWidget(view) {
     /**
-     * EditText hint text.
-     * @see <a href="https://developer.android.com/reference/android/widget/EditText#attr_android:hint">EditText docs.</a>
+     * EditTextArgument hint text.
+     * @see <a href="https://developer.android.com/reference/android/widget/EditTextArgument#attr_android:hint">EditTextArgument docs.</a>
      */
     var hint by textProps::hint
 
     /**
-     * EditText hint text color.
-     * @see <a href="https://developer.android.com/reference/android/widget/TextView#getHintTextColors()">EditText docs.</a>
+     * EditTextArgument hint text color.
+     * @see <a href="https://developer.android.com/reference/android/widget/TextViewArgument#getHintTextColors()">EditTextArgument docs.</a>
      */
     var hintColor by textProps::hintColor
 

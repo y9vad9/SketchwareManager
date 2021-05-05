@@ -14,6 +14,6 @@ data class LibraryModel(
     /**
      * Library information.
      */
-    var information: SketchwareLibraryDataModel
+    var information: LibraryDataModel
 )
 

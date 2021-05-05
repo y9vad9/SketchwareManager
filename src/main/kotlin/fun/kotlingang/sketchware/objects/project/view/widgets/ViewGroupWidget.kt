@@ -2,7 +2,7 @@ package `fun`.kotlingang.sketchware.objects.project.view.widgets
 
 import `fun`.kotlingang.sketchware.objects.project.view.properties.WidgetProperties
 
-open class ViewGroupWidget internal constructor(
+sealed class ViewGroupWidget(
     view: WidgetProperties,
     private val _children: MutableList<BaseWidget>
 ) : BaseWidget(view) {

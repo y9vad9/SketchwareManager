@@ -1,7 +1,7 @@
 package `fun`.kotlingang.sketchware.manager.customs
 
 import `fun`.kotlingang.sketchware.editors.customs.SWStudioCustomMenusEditor
-import `fun`.kotlingang.sketchware.interfaces.CustomMenusManager
+import `fun`.kotlingang.sketchware.interfaces.managers.CustomMenusManager
 import java.io.File
 
 class SWStudioCustomManager(

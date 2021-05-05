@@ -3,7 +3,7 @@ package `fun`.kotlingang.sketchware.objects.project.view.properties
 import kotlinx.serialization.Serializable
 
 /**
- * ImageView scale type.
+ * ImageViewArgument scale type.
  */
 @Serializable
 enum class ScaleType {

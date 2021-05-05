@@ -1,5 +1,6 @@
 package `fun`.kotlingang.sketchware.objects.project.logic
 
+import `fun`.kotlingang.sketchware.annotations.ExperimentalSWManagerAPI
 import `fun`.kotlingang.sketchware.internal.exceptions.InvalidMenuArgumentTypeException
 import kotlinx.serialization.Serializable
 
@@ -30,7 +31,11 @@ open class SpecArgument(override var text: String) : SpecField(text) {
         get() = text.split(".")[1]
 }
 
-data class StringSpecArgument(override var text: String) : SpecArgument(text)
+data class StringSpecArgument(override var text: String) : SpecArgument(text) {
+    val options: List<String>
+    get() = text.split(".")
+        .filterIndexed { index, _ -> index != 0 }
+}
 data class BooleanSpecArgument(override var text: String) : SpecArgument(text)
 data class NumberSpecArgument(override var text: String) : SpecArgument(text)
 
@@ -38,21 +43,6 @@ data class MenuSpecArgument(override var text: String) : SpecArgument(text) {
 
     override val argumentName: String
         get() = text.split(".")[2]
-
-    /**
-     * Tells what type of argument is passed in the list when selected (in Sketchware).
-     * @throws InvalidMenuArgumentTypeException if argument is custom
-     * or not implemented yet.
-     */
-    var menuArgumentType: ComponentType
-        get() = with(menuArgumentTypeName) {
-            return enumValues<ComponentType>().firstOrNull {
-                it.serialName == this
-            } ?: throw InvalidMenuArgumentTypeException(this)
-        }
-        set(value) {
-            menuArgumentTypeName = value.serialName
-        }
 
     /**
      * Returns name of menu's argument type.
@@ -162,7 +152,7 @@ class SpecFieldBuilder internal constructor(internal val list: MutableList<SpecF
         if (Regex("[a-zA-Z| ]*").matches(this))
             this
         else throw IllegalArgumentException(
-            "Field should contain only from english letters or space, but input is '$this'."
+            "Field should contain only english letters or space, but input is '$this'."
         )
 
     /**
@@ -174,7 +164,7 @@ class SpecFieldBuilder internal constructor(internal val list: MutableList<SpecF
         if (Regex("[a-zA-Z]*").matches(this))
             this
         else throw IllegalArgumentException(
-            "Field should contain only from english letters, but input is '$this'."
+            "Field should contain only english letters, but input is '$this'."
         )
 
 }

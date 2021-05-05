@@ -1,5 +1,6 @@
 package `fun`.kotlingang.sketchware.objects.project.logic
 
+import `fun`.kotlingang.sketchware.internal.json.serializers.BlockTypeSerializer
 import `fun`.kotlingang.sketchware.internal.json.serializers.SpecSerializer
 import `fun`.kotlingang.sketchware.internal.json.serializers.StringNumberConvertor
 import kotlinx.serialization.Serializable
@@ -35,12 +36,21 @@ data class BlockModel(
      */
     @Serializable(with = SpecSerializer::class)
     var spec: List<SpecField>,
+    /**
+     * Says position in first sub stack (if or if-else style blocks) or
+     * has value `-1` if it does not exist in first sub stack.
+     */
     var subStack1: Int,
+    /**
+     * Says position in second sub stack (if or if-else style blocks) or
+     * has value `-1` if it does not exist in second sub stack.
+     */
     var subStack2: Int,
     /**
      * Name of block type.
      */
-    var type: String,
+    @Serializable(with = BlockTypeSerializer::class)
+    var type: BlockType,
     /**
      * Name of type.
      */

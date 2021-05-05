@@ -1,6 +1,6 @@
 package `fun`.kotlingang.sketchware.objects.collections
 
-import `fun`.kotlingang.sketchware.interfaces.CollectionItem
+import `fun`.kotlingang.sketchware.interfaces.objects.CollectionItem
 import `fun`.kotlingang.sketchware.internal.json.serializers.ListBlockModelSerializer
 import `fun`.kotlingang.sketchware.internal.json.serializers.SpecSerializer
 import `fun`.kotlingang.sketchware.objects.project.logic.BlockModel

@@ -4,7 +4,7 @@ import `fun`.kotlingang.sketchware.objects.project.view.properties.WidgetPropert
 
 class SpinnerWidget(view: WidgetProperties = WidgetProperties()) : BaseWidget(view) {
     /**
-     * Spinner view mode.
+     * SpinnerArgument view mode.
      */
     var spinnerMode by view::spinnerMode
 }

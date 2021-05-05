@@ -2,7 +2,7 @@ package `fun`.kotlingang.sketchware.editors.project
 
 import `fun`.kotlingang.sketchware.encryptor.SketchwareEncryptor.decrypt
 import `fun`.kotlingang.sketchware.encryptor.SketchwareEncryptor.encrypt
-import `fun`.kotlingang.sketchware.interfaces.Editor
+import `fun`.kotlingang.sketchware.interfaces.editors.Editor
 import `fun`.kotlingang.sketchware.interfaces.callbacks.ActionFinishListener
 import `fun`.kotlingang.sketchware.internal.extensions.*
 import `fun`.kotlingang.sketchware.internal.parsers.BeansParser
@@ -75,8 +75,8 @@ class ViewEditor(
 
         /**
          * Removes view in [ViewEditor].
-         * The View will be removed and it will no longer be possible
-         * to get it outside of this Instance. You can call [save] later to bring the View back.
+         * The ViewArgument will be removed and it will no longer be possible
+         * to get it outside of this Instance. You can call [save] later to bring the ViewArgument back.
          * @return [Boolean] - `true` if successfully removed from [views]
          * and [value] or `false` if it wasn't deleted (for example, if it already deleted).
          */

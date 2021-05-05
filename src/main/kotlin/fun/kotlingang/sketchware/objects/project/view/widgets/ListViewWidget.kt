@@ -4,12 +4,12 @@ import `fun`.kotlingang.sketchware.objects.project.view.properties.WidgetPropert
 
 class ListViewWidget(view: WidgetProperties = WidgetProperties()) : BaseWidget(view) {
     /**
-     * ListView decorator height in DP.
+     * ListViewArgument decorator height in DP.
      */
     var dividerHeight by view::dividerHeight
 
     /**
-     * ListView custom view name.
+     * ListViewArgument custom view name.
      */
     var customView by view::customView
 }

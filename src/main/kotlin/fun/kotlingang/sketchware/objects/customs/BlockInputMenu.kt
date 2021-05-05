@@ -12,7 +12,7 @@ data class BlockInputMenu(
      */
     val id: String,
     /**
-     * Menu selector name (shows in block, example: View)
+     * EnumMenuArgument selector name (shows in block, example: ViewArgument)
      */
     val name: String
 )

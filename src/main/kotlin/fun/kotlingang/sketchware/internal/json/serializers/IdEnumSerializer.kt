@@ -1,6 +1,6 @@
 package `fun`.kotlingang.sketchware.internal.json.serializers
 
-import `fun`.kotlingang.sketchware.interfaces.Identifiable
+import `fun`.kotlingang.sketchware.interfaces.objects.Identifiable
 import kotlinx.serialization.KSerializer
 import kotlinx.serialization.descriptors.SerialDescriptor
 import kotlinx.serialization.descriptors.buildClassSerialDescriptor

@@ -1,4 +1,4 @@
-package io.sketchware.util.delegate
+package `fun`.kotlingang.sketchware.internal.delegates
 
 import kotlin.properties.ReadOnlyProperty
 import kotlin.reflect.KProperty

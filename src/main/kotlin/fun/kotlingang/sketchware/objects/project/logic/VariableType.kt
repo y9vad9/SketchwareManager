@@ -1,6 +1,6 @@
 package `fun`.kotlingang.sketchware.objects.project.logic
 
-import `fun`.kotlingang.sketchware.interfaces.Identifiable
+import `fun`.kotlingang.sketchware.interfaces.objects.Identifiable
 
 enum class VariableType(override val id: Int = -1, val serialName: String? = null) : Identifiable {
     BOOLEAN(0),

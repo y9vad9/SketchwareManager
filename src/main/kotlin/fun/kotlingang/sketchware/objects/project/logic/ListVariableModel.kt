@@ -5,9 +5,9 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class ListVariableModel(
-    val name: String,
+    var name: String,
     @Contextual
-    val type: ListType
+    var type: ListType
 ) {
     override fun toString(): String {
         return "${type.id}:$name"

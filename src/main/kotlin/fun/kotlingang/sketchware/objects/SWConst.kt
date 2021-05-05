@@ -46,7 +46,7 @@ internal object SWConst {
         const val LINEAR_LAYOUT = 0
 
         /**
-         * Widget type: View (Unknown)
+         * Widget type: ViewArgument (Unknown)
          */
         const val VIEW = 1
 
@@ -61,42 +61,42 @@ internal object SWConst {
         const val VERTICAL_SCROLL = 12
 
         /**
-         * Widget type: Button
+         * Widget type: ButtonArgument
          */
         const val BUTTON = 3
 
         /**
-         * Widget type: TextView
+         * Widget type: TextViewArgument
          */
         const val TEXT_VIEW = 4
 
         /**
-         * Widget type: EditText
+         * Widget type: EditTextArgument
          */
         const val EDIT_TEXT = 5
 
         /**
-         * Widget type: ImageView
+         * Widget type: ImageViewArgument
          */
         const val IMAGE_VIEW = 6
 
         /**
-         * Widget type: WebView
+         * Widget type: WebViewArgument
          */
         const val WEBVIEW = 7
 
         /**
-         * Widget type: ProgressBar
+         * Widget type: ProgressBarArgument
          */
         const val PROGRESS_BAR = 8
 
         /**
-         * Widget type: ListView
+         * Widget type: ListViewArgument
          */
         const val LISTVIEW = 9
 
         /**
-         * Widget type: Spinner
+         * Widget type: SpinnerArgument
          */
         const val SPINNER = 10
 
@@ -106,27 +106,27 @@ internal object SWConst {
         const val CHECKBOX = 11
 
         /**
-         * Widget type: Switch
+         * Widget type: SwitchArgument
          */
         const val SWITCH = 13
 
         /**
-         * Widget type: SeekBar
+         * Widget type: SeekBarArgument
          */
         const val SEEKBAR = 14
 
         /**
-         * Widget type: CalendarView
+         * Widget type: CalendarViewArgument
          */
         const val CALENDAR = 15
 
         /**
-         * Widget type: AdView
+         * Widget type: AdViewArgument
          */
         const val ADVIEW = 17
 
         /**
-         * Widget type: MapView
+         * Widget type: MapViewArgument
          */
         const val MAP_VIEW = 18
 
@@ -154,6 +154,112 @@ internal object SWConst {
         const val REQUEST_NETWORK = 17
         const val BLUETOOTH_CONNECT = 20
         const val LOCATION_MANAGER = 21
+    }
+
+    object MenuSpecNames {
+
+        const val VIEW_PICKER = "view"
+
+        const val MAP_PICKER = "varMap"
+
+        const val LIST_MAP_PICKER = "listMap"
+
+        const val COLOR_PICKER = "color"
+
+        const val INTENT_PICKER = "intent"
+
+        /**
+         * Spec: `%m.intent`
+         */
+        object Intent {
+            /**
+             * Using for block with spec `%m.intent setData %s.intentData`
+             */
+            const val DATA_PICKER = "intentData"
+
+            /**
+             * Using for block with spec `%m.intent`
+             */
+            const val ACTION_PICKER = "intentAction"
+
+            /**
+             * Using for blocks where argument should receive activity name.
+             */
+            const val ACTIVITY_PICKER = "activity"
+
+            /**
+             * Using for flags picking for intent.
+             */
+            const val INTENT_FLAG_PICKER = "intentFlags"
+
+        }
+
+        const val SHARED_PREFERENCES_PICKER = "file"
+
+        const val CALENDAR_PICKER = "calendar"
+
+        object Calendar {
+            /**
+             * Picker for time units such as minutes, hours, etc.
+             */
+            const val CALENDAR_FIELD_PICKER = "calendarField"
+        }
+
+        const val VIBRATOR_PICKER = "vibrator"
+
+        const val TIMER_PICKER = "timer"
+
+        const val DIALOG_PICKER = "dialog"
+
+        const val MEDIA_PLAYER_PICKER = "mediaplayer"
+
+        object MediaPlayer {
+            const val SOUND_PICKER = "sound"
+        }
+
+        const val SOUND_POOL_PICKER = "soundpool"
+
+        const val OBJECT_ANIMATOR_PICKER = "objectanimator"
+
+        object ObjectAnimator {
+            const val TARGET_PROPERTY_PICKER = "animatorproperty"
+            const val REPEAT_MODE_PICKER = "aniRepeatMode"
+            const val INTERPOLATOR_PICKER = "aniInterpolator"
+        }
+
+        const val CAMERA_PICKER = "camera"
+
+        const val FILE_PICKER = "filepicker"
+
+        const val GYROSCOPE_PICKER = "gyroscope"
+
+        const val FIREBASE_DB_PICKER = "firebase"
+
+        const val FIREBASE_STORAGE_PICKER = "firebasestorage"
+
+        const val FIREBASE_AUTH_PICKER = "firebaseauth"
+
+        const val INTERSTITIAL_AD_PICKER = "interstitialad"
+
+        const val TEXT_TO_SPEECH_PICKER = "texttospeech"
+
+        const val SPEECH_TO_TEXT_PICKER = "speechtotext"
+
+        const val REQUEST_NETWORK_PICKER = "requestnetwork"
+
+        object RequestNetwork {
+            const val REQUEST_TYPE_PICKER = "requestType"
+            const val REQUEST_METHOD_PICKER = "method"
+        }
+
+        const val BLUETOOTH_CONNECT_PICKER = "bluetoothconnect"
+
+        const val LOCATION_MANAGER_PICKER = "locationmanager"
+
+        object LocationManager {
+            const val PROVIDER_TYPE_PICKER = "providerType"
+        }
+
     }
 
 }

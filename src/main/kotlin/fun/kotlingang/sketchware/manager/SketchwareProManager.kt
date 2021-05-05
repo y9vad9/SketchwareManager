@@ -1,6 +1,6 @@
 package `fun`.kotlingang.sketchware.manager
 
-import `fun`.kotlingang.sketchware.interfaces.SketchwareManager
+import `fun`.kotlingang.sketchware.interfaces.managers.SketchwareManager
 import `fun`.kotlingang.sketchware.manager.collections.CollectionsManager
 import `fun`.kotlingang.sketchware.manager.customs.SWProCustomManager
 import `fun`.kotlingang.sketchware.manager.projects.SWProProjectsManager
@@ -31,7 +31,7 @@ class SketchwareProManager(
      */
     val customsManager = SWProCustomManager(
         File(sketchwareFolder, "data/system"),
-        File(sketchwareFolder, "data/settings.json"), File(sketchwareFolder, "resources/block/Menu Block")
+        File(sketchwareFolder, "data/settings.json"), File(sketchwareFolder, "resources/block/EnumMenuArgument Block")
     )
 
 }

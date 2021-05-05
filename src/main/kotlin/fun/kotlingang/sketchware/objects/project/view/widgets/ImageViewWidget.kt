@@ -6,12 +6,12 @@ class ImageViewWidget(view: WidgetProperties = WidgetProperties()) : BaseWidget(
     private val imageProperties get() = view.image
 
     /**
-     * ImageView image drawable resource name.
+     * ImageView Argument image drawable resource name.
      */
     var image by imageProperties::resName
 
     /**
-     * ImageView image scale type.
+     * ImageView Argument image scale type.
      */
     var scaleType by imageProperties::scaleType
 

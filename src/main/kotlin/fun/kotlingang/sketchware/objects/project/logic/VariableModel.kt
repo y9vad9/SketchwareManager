@@ -9,11 +9,11 @@ data class VariableModel(
      * Variable type id.
      */
     @Contextual
-    val type: VariableType,
+    var type: VariableType,
     /**
      * Name of variable.
      */
-    val name: String
+    var name: String
 ) {
     /**
      * Converts the object to the original Sketchware look.

@@ -4,7 +4,7 @@ import `fun`.kotlingang.sketchware.editors.customs.SWProCustomBlocksEditor
 import `fun`.kotlingang.sketchware.editors.customs.SWProCustomComponentsEditor
 import `fun`.kotlingang.sketchware.editors.customs.SWProCustomListenersEditor
 import `fun`.kotlingang.sketchware.editors.customs.SWProCustomMenusEditor
-import `fun`.kotlingang.sketchware.interfaces.CustomMenusManager
+import `fun`.kotlingang.sketchware.interfaces.managers.CustomMenusManager
 import `fun`.kotlingang.sketchware.internal.extensions.bytesToString
 import `fun`.kotlingang.sketchware.internal.extensions.readOrNull
 import `fun`.kotlingang.sketchware.internal.json.serialize

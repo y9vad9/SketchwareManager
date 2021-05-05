@@ -16,7 +16,8 @@ repositories {
 dependencies {
     implementation(Dependencies.COROUTINES)
     implementation(Dependencies.JSON)
-    implementation(Dependencies.JUNIT)
+    testImplementation(Dependencies.JUNIT)
+    implementation(kotlin("reflect"))
 }
 
 /**
@@ -30,7 +31,7 @@ applyDeploy()
 tasks.apply {
     withType<KotlinCompile> {
         kotlinOptions {
-            useIR = true
+            languageVersion = "1.5"
             freeCompilerArgs = freeCompilerArgs + "-Xopt-in=kotlin.RequiresOptIn"
         }
     }

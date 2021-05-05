@@ -9,8 +9,10 @@ internal fun String.replaceOrInsertAtTop(
     val content = regex.replace(this, replacement)
     return if (this == content)
         "${replacement}$content"
-    else "${prefix}content${suffix}"
+    else "${prefix}$content${suffix}"
 }
+
+internal fun String?.nullIfBlank() = this?.takeIf(String::isNotBlank)
 
 internal fun String.getByTag(tag: String): String? {
     val regex = Regex(

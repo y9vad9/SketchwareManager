@@ -1,6 +1,6 @@
 package `fun`.kotlingang.sketchware.objects.project.logic
 
-import `fun`.kotlingang.sketchware.interfaces.Identifiable
+import `fun`.kotlingang.sketchware.interfaces.objects.Identifiable
 import `fun`.kotlingang.sketchware.objects.SWConst
 
 enum class ComponentType(override val id: Int, val serialName: String) : Identifiable {

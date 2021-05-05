@@ -1,5 +1,7 @@
 package `fun`.kotlingang.sketchware.objects.project.resources
 
+import kotlinx.serialization.Contextual
+import kotlinx.serialization.Required
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
@@ -15,6 +17,11 @@ data class ProjectResource(
      */
     @SerialName("resName")
     val name: String,
+    /**
+     * A presumably useless field as it always has a [ResourceType.DEFAULT].
+     */
     @SerialName("resType")
-    val type: Int
+    @Contextual
+    @Required
+    val type: ResourceType = ResourceType.DEFAULT
 )

@@ -1,6 +1,6 @@
 package `fun`.kotlingang.sketchware.manager.projects
 
-import `fun`.kotlingang.sketchware.interfaces.ProjectsManager
+import `fun`.kotlingang.sketchware.interfaces.managers.ProjectsManager
 import `fun`.kotlingang.sketchware.internal.extensions.getFilesOrEmpty
 import `fun`.kotlingang.sketchware.objects.project.SketchwareStudioProject
 import `fun`.kotlingang.sketchware.objects.project.information.ProjectFilesLocations
