@@ -10,16 +10,16 @@ Why this particular library?
 - **Easy to use**: Due to coroutines and convenient Kotlin syntax, working with the library is as pleasant as possible.
 - **Modern**: SketchwareManager is Kotlin-first and uses modern libraries including Coroutines, Kotlin Serialization.
 
-## Implementation
+> This version will no longer be supported. The new version of the library with the updated API will be [here](https://github.com/y9neon/SketchwareManager/tree/dev-rewrite).
 
-> Here is just dev-test build, it's not production ready.
+## Implementation
 
 ```kotlin
 repositories {
-    maven("https://dl.kotlingang.fun")
+  maven("https://dl.kotlingang.fun")
 }
 dependencies {
-    implementation("io.sketchware:SketchwareManager:dev-2.4.3-build1")
+  implementation("io.sketchware:Sketchware-Manager:dev-2.4.2")
 }
 ```
 
@@ -35,10 +35,10 @@ val manager = SketchwareManager(sketchwareFolder)
 val projects = manager.projectsManager.getProjects()
 // let's print all:
 projects.forEach { project: SketchwareProject ->
-    // get config or current project
-    val projectConfig = project.getConfig()
-    // print id of project what was found.
-    println("Project with id ${projectConfig.projectId} found.")
+  // get config or current project
+  val projectConfig = project.getConfig()
+  // print id of project what was found.
+  println("Project with id ${projectConfig.projectId} found.")
 }
 ```
 
