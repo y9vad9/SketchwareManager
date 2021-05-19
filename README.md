@@ -10,7 +10,7 @@ Why this particular library?
 - **Easy to use**: Due to coroutines and convenient Kotlin syntax, working with the library is as pleasant as possible.
 - **Modern**: SketchwareManager is Kotlin-first and uses modern libraries including Coroutines, Kotlin Serialization.
 
-> This version will no longer be supported. The new version of the library with the updated API will be [here](https://github.com/y9neon/SketchwareManager/tree/dev-rewrite).
+> This version will no longer be supported. The new version of the library with the updated API will be [here](https://github.com/y9neon/SketchwareManager/tree/dev).
 
 ## Implementation
 
