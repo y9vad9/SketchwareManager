@@ -10,59 +10,37 @@ Why this particular library?
 - **Easy to use**: Due to coroutines and convenient Kotlin syntax, working with the library is as pleasant as possible.
 - **Modern**: SketchwareManager is Kotlin-first and uses modern libraries including Coroutines, Kotlin Serialization.
 
-> This version will no longer be supported. The new version of the library with the updated API will be [here](https://github.com/y9neon/SketchwareManager/tree/dev-rewrite).
+> This version still in developing. Not all are ready yet (currently paused).
 
-## Implementation
-
+### The design I want to achieve:
+Project Management:
 ```kotlin
-repositories {
-  maven("https://dl.kotlingang.fun")
-}
-dependencies {
-  implementation("io.sketchware:Sketchware-Manager:dev-2.4.2")
+val manager = SketchwareManager().getProjects().forEach { project -> // suspend point on getProjects()
+    // project contains only info from config in mysc/list/%d/project.
+    println(project.projectName) // prints project name
+    // let's try to edit something:
+    val editor = project.editor() // suspend point
+    editor.activities.first().logic.apply {
+        variables.first().name = "new name"
+        save() // suspend point
+    }
 }
 ```
-
-## Quick Start
-
-To get a list of projects just make next:
-
+Also, there will be type-safe builders for views and blocks:
 ```kotlin
-// let's initialize base manager for sketchware:
-val manager = SketchwareManager(sketchwareFolder)
-// let's get projects manager from base manager for sketchware 
-// and get projects:
-val projects = manager.projectsManager.getProjects()
-// let's print all:
-projects.forEach { project: SketchwareProject ->
-  // get config or current project
-  val projectConfig = project.getConfig()
-  // print id of project what was found.
-  println("Project with id ${projectConfig.projectId} found.")
+val blocks = project.editor().logic.events[0].blocks
+for(block in blocks) {
+    when(block) {
+        is IfStyledBlock -> foo()
+        is BooleanPrimitiveBlock -> bar()
+        // ...
+    }
 }
 ```
 
-Also, we can get some sketchware collections, for example, moreblocks:
 
+Collections Management:
 ```kotlin
-// let's initialize base manager for sketchware:
-val manager = SketchwareManager(sketchwareFolder)
-// get moreblocks as List:
-val moreblocks = manager.collectionsManager.getMoreblocksManager().all
-// let's print moreblocks data:
-moreblocks.forEach(::println)
+val manager = CollectionManager()
+println(manager.getMoreblocks().map { moreblock -> moreblock.name })
 ```
-
-Full documentation you can get [here](https://swmanager.kotlingang.fun).
-
-## R8 / Proguard
-
-If you use Proguard, you may need to add rules
-for [Coroutines](https://github.com/Kotlin/kotlinx.coroutines/blob/master/kotlinx-coroutines-core/jvm/resources/META-INF/proguard/coroutines.pro)
-.
-
-# 🤙 Contacts
-
-Sketchware community chat - https://t.me/sketchware_community
-
-Me in Telegram - https://t.me/y9neon
