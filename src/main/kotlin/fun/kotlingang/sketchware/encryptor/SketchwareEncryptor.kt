@@ -38,5 +38,4 @@ object SketchwareEncryptor {
 
     internal suspend fun String.decrypt() = String(decrypt(this.toByteArray()))
     internal suspend fun String.encrypt() = String(encrypt(this.toByteArray()))
-
 }

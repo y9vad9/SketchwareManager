@@ -1,8 +1,5 @@
 package `fun`.kotlingang.sketchware.internal.consts
 
-import `fun`.kotlingang.sketchware.internal.parsers.ArgumentParser
-import `fun`.kotlingang.sketchware.objects.project.logic.blocks.BaseBlock
-
 internal enum class MenuSpecArgumentType(val serialName: String) {
     VIEW_PICKER("view"),
     MAP_PICKER("varMap"),
@@ -75,8 +72,5 @@ internal enum class MenuSpecArgumentType(val serialName: String) {
         fun of(input: String): MenuSpecArgumentType? {
             return values().firstOrNull { it.serialName == input }
         }
-
-        fun argumentFrom(argument: MenuSpecArgumentType, parameter: String, blocks: List<BaseBlock>) =
-            ArgumentParser.getArgument(argument, parameter, blocks)
     }
 }

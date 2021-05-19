@@ -1,7 +1,7 @@
 package `fun`.kotlingang.sketchware.interfaces.editors.logic
 
 import `fun`.kotlingang.sketchware.interfaces.editors.LocalEditor
-import `fun`.kotlingang.sketchware.objects.project.logic.BlockModel
+import `fun`.kotlingang.sketchware.objects.project.logic.BlockProperties
 import `fun`.kotlingang.sketchware.objects.project.logic.SpecField
 
 /**
@@ -26,6 +26,6 @@ interface MoreBlockEditor : LocalEditor {
      * Gets list of blocks in moreBlock's logic.
      * @return [MutableList] with blocks which can be edited.
      */
-    val blocks: MutableList<BlockModel>
+    val blocks: MutableList<BlockProperties>
 
 }

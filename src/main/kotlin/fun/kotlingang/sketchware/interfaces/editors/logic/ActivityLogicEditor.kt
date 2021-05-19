@@ -50,16 +50,16 @@ interface ActivityLogicEditor : LocalEditor {
      * @throws MoreblockAlreadyExistException if moreblock with such [name] already exist.
      */
     @Throws(MoreblockAlreadyExistException::class)
-    fun addMoreblock(name: String, spec: List<SpecField>, blocks: List<BlockModel>? = null): MoreBlockEditor
+    fun addMoreblock(name: String, spec: List<SpecField>, blocks: List<BlockProperties>? = null): MoreBlockEditor
 
 
     /**
      * Adds moreblock to current activity.
      * @param event - event model with data about event.
      * @param blocks - list of blocks in event. If null or empty, it won't create block bean in logic.
-     * @throws MoreblockAlreadyExistException if moreblock with such [name] already exist.
+     * @throws MoreblockAlreadyExistException if moreblock with such [EventModel.name] already exist.
      */
     @Throws(EventAlreadyExistsException::class)
-    fun addEvent(event: EventModel, blocks: List<BlockModel>? = null): MoreBlockEditor
+    fun addEvent(event: EventModel, blocks: List<BlockProperties>? = null): MoreBlockEditor
 
 }

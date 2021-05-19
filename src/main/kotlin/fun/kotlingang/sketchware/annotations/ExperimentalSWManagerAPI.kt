@@ -6,6 +6,9 @@ package `fun`.kotlingang.sketchware.annotations
  * of a particular moment has not been developed or tested to the end).
  * Be careful with this.
  */
-@Target(AnnotationTarget.CLASS, AnnotationTarget.PROPERTY, AnnotationTarget.FUNCTION, AnnotationTarget.TYPEALIAS)
+@Target(
+    AnnotationTarget.CLASS, AnnotationTarget.PROPERTY, AnnotationTarget.FUNCTION, AnnotationTarget.TYPEALIAS,
+    AnnotationTarget.PROPERTY_SETTER
+)
 @RequiresOptIn(level = RequiresOptIn.Level.WARNING)
 internal annotation class ExperimentalSWManagerAPI
