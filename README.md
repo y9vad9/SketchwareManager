@@ -1,3 +1,6 @@
+> Development on the library has been suspended due to its uselessness and possible irrelevance for nextgen of Sketchware. Also because of marriage motivation.
+
+
 ![image](https://user-images.githubusercontent.com/32961194/112753044-b9f0a680-8fde-11eb-9af2-a57b10369477.png)
 A coroutine-based library for Sketchware Management. Provides the ability to work with projects(its logic, views, and so
 on.), collections and custom elements of Sketchware mods as custom components. Mods such as Pro and Studio (CodeGo) are
@@ -9,8 +12,6 @@ Why this particular library?
   quickly as possible.
 - **Easy to use**: Due to coroutines and convenient Kotlin syntax, working with the library is as pleasant as possible.
 - **Modern**: SketchwareManager is Kotlin-first and uses modern libraries including Coroutines, Kotlin Serialization.
-
-> This version will no longer be supported. The new version of the library with the updated API will be [here](https://github.com/y9neon/SketchwareManager/tree/dev).
 
 ## Implementation
 
